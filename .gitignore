@@ -7,6 +7,9 @@
 node_modules/
 npm-debug.log*
 
+# Local Media (All images served via Cloudinary CDN)
+assets/images/
+
 # OS / Editor Files
 .DS_Store
 Thumbs.db

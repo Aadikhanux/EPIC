@@ -49,21 +49,16 @@ EPIC is an engineering community designed to bridge academic curriculum with ind
 
 ```
 EPIC/
-├── index.html                  # Main club landing page
+├── index.html                  # Main club landing page (Cloudinary CDN media)
 ├── induction.html              # Fullscreen interactive induction slide deck
 ├── .env.example                # Template for environment variables
-├── .gitignore                  # Git safety rules (protects credentials)
-├── package.json                # Project scripts & optional CDN upload tool
+├── .gitignore                  # Git safety rules (protects credentials & binaries)
+├── package.json                # Project scripts & CDN upload utilities
 ├── assets/
 │   ├── css/
 │   │   └── style.css           # Design tokens, themes, layout, components
-│   ├── js/
-│   │   └── script.js           # Theme switcher, chatbot engine, smart navbar, timeline
-│   └── images/
-│       ├── logos/              # Official club & branch logos
-│       ├── mentor/             # Faculty advisor media
-│       ├── team/               # Core team photos
-│       └── projects/           # Showcase and event captures
+│   └── js/
+│       └── script.js           # Theme switcher, chatbot engine, smart navbar, timeline
 └── scripts/
     └── upload_to_cloudinary.js # Automated bulk asset upload tool
 ```
