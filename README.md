@@ -102,7 +102,7 @@ npm run upload-images
 
 ## Core Team
 
-**Faculty Advisor:** Dr. Abhishek Gour
+**Faculty Advisor:** Dr. Abhishek Gour.
 
 | Name | Year | Branch |
 |------|------|--------|
