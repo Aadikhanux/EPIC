@@ -107,10 +107,11 @@ npm run upload-images
 | Name | Year | Branch |
 |------|------|--------|
 | Mayank Aggarwal | Final Year | CSE |
-| Renu Gehlot | 3rd Year | EEE |
-| Niyati Bhandari | 3rd Year | EEE |
 | Vinti Jingar | 3rd Year | IT |
+| Niyati Bhandari | 3rd Year | EEE |
+| Renu Gehlot | 3rd Year | EEE |
 | Kritika | 2nd Year | Civil |
+| Samarth Mathur | 3rd Year | AI |
 | Adil Khan | 2nd Year | CSE |
 | Udit Sharma | 2nd Year | IT |
 | Vanshika Singh | 2nd Year | IT |

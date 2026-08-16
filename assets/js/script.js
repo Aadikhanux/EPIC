@@ -341,7 +341,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             keywords: ['team', 'core', 'members', 'leads', 'leadership', 'president'],
-            response: "Our current year core leadership team includes:<br>• <strong>Mayank Aggarwal</strong> (Final Year • CSE)<br>• <strong>Renu Gehlot</strong> (3rd Year • EEE)<br>• <strong>Niyati Bhandari</strong> (3rd Year • EEE)<br>• <strong>Vinti Jingar</strong> (3rd Year • IT)<br>• <strong>Kritika</strong> (2nd Year • Civil)<br>• <strong>Adil Khan</strong> (2nd Year • CSE)<br>• <strong>Udit Sharma</strong> (2nd Year • IT)<br>• <strong>Vanshika Singh</strong> (2nd Year • IT)<br>• <strong>Ishika Gupta</strong> (2nd Year • AIDS)<br>• <strong>Tejasvini Jain</strong> (2nd Year • CSE)"
+            response: "Our current year core leadership team includes:<br>• <strong>Mayank Aggarwal</strong> (Final Year • CSE)<br>• <strong>Vinti Jingar</strong> (3rd Year • IT)<br>• <strong>Niyati Bhandari</strong> (3rd Year • EEE)<br>• <strong>Renu Gehlot</strong> (3rd Year • EEE)<br>• <strong>Kritika</strong> (2nd Year • Civil)<br>• <strong>Samarth Mathur</strong> (3rd Year • AI)<br>• <strong>Adil Khan</strong> (2nd Year • CSE)<br>• <strong>Udit Sharma</strong> (2nd Year • IT)<br>• <strong>Vanshika Singh</strong> (2nd Year • IT)<br>• <strong>Ishika Gupta</strong> (2nd Year • AIDS)<br>• <strong>Tejasvini Jain</strong> (2nd Year • CSE)"
         },
         {
             keywords: ['mentor', 'abhishek', 'gour', 'faculty', 'advisor', 'patron', 'teacher'],
