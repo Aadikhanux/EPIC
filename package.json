@@ -1,12 +1,17 @@
 {
   "name": "epic-portal",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "EPIC Technical Club Portal - MBM University",
   "scripts": {
-    "upload-images": "node scripts/upload_to_cloudinary.js"
+    "upload-images": "node scripts/upload_to_cloudinary.js",
+    "build:css": "npx cssnano assets/css/style.css assets/css/style.min.css",
+    "build:js": "npx terser assets/js/script.js -o assets/js/script.min.js -c -m",
+    "build": "npm run build:css && npm run build:js"
   },
   "devDependencies": {
     "cloudinary": "^2.0.0",
-    "dotenv": "^16.4.5"
+    "cssnano": "^7.0.0",
+    "dotenv": "^16.4.5",
+    "terser": "^5.30.0"
   }
 }

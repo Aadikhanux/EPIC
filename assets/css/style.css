@@ -1797,6 +1797,14 @@ textarea.form-control {
     gap: 5px;
 }
 
+.chatbot-status-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--brand-accent);
+    border-radius: 50%;
+    display: inline-block;
+}
+
 .chatbot-header-actions {
     display: flex;
     align-items: center;
@@ -2248,5 +2256,193 @@ footer {
         flex-direction: column;
         gap: 8px;
         text-align: center;
+    }
+}
+
+/* ================= NEW UTILITY & COMPONENT CLASSES ================= */
+
+/* Skip-to-content (accessibility) */
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 16px;
+    z-index: 10000;
+    padding: 12px 20px;
+    background: var(--brand-accent);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 14px;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+    top: 0;
+    outline: 3px solid var(--brand-accent);
+    outline-offset: 2px;
+}
+
+/* Focus-visible styles for all interactive elements */
+:focus-visible {
+    outline: 3px solid var(--brand-accent);
+    outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--brand-accent);
+    outline-offset: 2px;
+}
+
+/* Hero card header title & subtitle */
+.hero-card-title {
+    font-size: 17px;
+}
+
+.hero-card-subtitle {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* About card muted text */
+.about-card-text-muted {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+
+/* Full-width button */
+.btn-full-width {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Centered FAQ header */
+.faq-header-centered {
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.faq-link {
+    color: var(--brand-accent);
+    font-weight: 600;
+}
+
+/* Registration container elements */
+.registration-icon {
+    font-size: 32px;
+    color: var(--brand-accent);
+    margin-bottom: 12px;
+}
+
+.registration-title {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.registration-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+/* Disabled resource link */
+.resource-link-disabled {
+    color: var(--text-muted);
+    cursor: default;
+    opacity: 0.6;
+}
+
+.resource-link-disabled:hover {
+    gap: 6px;
+}
+
+/* Inline-flex primary button variant */
+.btn-inline-flex {
+    display: inline-flex;
+}
+
+/* Honeypot (hidden from humans) */
+.form-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Image loading skeleton / shimmer */
+.team-photo-wrap img,
+.gallery-img-box img,
+.mentor-image-container img,
+.branch-logo-wrap img {
+    background: var(--bg-subtle);
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.team-photo-placeholder {
+    background: linear-gradient(90deg, var(--brand-accent-light) 25%, var(--bg-subtle) 50%, var(--brand-accent-light) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Mobile bottom social bar (replaces hidden sidebar) */
+.mobile-social-bar {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 980;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border-subtle);
+    padding: 10px 16px;
+    justify-content: center;
+    gap: 14px;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
+}
+
+.mobile-social-bar a {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--bg-subtle);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-subtle);
+    font-size: 15px;
+    transition: all var(--transition-fast);
+}
+
+.mobile-social-bar a:hover {
+    color: #ffffff;
+    border-color: transparent;
+}
+
+.mobile-social-bar a.whatsapp:hover { background: #25d366; }
+.mobile-social-bar a.email:hover { background: var(--brand-accent); }
+.mobile-social-bar a.instagram:hover { background: #e1306c; }
+.mobile-social-bar a.linkedin:hover { background: #0a66c2; }
+
+@media (max-width: 868px) {
+    .mobile-social-bar {
+        display: flex;
+    }
+
+    body {
+        padding-bottom: 60px;
     }
 }

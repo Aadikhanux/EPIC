@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://epic-mbmu.org/sitemap.xml

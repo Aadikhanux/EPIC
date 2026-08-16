@@ -3,9 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>EPIC | Empowering People Through Innovative Computing</title>
-    <meta name="description" content="EPIC — Empowering People Through Innovative Computing. Official university technical club at MBM University.">
+    <meta name="description" content="EPIC — Empowering People Through Innovative Computing. Official university technical club at MBM University, supported by Google Developer Groups.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="EPIC | Empowering People Through Innovative Computing">
+    <meta property="og:description" content="Official portal of EPIC Technical Club at MBM University. We build production systems, compete in national hackathons, and run structured student project cohorts.">
+    <meta property="og:image" content="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_1200/v1/epic_portal/logos/epic-logo.png">
+    <meta property="og:site_name" content="EPIC Technical Club">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="EPIC | MBM University Technical Club">
+    <meta name="twitter:description" content="Empowering People Through Innovative Computing — SPARK, KAIZEN, PHOENIX wings.">
+    <meta name="twitter:image" content="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_1200/v1/epic_portal/logos/epic-logo.png">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://epic-mbmu.org">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "EPIC Technical Club",
+        "alternateName": "Empowering People Through Innovative Computing",
+        "url": "https://epic-mbmu.org",
+        "logo": "https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_600/v1/epic_portal/logos/epic-logo.png",
+        "description": "Premier technical club at MBM University supported by Google Developer Groups.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Jodhpur",
+            "addressRegion": "Rajasthan",
+            "addressCountry": "IN"
+        },
+        "email": "sparkmbmu@gmail.com",
+        "sameAs": [
+            "https://www.instagram.com/gdg_mbmu",
+            "https://linkedin.com/company/epic-mbmu",
+            "https://wa.me/917850940248"
+        ]
+    }
+    </script>
 
     <link rel="stylesheet" href="assets/css/style.css">
 
@@ -14,11 +56,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
 
+    <!-- Cloudinary CDN Preconnect -->
+    <link rel="preconnect" href="https://res.cloudinary.com">
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
+
+<!-- Skip to Content -->
+<a href="#main-content" class="skip-link">Skip to main content</a>
 
 <!-- ================= SCROLL PROGRESS BAR ================= -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -38,7 +86,7 @@
         <a href="https://www.instagram.com/gdg_mbmu?igsh=OWgzYnNoMmwzMjJ6" target="_blank" rel="noopener noreferrer" class="social-icon instagram" title="Instagram">
             <i class="fa-brands fa-instagram"></i>
         </a>
-        <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-icon linkedin" title="LinkedIn">
+        <a href="https://linkedin.com/company/epic-mbmu" target="_blank" rel="noopener noreferrer" class="social-icon linkedin" title="LinkedIn">
             <i class="fa-brands fa-linkedin-in"></i>
         </a>
         <button id="themeToggle" class="theme-toggle-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
@@ -52,13 +100,29 @@
     <i class="fa-solid fa-arrow-up"></i>
 </button>
 
+<!-- ================= MOBILE BOTTOM SOCIAL BAR ================= -->
+<div class="mobile-social-bar" aria-label="Social links">
+    <a href="https://wa.me/917850940248" target="_blank" rel="noopener noreferrer" class="whatsapp" title="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+    <a href="mailto:sparkmbmu@gmail.com" class="email" title="Email">
+        <i class="fa-regular fa-envelope"></i>
+    </a>
+    <a href="https://www.instagram.com/gdg_mbmu?igsh=OWgzYnNoMmwzMjJ6" target="_blank" rel="noopener noreferrer" class="instagram" title="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://linkedin.com/company/epic-mbmu" target="_blank" rel="noopener noreferrer" class="linkedin" title="LinkedIn">
+        <i class="fa-brands fa-linkedin-in"></i>
+    </a>
+</div>
+
 <!-- ================= ENHANCED CHATBOT DOUBTS WIDGET ================= -->
-<div class="chatbot-bubble-btn" id="chatbotBubble" title="Ask EPIC Assistant" aria-label="Open Chatbot">
+<div class="chatbot-bubble-btn" id="chatbotBubble" title="Ask EPIC Assistant" aria-label="Open Chatbot" role="button" aria-expanded="false">
     <i class="fa-solid fa-comments"></i>
     <span class="chat-pulse-badge"></span>
 </div>
 
-<div class="chatbot-window" id="chatbotWindow">
+<div class="chatbot-window" id="chatbotWindow" role="dialog" aria-label="EPIC Assistant Chat" aria-hidden="true">
     <div class="chatbot-header">
         <div class="chatbot-header-info">
             <div class="chatbot-avatar">
@@ -67,7 +131,7 @@
             <div>
                 <div class="chatbot-title">EPIC Assistant</div>
                 <div class="chatbot-status">
-                    <span style="width: 6px; height: 6px; background: var(--brand-accent); border-radius: 50%; display: inline-block;"></span> Active Guide
+                    <span class="chatbot-status-dot"></span> Active Guide
                 </div>
             </div>
         </div>
@@ -98,7 +162,7 @@
     </div>
 
     <form class="chatbot-footer" id="chatbotForm">
-        <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Ask a doubt or question..." autocomplete="off" required>
+        <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Ask a doubt or question..." autocomplete="off" required aria-label="Type your question">
         <button type="submit" class="chatbot-send-btn" aria-label="Send Message">
             <i class="fa-solid fa-paper-plane"></i>
         </button>
@@ -109,7 +173,7 @@
 <header class="navbar-container" id="navbarContainer">
     <nav class="navbar">
         <a href="#home" class="logo">
-            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto/v1/epic_portal/logos/epic-logo.png" alt="EPIC Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/epic-logo.png" alt="EPIC Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
             <span class="logo-box" style="display:none;">E</span>
             <div class="logo-text">
                 <span class="brand-title">EPIC</span>
@@ -133,13 +197,14 @@
             </a>
         </div>
 
-        <button class="menu-button" id="menuButton" aria-label="Toggle Menu">
+        <button class="menu-button" id="menuButton" aria-label="Toggle Menu" aria-expanded="false" aria-controls="navLinks">
             <i class="fa-solid fa-bars"></i>
         </button>
     </nav>
 </header>
 
 <!-- ================= HERO ================= -->
+<main id="main-content">
 <section class="hero" id="home">
     <div class="hero-wrapper">
         <div class="hero-content">
@@ -186,8 +251,8 @@
             <div class="hero-visual-card">
                 <div class="hero-card-header">
                     <div>
-                        <h3 style="font-size: 17px;">EPIC Ecosystem</h3>
-                        <p style="font-size: 13px; color: var(--text-muted);">Specialized tracks for every builder</p>
+                        <h3 class="hero-card-title">EPIC Ecosystem</h3>
+                        <p class="hero-card-subtitle">Specialized tracks for every builder</p>
                     </div>
                     <span class="club-tag">3 Wings</span>
                 </div>
@@ -195,7 +260,7 @@
                 <div class="hero-card-branches">
                     <div class="hero-branch-mini spark">
                         <div class="hero-branch-icon">
-                            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto/v1/epic_portal/logos/spark-logo.png" alt="SPARK">
+                            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/spark-logo.png" alt="SPARK" loading="lazy">
                         </div>
                         <div class="hero-branch-info">
                             <h4>SPARK</h4>
@@ -205,7 +270,7 @@
 
                     <div class="hero-branch-mini kaizen">
                         <div class="hero-branch-icon">
-                            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto/v1/epic_portal/logos/kaizen-logo.png" alt="KAIZEN">
+                            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/kaizen-logo.png" alt="KAIZEN" loading="lazy">
                         </div>
                         <div class="hero-branch-info">
                             <h4>KAIZEN</h4>
@@ -215,7 +280,7 @@
 
                     <div class="hero-branch-mini phoenix">
                         <div class="hero-branch-icon">
-                            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto/v1/epic_portal/logos/phoenix-logo.png" alt="PHOENIX">
+                            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/phoenix-logo.png" alt="PHOENIX" loading="lazy">
                         </div>
                         <div class="hero-branch-info">
                             <h4>PHOENIX</h4>
@@ -245,10 +310,10 @@
             <p class="lead">
                 EPIC is not just a student club — it's an ecosystem designed to turn curious learners into high-impact builders and leaders.
             </p>
-            <p style="color: var(--text-muted); font-size: 15px; margin-bottom: 24px;">
+            <p class="about-card-text-muted">
                 Whether you are writing your first line of code in SPARK, honing your engineering architecture in KAIZEN, or competing at national hackathons with PHOENIX, EPIC provides the mentorship, peers, and opportunities to excel.
             </p>
-            <a href="#team" class="primary-btn" style="display: inline-flex;">
+            <a href="#team" class="primary-btn btn-inline-flex">
                 Meet Our Leadership <i class="fa-solid fa-arrow-right"></i>
             </a>
         </div>
@@ -308,7 +373,7 @@
                 <div class="branch-card-top">
                     <div class="branch-card-badge">01 • SPARK</div>
                     <div class="branch-logo-wrap">
-                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto/v1/epic_portal/logos/spark-logo.png" alt="SPARK Logo">
+                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/spark-logo.png" alt="SPARK Logo" loading="lazy">
                     </div>
                 </div>
                 <h3>SPARK</h3>
@@ -333,7 +398,7 @@
                 <div class="branch-card-top">
                     <div class="branch-card-badge">02 • KAIZEN</div>
                     <div class="branch-logo-wrap">
-                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto/v1/epic_portal/logos/kaizen-logo.png" alt="KAIZEN Logo">
+                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/kaizen-logo.png" alt="KAIZEN Logo" loading="lazy">
                     </div>
                 </div>
                 <h3>KAIZEN</h3>
@@ -358,7 +423,7 @@
                 <div class="branch-card-top">
                     <div class="branch-card-badge">03 • PHOENIX</div>
                     <div class="branch-logo-wrap">
-                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto/v1/epic_portal/logos/phoenix-logo.png" alt="PHOENIX Logo">
+                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/phoenix-logo.png" alt="PHOENIX Logo" loading="lazy">
                     </div>
                 </div>
                 <h3>PHOENIX</h3>
@@ -384,7 +449,7 @@
     <div class="section-tag">03 / Faculty Advisor</div>
     <div class="mentor-box">
         <div class="mentor-image-container">
-            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_600,h_750,f_auto,q_auto/v1/epic_portal/mentor/abhishek-gour.jpg" alt="Dr. Abhishek Gour">
+            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_auto,h_750,f_auto,q_auto/v1/epic_portal/mentor/abhishek-gour.jpg" alt="Dr. Abhishek Gour" loading="lazy">
             <span class="mentor-tag">EPIC Mentor</span>
         </div>
         <div class="mentor-content">
@@ -427,7 +492,7 @@
         <!-- 1. Mayank Aggarwal -->
         <div class="team-card">
             <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto/v1/epic_portal/team/mayank-aggarwal.jpg" alt="Mayank Aggarwal" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/mayank-aggarwal.jpg" alt="Mayank Aggarwal" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                 <div class="team-photo-placeholder" style="display:none;">MA</div>
             </div>
             <h4>Mayank Aggarwal</h4>
@@ -440,7 +505,7 @@
         <!-- 2. Renu Gehlot -->
         <div class="team-card">
             <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto/v1/epic_portal/team/renu-gehlot.jpg" alt="Renu Gehlot" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/renu-gehlot.jpg" alt="Renu Gehlot" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                 <div class="team-photo-placeholder" style="display:none;">RG</div>
             </div>
             <h4>Renu Gehlot</h4>
@@ -453,7 +518,7 @@
         <!-- 3. Niyati Bhandari -->
         <div class="team-card">
             <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto/v1/epic_portal/team/niyati-bhandari.jpg" alt="Niyati Bhandari" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/niyati-bhandari.jpg" alt="Niyati Bhandari" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                 <div class="team-photo-placeholder" style="display:none;">NB</div>
             </div>
             <h4>Niyati Bhandari</h4>
@@ -490,7 +555,7 @@
         <!-- 6. Adil Khan -->
         <div class="team-card">
             <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto/v1/epic_portal/team/adil-khan.jpg" alt="Adil Khan" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/adil-khan.jpg" alt="Adil Khan" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                 <div class="team-photo-placeholder" style="display:none;">AK</div>
             </div>
             <h4>Adil Khan</h4>
@@ -503,7 +568,7 @@
         <!-- 7. Udit Sharma -->
         <div class="team-card">
             <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto/v1/epic_portal/team/udit-sharma.png" alt="Udit Sharma" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/udit-sharma.png" alt="Udit Sharma" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                 <div class="team-photo-placeholder" style="display:none;">US</div>
             </div>
             <h4>Udit Sharma</h4>
@@ -516,7 +581,7 @@
         <!-- 8. Vanshika Singh -->
         <div class="team-card">
             <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto/v1/epic_portal/team/vanshika-singh.jpg" alt="Vanshika Singh" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/vanshika-singh.jpg" alt="Vanshika Singh" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                 <div class="team-photo-placeholder" style="display:none;">VS</div>
             </div>
             <h4>Vanshika Singh</h4>
@@ -529,10 +594,10 @@
         <!-- 9. Ishita -->
         <div class="team-card">
             <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto/v1/epic_portal/team/ishika-gupta.jpg" alt="Ishita" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder" style="display:none;">I</div>
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/ishika-gupta.jpg" alt="Ishika Gupta" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                <div class="team-photo-placeholder" style="display:none;">IG</div>
             </div>
-            <h4>Ishita</h4>
+            <h4>Ishika Gupta</h4>
             <div class="team-pills">
                 <span class="team-pill">2nd Year</span>
                 <span class="team-pill branch-tag">AIDS</span>
@@ -661,7 +726,7 @@
     <div class="gallery-grid">
         <div class="gallery-item">
             <div class="gallery-img-box">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto/v1/epic_portal/projects/studypods.jpg" alt="StudyPods 5.0" onerror="this.src='assets/images/projects/studypods.jpg'">
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/projects/studypods.jpg" alt="StudyPods 5.0" loading="lazy" onerror="this.src='assets/images/projects/studypods.jpg'">
             </div>
             <div class="gallery-item-details">
                 <small>Project Expo</small>
@@ -671,7 +736,7 @@
 
         <div class="gallery-item">
             <div class="gallery-img-box">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_600,h_400,f_auto,q_auto/v1/epic_portal/mentor/abhishek-gour.jpg" alt="Mentorship Session" onerror="this.src='assets/images/mentor/abhishek-gour.jpeg'">
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_600,h_400,f_auto,q_auto,w_auto/v1/epic_portal/mentor/abhishek-gour.jpg" alt="Mentorship Session" loading="lazy" onerror="this.src='assets/images/mentor/abhishek-gour.jpeg'">
             </div>
             <div class="gallery-item-details">
                 <small>Mentorship</small>
@@ -681,7 +746,7 @@
 
         <div class="gallery-item">
             <div class="gallery-img-box">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_600,h_400,f_auto,q_auto/v1/epic_portal/team/mayank-aggarwal.jpg" alt="Team Colloquium" onerror="this.src='assets/images/team/mayank-aggarwal.jpg'">
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_600,h_400,f_auto,q_auto,w_auto/v1/epic_portal/team/mayank-aggarwal.jpg" alt="Team Colloquium" loading="lazy" onerror="this.src='assets/images/team/mayank-aggarwal.jpg'">
             </div>
             <div class="gallery-item-details">
                 <small>Leadership</small>
@@ -712,7 +777,9 @@
                 <h4>Learning Roadmaps</h4>
                 <p>Structured curriculum for Web Development, AI/ML, Cloud Computing, and DevOps.</p>
             </div>
-            <a href="#" class="resource-link">Access Guides <i class="fa-solid fa-arrow-right"></i></a>
+            <span class="resource-link resource-link-disabled">
+                Coming Soon <i class="fa-solid fa-clock"></i>
+            </span>
         </div>
 
         <div class="resource-card">
@@ -723,7 +790,9 @@
                 <h4>Open Repositories</h4>
                 <p>Starter repos, competition boilerplate, and project templates authored by EPIC members.</p>
             </div>
-            <a href="#" class="resource-link">Browse Repos <i class="fa-solid fa-arrow-right"></i></a>
+            <a href="https://github.com/epic-mbmu" target="_blank" rel="noopener noreferrer" class="resource-link">
+                Browse Repos <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            </a>
         </div>
 
         <div class="resource-card">
@@ -734,7 +803,9 @@
                 <h4>Competition Playbooks</h4>
                 <p>Tips, problem-solving strategies, and presentation templates for winning hackathons.</p>
             </div>
-            <a href="#" class="resource-link">Read Playbook <i class="fa-solid fa-arrow-right"></i></a>
+            <span class="resource-link resource-link-disabled">
+                Coming Soon <i class="fa-solid fa-clock"></i>
+            </span>
         </div>
     </div>
 </section>
@@ -799,6 +870,11 @@
 
             <!-- Contact Message Form -->
             <form class="custom-form" id="contactForm">
+                <!-- Honeypot (hidden from humans, bots fill it) -->
+                <div class="form-hp" aria-hidden="true">
+                    <label for="website">Website</label>
+                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                </div>
                 <div class="form-row">
                     <div class="form-group">
                         <label for="contactName">Your Name</label>
@@ -825,7 +901,7 @@
                     <textarea id="contactMessage" class="form-control" rows="4" placeholder="How can we help you?" required></textarea>
                 </div>
 
-                <button type="submit" class="primary-btn" style="width: 100%; justify-content: center;">
+                <button type="submit" class="primary-btn btn-full-width">
                     Send Message <i class="fa-regular fa-paper-plane"></i>
                 </button>
 
@@ -836,15 +912,15 @@
 
             <!-- Registration Embed Container -->
             <div class="registration-embed-container" id="registerContainer">
-                <div style="font-size: 32px; color: var(--brand-accent); margin-bottom: 12px;">
+                <div class="registration-icon">
                     <i class="fa-solid fa-clipboard-check"></i>
                 </div>
-                <h4 style="font-size: 18px; margin-bottom: 8px;">2026 Membership Registration</h4>
-                <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">
-                    Fill out our official membership registration form to join active project squads and receive workshop invites.
+                <h4 class="registration-title">2026 Membership Registration</h4>
+                <p class="registration-desc">
+                    The registration form will be live soon. Join our WhatsApp community to get notified when it opens.
                 </p>
-                <a href="https://docs.google.com/forms" target="_blank" rel="noopener noreferrer" class="primary-btn" style="display: inline-flex;">
-                    Open Official Google Form <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                <a href="https://wa.me/917850940248" target="_blank" rel="noopener noreferrer" class="primary-btn btn-inline-flex">
+                    Join WhatsApp for Updates <i class="fa-solid fa-arrow-up-right-from-square"></i>
                 </a>
             </div>
         </div>
@@ -853,7 +929,7 @@
 
 <!-- ================= FAQ ACCORDION ================= -->
 <section class="section faq-section" id="faq">
-    <div class="section-header-row" style="text-align: center; justify-content: center; flex-direction: column; align-items: center;">
+    <div class="section-header-row faq-header-centered">
         <div class="section-tag">09 / Frequently Asked Questions</div>
         <h2 class="section-title">Got Questions? We've Got Answers.</h2>
         <p class="section-desc">
@@ -888,7 +964,7 @@
                 <i class="fa-solid fa-chevron-down"></i>
             </button>
             <div class="faq-content">
-                <p>We hold an annual induction event featuring technical talks, problem-solving quizzes, and project pitches. Check our dedicated <a href="induction.html" style="color: var(--brand-accent); font-weight: 600;">Induction Page</a> for full details and schedules.</p>
+                <p>We hold an annual induction event featuring technical talks, problem-solving quizzes, and project pitches. Check our dedicated <a href="induction.html" class="faq-link">Induction Page</a> for full details and schedules.</p>
             </div>
         </div>
 
@@ -901,15 +977,46 @@
                 <p>Our members build full-stack web platforms, machine learning models, mobile apps, IoT systems, and algorithmic bots for national competitions and community impact.</p>
             </div>
         </div>
+
+        <div class="faq-item">
+            <button class="faq-header" type="button">
+                <span>Is there any membership fee?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-content">
+                <p>No, EPIC is completely free to join. We believe in accessible education and collaboration. All workshops, events, and mentorship sessions are open to all members at no cost.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-header" type="button">
+                <span>Can final-year students join EPIC?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-content">
+                <p>Absolutely! Final-year students are welcome to join as mentors and contributors. Many of our alumni have gone on to roles at companies like Boeing, IBM, and IIM, and they continue to guide current members.</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <button class="faq-header" type="button">
+                <span>Which technologies does EPIC focus on?</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="faq-content">
+                <p>We cover a wide range: Web Development (React, Node.js, Python), AI/ML (TensorFlow, PyTorch), Cloud Computing (GCP, AWS), System Design, Competitive Programming, and more. Each wing has its own focus areas.</p>
+            </div>
+        </div>
     </div>
 </section>
+</main>
 
 <!-- ================= FOOTER ================= -->
 <footer>
     <div class="footer-inner">
         <div class="footer-top">
             <a href="#home" class="logo">
-                <img src="assets/images/logos/epic-logo.png" alt="EPIC Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/epic-logo.png" alt="EPIC Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                 <span class="logo-box" style="display:none;">E</span>
                 <div class="logo-text">
                     <span class="brand-title">EPIC</span>
@@ -924,7 +1031,7 @@
             <div class="footer-social-links">
                 <a href="https://wa.me/917850940248" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
                 <a href="https://www.instagram.com/gdg_mbmu?igsh=OWgzYnNoMmwzMjJ6" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://linkedin.com/company/epic-mbmu" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                 <a href="mailto:sparkmbmu@gmail.com" title="Email"><i class="fa-regular fa-envelope"></i></a>
             </div>
         </div>

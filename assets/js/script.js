@@ -145,21 +145,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (menuButton && navLinks) {
         menuButton.addEventListener('click', () => {
             navLinks.classList.toggle('active');
+            const isOpen = navLinks.classList.contains('active');
+            menuButton.setAttribute('aria-expanded', String(isOpen));
             const icon = menuButton.querySelector('i');
             if (icon) {
-                if (navLinks.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-xmark');
-                } else {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                }
+                icon.classList.toggle('fa-bars', !isOpen);
+                icon.classList.toggle('fa-xmark', isOpen);
             }
         });
 
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
+                menuButton.setAttribute('aria-expanded', 'false');
                 const icon = menuButton.querySelector('i');
                 if (icon) {
                     icon.classList.remove('fa-xmark');
@@ -193,6 +191,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
+
+            const honeypot = document.getElementById('website');
+            if (honeypot && honeypot.value) return;
+
             const name = document.getElementById('contactName').value;
             const email = document.getElementById('contactEmail').value;
             const domain = document.getElementById('contactDomain').value;
@@ -233,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             keywords: ['team', 'core', 'members', 'leads', 'leadership', 'president'],
-            response: "Our current year core leadership team includes:<br>• <strong>Mayank Aggarwal</strong> (Final Year • CSE)<br>• <strong>Renu Gehlot</strong> (3rd Year • EEE)<br>• <strong>Niyati Bhandari</strong> (3rd Year • EEE)<br>• <strong>Vinti Jingar</strong> (3rd Year • IT)<br>• <strong>Kritika</strong> (2nd Year • Civil)<br>• <strong>Adil Khan</strong> (2nd Year • CSE)<br>• <strong>Udit Sharma</strong> (2nd Year • IT)<br>• <strong>Vanshika Singh</strong> (2nd Year • IT)<br>• <strong>Ishita</strong> (2nd Year • AIDS)<br>• <strong>Tejasvini Jain</strong> (2nd Year • CSE)"
+            response: "Our current year core leadership team includes:<br>• <strong>Mayank Aggarwal</strong> (Final Year • CSE)<br>• <strong>Renu Gehlot</strong> (3rd Year • EEE)<br>• <strong>Niyati Bhandari</strong> (3rd Year • EEE)<br>• <strong>Vinti Jingar</strong> (3rd Year • IT)<br>• <strong>Kritika</strong> (2nd Year • Civil)<br>• <strong>Adil Khan</strong> (2nd Year • CSE)<br>• <strong>Udit Sharma</strong> (2nd Year • IT)<br>• <strong>Vanshika Singh</strong> (2nd Year • IT)<br>• <strong>Ishika Gupta</strong> (2nd Year • AIDS)<br>• <strong>Tejasvini Jain</strong> (2nd Year • CSE)"
         },
         {
             keywords: ['mentor', 'abhishek', 'gour', 'faculty', 'advisor', 'patron', 'teacher'],
@@ -264,14 +266,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (chatbotBubble && chatbotWindow && chatbotClose) {
         chatbotBubble.addEventListener('click', () => {
-            chatbotWindow.classList.toggle('open');
-            if (chatbotWindow.classList.contains('open') && chatbotInput) {
+            const isOpen = chatbotWindow.classList.toggle('open');
+            chatbotBubble.setAttribute('aria-expanded', String(isOpen));
+            chatbotWindow.setAttribute('aria-hidden', String(!isOpen));
+            if (isOpen && chatbotInput) {
                 chatbotInput.focus();
             }
         });
 
         chatbotClose.addEventListener('click', () => {
             chatbotWindow.classList.remove('open');
+            chatbotBubble.setAttribute('aria-expanded', 'false');
+            chatbotWindow.setAttribute('aria-hidden', 'true');
+            chatbotBubble.focus();
         });
 
         if (chatbotClear) {
@@ -322,30 +329,36 @@ document.addEventListener('DOMContentLoaded', () => {
     function handleUserChat(userText) {
         if (!chatbotBody) return;
 
-        // User Message Wrap
         const userWrap = document.createElement('div');
         userWrap.className = 'chat-msg-wrap user';
-        userWrap.innerHTML = `
-            <div class="chat-msg user">${userText}</div>
-            <span class="chat-timestamp">${getCurrentTimeStr()}</span>
-        `;
+
+        const userMsg = document.createElement('div');
+        userMsg.className = 'chat-msg user';
+        userMsg.textContent = userText;
+
+        const userTimestamp = document.createElement('span');
+        userTimestamp.className = 'chat-timestamp';
+        userTimestamp.textContent = getCurrentTimeStr();
+
+        userWrap.appendChild(userMsg);
+        userWrap.appendChild(userTimestamp);
         chatbotBody.appendChild(userWrap);
         chatbotBody.scrollTop = chatbotBody.scrollHeight;
 
-        // Add Typing Indicator
         const typingWrap = document.createElement('div');
         typingWrap.className = 'chat-msg-wrap bot typing-temp';
-        typingWrap.innerHTML = `
-            <div class="typing-indicator">
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-            </div>
-        `;
+
+        const typingIndicator = document.createElement('div');
+        typingIndicator.className = 'typing-indicator';
+        for (let i = 0; i < 3; i++) {
+            const dot = document.createElement('div');
+            dot.className = 'typing-dot';
+            typingIndicator.appendChild(dot);
+        }
+        typingWrap.appendChild(typingIndicator);
         chatbotBody.appendChild(typingWrap);
         chatbotBody.scrollTop = chatbotBody.scrollHeight;
 
-        // Bot Response Simulation
         setTimeout(() => {
             const temp = chatbotBody.querySelector('.typing-temp');
             if (temp) temp.remove();
@@ -362,10 +375,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const botWrap = document.createElement('div');
             botWrap.className = 'chat-msg-wrap bot';
-            botWrap.innerHTML = `
-                <div class="chat-msg bot">${botReply}</div>
-                <span class="chat-timestamp">${getCurrentTimeStr()}</span>
-            `;
+
+            const botMsg = document.createElement('div');
+            botMsg.className = 'chat-msg bot';
+            botMsg.innerHTML = botReply;
+
+            const botTimestamp = document.createElement('span');
+            botTimestamp.className = 'chat-timestamp';
+            botTimestamp.textContent = getCurrentTimeStr();
+
+            botWrap.appendChild(botMsg);
+            botWrap.appendChild(botTimestamp);
             chatbotBody.appendChild(botWrap);
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
         }, 450);
@@ -374,14 +394,25 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ================= 7. FAQ ACCORDION ================= */
     const faqItems = document.querySelectorAll('.faq-item');
 
-    faqItems.forEach(item => {
+    faqItems.forEach((item, index) => {
         const header = item.querySelector('.faq-header');
+        const content = item.querySelector('.faq-content');
         if (header) {
+            header.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
+            if (content) {
+                content.id = `faq-content-${index}`;
+                header.setAttribute('aria-controls', `faq-content-${index}`);
+            }
             header.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
-                faqItems.forEach(otherItem => otherItem.classList.remove('active'));
+                faqItems.forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                    const otherHeader = otherItem.querySelector('.faq-header');
+                    if (otherHeader) otherHeader.setAttribute('aria-expanded', 'false');
+                });
                 if (!isActive) {
                     item.classList.add('active');
+                    header.setAttribute('aria-expanded', 'true');
                 }
             });
         }
