@@ -40,7 +40,7 @@ EPIC is an engineering community designed to bridge academic curriculum with ind
 - **Adil Khan** (2nd Year • CSE)
 - **Udit Sharma** (2nd Year • IT)
 - **Vanshika Singh** (2nd Year • IT)
-- **Ishita** (2nd Year • AIDS)
+- **Ishika Gupta** (2nd Year • AIDS)
 - **Tejasvini Jain** (2nd Year • CSE)
 
 ---
