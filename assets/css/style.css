@@ -1602,19 +1602,23 @@ textarea.form-control {
     text-align: center;
 }
 
-/* Registration Iframe placeholder / embed ready */
+/* Registration form container */
 .registration-embed-container {
     display: none;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-xl);
     overflow: hidden;
     border: 1px solid var(--border-subtle);
-    background: var(--bg-subtle);
-    padding: 30px;
-    text-align: center;
+    background: var(--bg-surface);
+    padding: 36px;
+    box-shadow: var(--shadow-md);
 }
 
 .registration-embed-container.active {
     display: block;
+}
+
+.registration-embed-container .custom-form {
+    text-align: left;
 }
 
 /* FAQ Accordion Section */
@@ -2349,6 +2353,106 @@ textarea:focus-visible {
     font-size: 14px;
     color: var(--text-muted);
     margin-bottom: 20px;
+}
+
+/* Registration form extras */
+.required {
+    color: #e11d48;
+}
+
+.radio-group {
+    display: flex;
+    gap: 12px;
+}
+
+.radio-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.radio-option:hover {
+    border-color: var(--border-medium);
+}
+
+.radio-option input[type="radio"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border-medium);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.radio-option input[type="radio"]:checked {
+    border-color: var(--brand-accent);
+    background: var(--brand-accent);
+    box-shadow: inset 0 0 0 3px var(--bg-surface);
+}
+
+.radio-option input[type="radio"]:checked + span {
+    color: var(--brand-accent);
+    font-weight: 600;
+}
+
+.experience-detail-group {
+    animation: slideDown 0.25s ease;
+}
+
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.form-control.error {
+    border-color: #e11d48;
+    box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.1);
+}
+
+.form-error-msg {
+    font-size: 12px;
+    color: #e11d48;
+    margin-top: 4px;
+    display: none;
+}
+
+.form-error-msg.visible {
+    display: block;
+}
+
+.primary-btn.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.75;
+}
+
+.primary-btn.loading::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: btnSpin 0.6s linear infinite;
+    right: 16px;
+}
+
+@keyframes btnSpin {
+    to { transform: rotate(360deg); }
 }
 
 /* Disabled resource link */

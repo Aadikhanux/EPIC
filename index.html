@@ -910,18 +910,97 @@
                 </div>
             </form>
 
-            <!-- Registration Embed Container -->
+            <!-- Registration Form -->
             <div class="registration-embed-container" id="registerContainer">
-                <div class="registration-icon">
-                    <i class="fa-solid fa-clipboard-check"></i>
-                </div>
-                <h4 class="registration-title">2026 Membership Registration</h4>
-                <p class="registration-desc">
-                    The registration form will be live soon. Join our WhatsApp community to get notified when it opens.
-                </p>
-                <a href="https://wa.me/917850940248" target="_blank" rel="noopener noreferrer" class="primary-btn btn-inline-flex">
-                    Join WhatsApp for Updates <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                </a>
+                <form class="custom-form" id="registerForm">
+                    <!-- Honeypot -->
+                    <div class="form-hp" aria-hidden="true">
+                        <label for="reg-website">Website</label>
+                        <input type="text" id="reg-website" name="website" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="regName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="regName" class="form-control" placeholder="e.g. Rahul Sharma" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regGender">Gender <span class="required">*</span></label>
+                            <select id="regGender" class="form-control" required>
+                                <option value="" disabled selected>Select</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                                <option value="Prefer not to say">Prefer not to say</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="regMobile">Mobile Number <span class="required">*</span></label>
+                            <input type="tel" id="regMobile" class="form-control" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="regEmail">Email Address <span class="required">*</span></label>
+                            <input type="email" id="regEmail" class="form-control" placeholder="name@domain.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regBranch">Branch <span class="required">*</span></label>
+                        <select id="regBranch" class="form-control" required>
+                            <option value="" disabled selected>Select your branch</option>
+                            <option value="CSE">CSE</option>
+                            <option value="IT">IT</option>
+                            <option value="AI">AI</option>
+                            <option value="ECE">ECE</option>
+                            <option value="EIE">EIE</option>
+                            <option value="EEE">EEE</option>
+                            <option value="EE">EE</option>
+                            <option value="Civil">Civil</option>
+                            <option value="Chemical">Chemical</option>
+                            <option value="BCT">BCT</option>
+                            <option value="Petroleum">Petroleum</option>
+                            <option value="P & I">P & I</option>
+                            <option value="Mining">Mining</option>
+                            <option value="Architecture">Architecture</option>
+                            <option value="Mechanical">Mechanical</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Previous Coding Experience</label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="regExperience" value="No" checked>
+                                <span>No</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="regExperience" value="Yes">
+                                <span>Yes</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group experience-detail-group" id="experienceDetailGroup" style="display: none;">
+                        <label for="regExperienceDetail">Tell us about your experience</label>
+                        <textarea id="regExperienceDetail" class="form-control" rows="3" placeholder="e.g. I've built 2 web projects using React, solved 200+ problems on LeetCode..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="regQuestion">Anything you'd like to ask?</label>
+                        <textarea id="regQuestion" class="form-control" rows="3" placeholder="Any questions, suggestions, or things you'd like us to know..."></textarea>
+                    </div>
+
+                    <button type="submit" class="primary-btn btn-full-width" id="registerSubmitBtn">
+                        Submit Registration <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+
+                    <div class="form-success-msg" id="registerSuccessMsg">
+                        Registration submitted successfully! We'll reach out to you soon.
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -172,7 +172,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const registerTabBtn = document.getElementById('registerTabBtn');
     const contactForm = document.getElementById('contactForm');
     const registerContainer = document.getElementById('registerContainer');
+    const registerForm = document.getElementById('registerForm');
     const formSuccessMsg = document.getElementById('formSuccessMsg');
+    const registerSuccessMsg = document.getElementById('registerSuccessMsg');
 
     if (contactTabBtn && registerTabBtn && contactForm && registerContainer) {
         contactTabBtn.addEventListener('click', () => {
@@ -201,13 +203,117 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (formSuccessMsg) {
                 formSuccessMsg.style.display = 'block';
-                formSuccessMsg.innerHTML = `✓ Thank you <strong>${name}</strong>! Your message regarding <em>${domain}</em> has been received. We will get in touch at <em>${email}</em> soon.`;
+                formSuccessMsg.innerHTML = `Thank you <strong>${name}</strong>! Your message regarding <em>${domain}</em> has been received. We will get in touch at <em>${email}</em> soon.`;
                 contactForm.reset();
 
                 setTimeout(() => {
                     formSuccessMsg.style.display = 'none';
                 }, 7000);
             }
+        });
+    }
+
+    /* ================= 5b. REGISTRATION FORM ================= */
+    const experienceRadios = document.querySelectorAll('input[name="regExperience"]');
+    const experienceDetailGroup = document.getElementById('experienceDetailGroup');
+
+    experienceRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            if (radio.value === 'Yes' && radio.checked) {
+                experienceDetailGroup.style.display = 'block';
+            } else if (radio.value === 'No' && radio.checked) {
+                experienceDetailGroup.style.display = 'none';
+            }
+        });
+    });
+
+    if (registerForm) {
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const hp = document.getElementById('reg-website');
+            if (hp && hp.value) return;
+
+            const name = document.getElementById('regName');
+            const gender = document.getElementById('regGender');
+            const mobile = document.getElementById('regMobile');
+            const email = document.getElementById('regEmail');
+            const branch = document.getElementById('regBranch');
+            let valid = true;
+
+            [name, gender, mobile, email, branch].forEach(f => {
+                f.classList.remove('error');
+                const err = f.parentElement.querySelector('.form-error-msg');
+                if (err) err.classList.remove('visible');
+            });
+
+            if (!name.value.trim()) {
+                name.classList.add('error');
+                valid = false;
+            }
+
+            if (!gender.value) {
+                gender.classList.add('error');
+                valid = false;
+            }
+
+            const mobilePattern = /^[0-9]{10}$/;
+            if (!mobilePattern.test(mobile.value.trim())) {
+                mobile.classList.add('error');
+                valid = false;
+            }
+
+            if (!email.value.trim() || !email.validity.valid) {
+                email.classList.add('error');
+                valid = false;
+            }
+
+            if (!branch.value) {
+                branch.classList.add('error');
+                valid = false;
+            }
+
+            if (!valid) return;
+
+            const submitBtn = document.getElementById('registerSubmitBtn');
+            if (submitBtn) {
+                submitBtn.classList.add('loading');
+                submitBtn.textContent = 'Submitting...';
+            }
+
+            const experienceRadio = document.querySelector('input[name="regExperience"]:checked');
+            const payload = {
+                name: name.value.trim(),
+                gender: gender.value,
+                mobile: mobile.value.trim(),
+                email: email.value.trim(),
+                branch: branch.value,
+                codingExperience: experienceRadio ? experienceRadio.value : 'No',
+                experienceDetail: document.getElementById('regExperienceDetail').value.trim(),
+                question: document.getElementById('regQuestion').value.trim(),
+                timestamp: new Date().toISOString()
+            };
+
+            setTimeout(() => {
+                if (submitBtn) {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.innerHTML = 'Submit Registration <i class="fa-solid fa-arrow-right"></i>';
+                }
+
+                console.log('Registration payload:', payload);
+
+                if (registerSuccessMsg) {
+                    registerSuccessMsg.style.display = 'block';
+                    registerSuccessMsg.innerHTML = 'Thank you <strong>' + payload.name + '</strong>! Your registration has been submitted. We will contact you at <em>' + payload.email + '</em> soon.';
+                }
+
+                registerForm.reset();
+                if (experienceDetailGroup) experienceDetailGroup.style.display = 'none';
+
+                setTimeout(() => {
+                    if (registerSuccessMsg) registerSuccessMsg.style.display = 'none';
+                }, 8000);
+            }, 1200);
         });
     }
 
