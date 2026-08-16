@@ -1,0 +1,12 @@
+{
+  "name": "epic-portal",
+  "version": "1.0.0",
+  "description": "EPIC Technical Club Portal - MBM University",
+  "scripts": {
+    "upload-images": "node scripts/upload_to_cloudinary.js"
+  },
+  "devDependencies": {
+    "cloudinary": "^2.0.0",
+    "dotenv": "^16.4.5"
+  }
+}

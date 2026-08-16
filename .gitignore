@@ -1,0 +1,15 @@
+# Environment Variables (Keep Private)
+.env
+.env.local
+.env.*.local
+
+# Node Dependencies
+node_modules/
+npm-debug.log*
+
+# OS / Editor Files
+.DS_Store
+Thumbs.db
+*.zip
+.vscode/
+.idea/
