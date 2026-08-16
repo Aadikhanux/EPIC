@@ -116,7 +116,7 @@ npm run upload-images
 | Udit Sharma | 2nd Year | IT |
 | Vanshika Singh | 2nd Year | IT |
 | Ishika Gupta | 2nd Year | AIDS |
-| Tejasvini Jain | 2nd Year | CSE |
+| Tejasvini Jain | 2nd Year | EEE |
 
 ---
 
