@@ -618,7 +618,39 @@ document.addEventListener('DOMContentLoaded', () => {
         teamGridResizeTimer = setTimeout(applyTeamGridLayout, 150);
     });
 
-    /* ================= 10. CONSOLE BRANDING ================= */
+    /* ================= 10. HERO STAT COUNTER ANIMATION ================= */
+    const heroStats = document.querySelectorAll('.hero-stat-item strong');
+    if (heroStats.length) {
+        const animateCount = (el) => {
+            const text = el.textContent.trim();
+            const match = text.match(/^(\d+)(\+?)$/);
+            if (!match) return;
+            const target = parseInt(match[1], 10);
+            const suffix = match[2] || '';
+            const duration = 1500;
+            const start = performance.now();
+            const step = (now) => {
+                const elapsed = now - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(target * eased) + suffix;
+                if (progress < 1) requestAnimationFrame(step);
+            };
+            el.textContent = '0' + suffix;
+            requestAnimationFrame(step);
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    animateCount(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        heroStats.forEach((el) => observer.observe(el));
+    }
+
+    /* ================= 11. CONSOLE BRANDING ================= */
     console.log(
         "%c EPIC | MBM University ",
         "background:#0f172a;color:#10b981;font-size:16px;font-weight:bold;padding:8px 14px;border-radius:6px;"
