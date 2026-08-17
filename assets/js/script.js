@@ -357,7 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             keywords: ['contact', 'email', 'phone', 'whatsapp', 'reach', 'number'],
-            response: "You can reach us directly at <strong>sparkmbmu@gmail.com</strong> or chat with us on WhatsApp at <strong>+91 78509 40248</strong>."
+            response: "You can reach us directly at <strong>dsc.clubs@mbm.ac.in</strong> or chat with us on WhatsApp at <strong>+91 78509 40248</strong>."
         },
         {
             keywords: ['hi', 'hello', 'hey', 'greetings', 'help'],
@@ -470,7 +470,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (temp) temp.remove();
 
             const lower = userText.toLowerCase();
-            let botReply = "That's a great question! For detailed assistance, feel free to drop a message in our Contact section or reach us directly at <strong>sparkmbmu@gmail.com</strong>.";
+            let botReply = "That's a great question! For detailed assistance, feel free to drop a message in our Contact section or reach us directly at <strong>dsc.clubs@mbm.ac.in</strong>.";
 
             for (const item of botKnowledge) {
                 if (item.keywords.some(k => lower.includes(k))) {
@@ -553,7 +553,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ================= 9. CONSOLE BRANDING ================= */
+    /* ================= 9. TEAM GRID — 2-ROW LAYOUT ================= */
+    document.querySelectorAll('.team-grid').forEach(grid => {
+        const cards = Array.from(grid.children);
+        const count = cards.length;
+        const firstRowCount = Math.floor(count / 2);
+        const secondRowCount = Math.ceil(count / 2);
+        const gridCols = secondRowCount * 2;
+
+        grid.style.gridTemplateColumns = `repeat(${gridCols}, 1fr)`;
+        grid.style.justifyContent = 'center';
+
+        const row2Span = gridCols;
+        const row2Offset = 0;
+        const row1Span = firstRowCount * 2;
+        const row1Offset = Math.floor((gridCols - row1Span) / 2);
+
+        cards.forEach((card, i) => {
+            if (i < firstRowCount) {
+                card.style.gridColumn = `${row1Offset + i * 2 + 1} / span 2`;
+                card.style.gridRow = '1';
+            } else {
+                card.style.gridColumn = `${(i - firstRowCount) * 2 + 1} / span 2`;
+                card.style.gridRow = '2';
+            }
+        });
+    });
+
+    /* ================= 10. CONSOLE BRANDING ================= */
     console.log(
         "%c EPIC | MBM University ",
         "background:#0f172a;color:#10b981;font-size:16px;font-weight:bold;padding:8px 14px;border-radius:6px;"

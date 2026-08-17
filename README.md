@@ -124,7 +124,7 @@ npm run upload-images
 
 | Channel | Link |
 |---------|------|
-| Email | sparkmbmu@gmail.com |
+| Email | dsc.clubs@mbm.ac.in |
 | WhatsApp | [+91 78509 40248](https://wa.me/917850940248) |
 | Instagram | [@gdg_mbmu](https://www.instagram.com/gdg_mbmu) |
 | LinkedIn | [EPIC MBM](https://linkedin.com/company/epic-mbmu) |

@@ -1100,8 +1100,8 @@ img {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
     gap: 20px;
+    justify-content: center;
 }
 
 .team-card {
@@ -1181,6 +1181,40 @@ img {
     color: var(--brand-accent);
     border-color: var(--brand-accent-border);
     font-weight: 600;
+}
+
+.team-card-linkedin {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-top: 10px;
+    border-radius: 50%;
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all var(--transition-base);
+}
+
+.team-card-linkedin:hover {
+    background: #0077B5;
+    color: #fff;
+    border-color: #0077B5;
+    transform: translateY(-2px);
+}
+
+.team-card-linkedin i {
+    font-size: 14px;
+}
+
+.alumni-section .team-grid {
+    opacity: 0.85;
+}
+
+.alumni-section .team-card {
+    border-style: dashed;
 }
 
 /* ================= CONTINUOUS TIMELINE ================= */
