@@ -1,10 +1,7 @@
-# Environment Variables & Private Tools (Keep Private)
+# Environment Variables (Keep Private)
 .env
 .env.local
 .env.*.local
-admin.html
-admin-auth-config.js
-assets/js/admin-auth-config.js
 admin-repo/
 
 # Node Dependencies

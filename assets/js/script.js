@@ -8,37 +8,38 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ================= 1. THEME SWITCHER (LIGHT / DARK) ================= */
-    const themeToggleBtn = document.getElementById('themeToggle');
+    const themeToggleBtns = document.querySelectorAll('#themeToggle, #navThemeToggle, .theme-toggle-btn');
     const htmlElement = document.documentElement;
 
-    const savedTheme = localStorage.getItem('epic_theme') || 'light';
+    // Detect saved theme or system preference
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedTheme = localStorage.getItem('epic_theme') || (prefersDark ? 'dark' : 'light');
     setTheme(savedTheme);
 
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            setTheme(newTheme);
-        });
+    function toggleTheme(e) {
+        if (e) e.stopPropagation();
+        const currentTheme = htmlElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        setTheme(newTheme);
     }
+
+    themeToggleBtns.forEach(btn => {
+        btn.addEventListener('click', toggleTheme);
+    });
 
     function setTheme(theme) {
         htmlElement.setAttribute('data-theme', theme);
         localStorage.setItem('epic_theme', theme);
 
-        if (themeToggleBtn) {
-            const icon = themeToggleBtn.querySelector('i');
+        const isDark = theme === 'dark';
+        themeToggleBtns.forEach(btn => {
+            const icon = btn.querySelector('i');
             if (icon) {
-                if (theme === 'dark') {
-                    icon.className = 'fa-solid fa-sun';
-                    themeToggleBtn.title = 'Switch to Light Mode';
-                } else {
-                    icon.className = 'fa-solid fa-moon';
-                    themeToggleBtn.title = 'Switch to Dark Mode';
-                }
+                icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
             }
-        }
+            btn.title = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
+            btn.setAttribute('aria-label', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+        });
     }
 
     /* ================= 2. MINIMIZABLE FLOATING SIDEBAR ================= */

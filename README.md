@@ -42,8 +42,7 @@ EPIC bridges the gap between academic curriculum and industry engineering. We bu
 | Accessibility | Skip-to-content link, focus-visible styles, ARIA roles, semantic HTML |
 | SEO | Open Graph, Twitter Cards, JSON-LD structured data, canonical URL |
 | Firebase forms | Quick messages and member registrations stored in Firebase Realtime DB |
-| Remote CSS switch | Real-time CSS killswitch controllable from any device via Firebase |
-| Admin dashboard | View messages, registrations, export CSV, and toggle CSS remotely |
+| Remote CSS listener | Real-time CSS killswitch listener connected to Firebase |
 
 ---
 
@@ -52,10 +51,6 @@ EPIC bridges the gap between academic curriculum and industry engineering. We bu
 ```
 EPIC/
 ├── index.html                        Main landing page
-├── admin.html                        Admin dashboard (local / private)
-├── epic-induction-control.html       Standalone CSS controller for presentations
-├── epic-induction-control/
-│   └── index.html                    Same controller at /epic-induction-control route
 ├── 404.html                          Custom error page
 ├── robots.txt                        Crawler instructions
 ├── assets/
@@ -71,6 +66,8 @@ EPIC/
 ├── .gitignore
 └── package.json
 ```
+
+> **Note**: The Admin Command Hub is maintained in a separate repository at [github.com/Er-Mayank-Aggarwal/EPIC-MBMU-Admin](https://github.com/Er-Mayank-Aggarwal/EPIC-MBMU-Admin).
 
 ---
 
