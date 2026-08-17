@@ -41,7 +41,6 @@ EPIC bridges the gap between academic curriculum and industry engineering. We bu
 | Responsive | Fluid typography, mobile-first grid layouts, bottom social bar on mobile |
 | Accessibility | Skip-to-content link, focus-visible styles, ARIA roles, semantic HTML |
 | SEO | Open Graph, Twitter Cards, JSON-LD structured data, canonical URL |
-| Induction deck | 28-slide fullscreen presentation with keyboard/touch/wheel navigation |
 | Firebase forms | Quick messages and member registrations stored in Firebase Realtime DB |
 | Remote CSS switch | Real-time CSS killswitch controllable from any device via Firebase |
 | Admin dashboard | View messages, registrations, export CSV, and toggle CSS remotely |
@@ -53,7 +52,6 @@ EPIC bridges the gap between academic curriculum and industry engineering. We bu
 ```
 EPIC/
 ├── index.html                        Main landing page
-├── induction.html                    Interactive slide deck
 ├── admin.html                        Admin dashboard (local / private)
 ├── epic-induction-control.html       Standalone CSS controller for presentations
 ├── epic-induction-control/
