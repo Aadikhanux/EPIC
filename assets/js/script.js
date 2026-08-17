@@ -142,8 +142,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.getElementById('menuButton');
     const navLinks = document.getElementById('navLinks');
 
+    function closeMobileMenu() {
+        if (navLinks && menuButton) {
+            navLinks.classList.remove('active');
+            menuButton.setAttribute('aria-expanded', 'false');
+            const icon = menuButton.querySelector('i');
+            if (icon) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+    }
+
     if (menuButton && navLinks) {
-        menuButton.addEventListener('click', () => {
+        menuButton.addEventListener('click', (e) => {
+            e.stopPropagation();
             navLinks.classList.toggle('active');
             const isOpen = navLinks.classList.contains('active');
             menuButton.setAttribute('aria-expanded', String(isOpen));
@@ -155,15 +168,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-                menuButton.setAttribute('aria-expanded', 'false');
-                const icon = menuButton.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-xmark');
-                    icon.classList.add('fa-bars');
-                }
-            });
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (navLinks.classList.contains('active') &&
+                !navLinks.contains(e.target) &&
+                !menuButton.contains(e.target)) {
+                closeMobileMenu();
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 868) {
+                closeMobileMenu();
+            }
         });
     }
 
@@ -553,31 +572,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    /* ================= 9. TEAM GRID — 2-ROW LAYOUT ================= */
-    document.querySelectorAll('.team-grid').forEach(grid => {
-        const cards = Array.from(grid.children);
-        const count = cards.length;
-        const firstRowCount = Math.floor(count / 2);
-        const secondRowCount = Math.ceil(count / 2);
-        const gridCols = secondRowCount * 2;
+    /* ================= 9. TEAM GRID — RESPONSIVE 2-ROW LAYOUT ================= */
+    function applyTeamGridLayout() {
+        const isMobile = window.innerWidth <= 868;
 
-        grid.style.gridTemplateColumns = `repeat(${gridCols}, 1fr)`;
-        grid.style.justifyContent = 'center';
+        document.querySelectorAll('.team-grid').forEach(grid => {
+            const cards = Array.from(grid.children);
 
-        const row2Span = gridCols;
-        const row2Offset = 0;
-        const row1Span = firstRowCount * 2;
-        const row1Offset = Math.floor((gridCols - row1Span) / 2);
-
-        cards.forEach((card, i) => {
-            if (i < firstRowCount) {
-                card.style.gridColumn = `${row1Offset + i * 2 + 1} / span 2`;
-                card.style.gridRow = '1';
-            } else {
-                card.style.gridColumn = `${(i - firstRowCount) * 2 + 1} / span 2`;
-                card.style.gridRow = '2';
+            if (isMobile) {
+                grid.style.gridTemplateColumns = '';
+                grid.style.justifyContent = '';
+                cards.forEach(card => {
+                    card.style.gridColumn = '';
+                    card.style.gridRow = '';
+                });
+                return;
             }
+
+            const count = cards.length;
+            const firstRowCount = Math.floor(count / 2);
+            const gridCols = Math.ceil(count / 2) * 2;
+
+            grid.style.gridTemplateColumns = `repeat(${gridCols}, 1fr)`;
+            grid.style.justifyContent = 'center';
+
+            const row1Span = firstRowCount * 2;
+            const row1Offset = Math.floor((gridCols - row1Span) / 2);
+
+            cards.forEach((card, i) => {
+                if (i < firstRowCount) {
+                    card.style.gridColumn = `${row1Offset + i * 2 + 1} / span 2`;
+                    card.style.gridRow = '1';
+                } else {
+                    card.style.gridColumn = `${(i - firstRowCount) * 2 + 1} / span 2`;
+                    card.style.gridRow = '2';
+                }
+            });
         });
+    }
+
+    applyTeamGridLayout();
+    let teamGridResizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(teamGridResizeTimer);
+        teamGridResizeTimer = setTimeout(applyTeamGridLayout, 150);
     });
 
     /* ================= 10. CONSOLE BRANDING ================= */
