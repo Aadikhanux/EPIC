@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <title>EPIC | Empowering People Through Innovative Computing</title>
-    <meta name="description" content="EPIC — Empowering People Through Innovative Computing. Official university technical club at MBM University, supported by Google Developer Groups.">
+    <meta name="description"
+        content="EPIC — Empowering People Through Innovative Computing. Official university technical club at MBM University, supported by Google Developer Groups.">
 
     <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="EPIC | Empowering People Through Innovative Computing">
-    <meta property="og:description" content="Official portal of EPIC Technical Club at MBM University. We build production systems, compete in national hackathons, and run structured student project cohorts.">
-    <meta property="og:image" content="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_1200/v1/epic_portal/logos/epic-logo.png">
+    <meta property="og:description"
+        content="Official portal of EPIC Technical Club at MBM University. We build production systems, compete in national hackathons, and run structured student project cohorts.">
+    <meta property="og:image"
+        content="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_1200/v1/epic_portal/logos/epic-logo.png">
     <meta property="og:site_name" content="EPIC Technical Club">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="EPIC | MBM University Technical Club">
-    <meta name="twitter:description" content="Empowering People Through Innovative Computing — SPARK, KAIZEN, PHOENIX wings.">
-    <meta name="twitter:image" content="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_1200/v1/epic_portal/logos/epic-logo.png">
+    <meta name="twitter:description"
+        content="Empowering People Through Innovative Computing — SPARK, KAIZEN, PHOENIX wings.">
+    <meta name="twitter:image"
+        content="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_1200/v1/epic_portal/logos/epic-logo.png">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://epic-mbmu.org">
@@ -57,7 +63,9 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
 
     <!-- Cloudinary CDN Preconnect -->
     <link rel="preconnect" href="https://res.cloudinary.com">
@@ -68,1211 +76,126 @@
 
 <body>
 
-<!-- Skip to Content -->
-<a href="#main-content" class="skip-link">Skip to main content</a>
+    <!-- Skip to Content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- ================= SCROLL PROGRESS BAR ================= -->
-<div class="scroll-progress" id="scrollProgress"></div>
+    <!-- ================= SCROLL PROGRESS BAR ================= -->
+    <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- ================= MINIMIZABLE FLOATING ACTION / SOCIAL SIDEBAR ================= -->
-<div class="sidebar-wrapper" id="sidebarWrapper">
-    <button class="sidebar-toggle-handle" id="sidebarToggle" title="Toggle Sidebar" aria-label="Toggle Sidebar">
-        <i class="fa-solid fa-chevron-right"></i>
-    </button>
-    <div class="social-sidebar">
-        <a href="https://wa.me/917850940248" target="_blank" rel="noopener noreferrer" class="social-icon whatsapp" title="WhatsApp Community">
-            <i class="fa-brands fa-whatsapp"></i>
-        </a>
-        <a href="mailto:dsc.clubs@mbm.ac.in" class="social-icon email" title="Contact Email">
-            <i class="fa-regular fa-envelope"></i>
-        </a>
-        <a href="https://www.instagram.com/gdg_mbmu?igsh=OWgzYnNoMmwzMjJ6" target="_blank" rel="noopener noreferrer" class="social-icon instagram" title="Instagram">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-        <a href="https://linkedin.com/company/epic-mbmu" target="_blank" rel="noopener noreferrer" class="social-icon linkedin" title="LinkedIn">
-            <i class="fa-brands fa-linkedin-in"></i>
-        </a>
-        <button id="themeToggle" class="theme-toggle-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
-            <i class="fa-solid fa-moon"></i>
+    <!-- ================= MINIMIZABLE FLOATING ACTION / SOCIAL SIDEBAR ================= -->
+    <div class="sidebar-wrapper" id="sidebarWrapper">
+        <button class="sidebar-toggle-handle" id="sidebarToggle" title="Toggle Sidebar" aria-label="Toggle Sidebar">
+            <i class="fa-solid fa-chevron-right"></i>
         </button>
-    </div>
-</div>
-
-<!-- ================= FLOATING BACK TO TOP ================= -->
-<button class="back-to-top" id="backToTop" title="Back to Top" aria-label="Back to Top">
-    <i class="fa-solid fa-arrow-up"></i>
-</button>
-
-<!-- ================= MOBILE BOTTOM SOCIAL BAR ================= -->
-<div class="mobile-social-bar" aria-label="Social links">
-    <a href="https://wa.me/917850940248" target="_blank" rel="noopener noreferrer" class="whatsapp" title="WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-    <a href="mailto:dsc.clubs@mbm.ac.in" class="email" title="Email">
-        <i class="fa-regular fa-envelope"></i>
-    </a>
-    <a href="https://www.instagram.com/gdg_mbmu?igsh=OWgzYnNoMmwzMjJ6" target="_blank" rel="noopener noreferrer" class="instagram" title="Instagram">
-        <i class="fa-brands fa-instagram"></i>
-    </a>
-    <a href="https://linkedin.com/company/epic-mbmu" target="_blank" rel="noopener noreferrer" class="linkedin" title="LinkedIn">
-        <i class="fa-brands fa-linkedin-in"></i>
-    </a>
-</div>
-
-<!-- ================= ENHANCED CHATBOT DOUBTS WIDGET ================= -->
-<div class="chatbot-bubble-btn" id="chatbotBubble" title="Ask EPIC Assistant" aria-label="Open Chatbot" role="button" aria-expanded="false">
-    <i class="fa-solid fa-comments"></i>
-    <span class="chat-pulse-badge"></span>
-</div>
-
-<div class="chatbot-window" id="chatbotWindow" role="dialog" aria-label="EPIC Assistant Chat" aria-hidden="true">
-    <div class="chatbot-header">
-        <div class="chatbot-header-info">
-            <div class="chatbot-avatar">
-                <i class="fa-solid fa-robot"></i>
-            </div>
-            <div>
-                <div class="chatbot-title">EPIC Assistant</div>
-                <div class="chatbot-status">
-                    <span class="chatbot-status-dot"></span> Active Guide
-                </div>
-            </div>
-        </div>
-        <div class="chatbot-header-actions">
-            <button class="chatbot-header-btn" id="chatbotClear" title="Clear chat history" aria-label="Clear chat">
-                <i class="fa-solid fa-rotate-right"></i>
-            </button>
-            <button class="chatbot-header-btn" id="chatbotClose" title="Close chat" aria-label="Close chat">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-    </div>
-
-    <div class="chatbot-body" id="chatbotBody">
-        <div class="chat-msg-wrap bot">
-            <div class="chat-msg bot">
-                👋 Hello! I'm your EPIC AI assistant. Ask me anything about our wings, workshops, membership, or leadership team.
-            </div>
-            <span class="chat-timestamp">Just now</span>
-        </div>
-        <div class="chat-chips">
-            <button class="chat-chip-btn" data-query="How do I join EPIC?">How to join?</button>
-            <button class="chat-chip-btn" data-query="What are the 3 wings?">What are the 3 wings?</button>
-            <button class="chat-chip-btn" data-query="Do I need coding experience?">Do I need coding?</button>
-            <button class="chat-chip-btn" data-query="Who is the faculty advisor?">Faculty Advisor?</button>
-            <button class="chat-chip-btn" data-query="Who is in the core team?">Core Team?</button>
-        </div>
-    </div>
-
-    <form class="chatbot-footer" id="chatbotForm">
-        <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Ask a doubt or question..." autocomplete="off" required aria-label="Type your question">
-        <button type="submit" class="chatbot-send-btn" aria-label="Send Message">
-            <i class="fa-solid fa-paper-plane"></i>
-        </button>
-    </form>
-</div>
-
-<!-- ================= STREAMLINED NAVBAR ================= -->
-<header class="navbar-container" id="navbarContainer">
-    <nav class="navbar">
-        <a href="#home" class="logo">
-            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/epic-logo.png" alt="EPIC Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-            <span class="logo-box" style="display:none;">E</span>
-            <div class="logo-text">
-                <span class="brand-title">EPIC</span>
-                <span class="brand-subtitle">MBM University</span>
-            </div>
-        </a>
-
-        <div class="nav-links" id="navLinks">
-            <a href="#about" class="active">About</a>
-            <a href="#branches">Ecosystem</a>
-            <a href="#team">People</a>
-            <a href="#journey">Journey</a>
-            <a href="#contact">Contact</a>
-
-            <a href="#contact" class="join-button">
-                Join Club
+        <div class="social-sidebar">
+            <a href="https://wa.me/917850940248" target="_blank" rel="noopener noreferrer" class="social-icon whatsapp"
+                title="WhatsApp Community">
+                <i class="fa-brands fa-whatsapp"></i>
             </a>
-        </div>
-
-        <div class="nav-actions">
-            <button id="navThemeToggle" class="nav-theme-btn" aria-label="Toggle Light/Dark Theme" title="Toggle Theme">
+            <a href="mailto:dsc.clubs@mbm.ac.in" class="social-icon email" title="Contact Email">
+                <i class="fa-regular fa-envelope"></i>
+            </a>
+            <a href="https://www.instagram.com/gdg_mbmu?igsh=OWgzYnNoMmwzMjJ6" target="_blank" rel="noopener noreferrer"
+                class="social-icon instagram" title="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://linkedin.com/company/epic-mbmu" target="_blank" rel="noopener noreferrer"
+                class="social-icon linkedin" title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+            <button id="themeToggle" class="theme-toggle-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
                 <i class="fa-solid fa-moon"></i>
             </button>
-            <button class="menu-button" id="menuButton" aria-label="Toggle Menu" aria-expanded="false" aria-controls="navLinks">
-                <i class="fa-solid fa-bars"></i>
-            </button>
         </div>
-    </nav>
-</header>
+    </div>
 
-<!-- ================= HERO ================= -->
-<main id="main-content">
-<section class="hero" id="home">
-    <div class="hero-wrapper">
-        <div class="hero-content">
-            <div class="hero-pill">
-                <span class="hero-pill-dot"></span>
-                <span>Supported by Google Developer Groups • 2026</span>
-            </div>
+    <!-- ================= FLOATING BACK TO TOP ================= -->
+    <button class="back-to-top" id="backToTop" title="Back to Top" aria-label="Back to Top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
-            <h1>
-                Empowering People Through <br>
-                <span class="accent-highlight">Innovative Computing</span>
-            </h1>
+    <!-- ================= MOBILE BOTTOM SOCIAL BAR ================= -->
+    <div class="mobile-social-bar" aria-label="Social links">
+        <a href="https://wa.me/917850940248" target="_blank" rel="noopener noreferrer" class="whatsapp"
+            title="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <a href="mailto:dsc.clubs@mbm.ac.in" class="email" title="Email">
+            <i class="fa-regular fa-envelope"></i>
+        </a>
+        <a href="https://www.instagram.com/gdg_mbmu?igsh=OWgzYnNoMmwzMjJ6" target="_blank" rel="noopener noreferrer"
+            class="instagram" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://linkedin.com/company/epic-mbmu" target="_blank" rel="noopener noreferrer" class="linkedin"
+            title="LinkedIn">
+            <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+    </div>
 
-            <p class="hero-subtitle">
-                EPIC is a premier technical society at MBM University. We bring together engineering minds, turn ideas into production-ready software, and compete on the biggest stages.
-            </p>
+    <!-- ================= ENHANCED CHATBOT DOUBTS WIDGET ================= -->
+    <div class="chatbot-bubble-btn" id="chatbotBubble" title="Ask EPIC Assistant" aria-label="Open Chatbot"
+        role="button" aria-expanded="false">
+        <i class="fa-solid fa-comments"></i>
+        <span class="chat-pulse-badge"></span>
+    </div>
 
-            <div class="hero-buttons">
-                <a href="#branches" class="primary-btn">
-                    Explore Ecosystem <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                <a href="#about" class="secondary-btn">
-                    Learn More
-                </a>
-            </div>
-
-            <div class="hero-stats-strip">
-                <div class="hero-stat-item">
-                    <strong>500+</strong>
-                    <span>Builders</span>
+    <div class="chatbot-window" id="chatbotWindow" role="dialog" aria-label="EPIC Assistant Chat" aria-hidden="true">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar">
+                    <i class="fa-solid fa-robot"></i>
                 </div>
-                <div class="hero-stat-item">
-                    <strong>30+</strong>
-                    <span>Projects</span>
-                </div>
-                <div class="hero-stat-item">
-                    <strong>25+</strong>
-                    <span>Sessions</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-visual">
-            <div class="hero-visual-card">
-                <div class="hero-card-header">
-                    <div>
-                        <h3 class="hero-card-title">EPIC Ecosystem</h3>
-                        <p class="hero-card-subtitle">Specialized tracks for every builder</p>
-                    </div>
-                    <span class="club-tag">3 Wings</span>
-                </div>
-
-                <div class="hero-card-branches">
-                    <div class="hero-branch-mini spark">
-                        <div class="hero-branch-icon">
-                            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/spark-logo.png" alt="SPARK" loading="lazy">
-                        </div>
-                        <div class="hero-branch-info">
-                            <h4>SPARK</h4>
-                            <p>Ideation, beginner foundations & prototype incubator.</p>
-                        </div>
-                    </div>
-
-                    <div class="hero-branch-mini kaizen">
-                        <div class="hero-branch-icon">
-                            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/kaizen-logo.png" alt="KAIZEN" loading="lazy">
-                        </div>
-                        <div class="hero-branch-info">
-                            <h4>KAIZEN</h4>
-                            <p>Continuous learning, system engineering & technical growth.</p>
-                        </div>
-                    </div>
-
-                    <div class="hero-branch-mini phoenix">
-                        <div class="hero-branch-icon">
-                            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/phoenix-logo.png" alt="PHOENIX" loading="lazy">
-                        </div>
-                        <div class="hero-branch-info">
-                            <h4>PHOENIX</h4>
-                            <p>Competitive programming, national hackathons & grand projects.</p>
-                        </div>
+                <div>
+                    <div class="chatbot-title">EPIC Assistant</div>
+                    <div class="chatbot-status">
+                        <span class="chatbot-status-dot"></span> Active Guide
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= ABOUT SECTION ================= -->
-<section class="section about-section" id="about">
-    <div class="section-header-row">
-        <div>
-            <div class="section-tag">01 / Who We Are</div>
-            <h2 class="section-title">Built by students.<br>Driven by innovation.</h2>
-        </div>
-        <p class="section-desc">
-            We bridge the gap between academic theory and industry engineering through collaborative projects, hands-on workshops, and competitive challenges.
-        </p>
-    </div>
-
-    <div class="about-grid">
-        <div class="about-card-big">
-            <p class="lead">
-                EPIC is not just a student club — it's an ecosystem designed to turn curious learners into high-impact builders and leaders.
-            </p>
-            <p class="about-card-text-muted">
-                Whether you are writing your first line of code in SPARK, honing your engineering architecture in KAIZEN, or competing at national hackathons with PHOENIX, EPIC provides the mentorship, peers, and opportunities to excel.
-            </p>
-            <a href="#team" class="primary-btn btn-inline-flex">
-                Meet Our Leadership <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <div class="about-features">
-            <div class="about-feature-box">
-                <div class="about-feature-icon">
-                    <i class="fa-solid fa-code"></i>
-                </div>
-                <h4>Real Projects</h4>
-                <p>Build end-to-end production applications across AI, Web, Systems, and Cloud.</p>
-            </div>
-
-            <div class="about-feature-box">
-                <div class="about-feature-icon">
-                    <i class="fa-solid fa-trophy"></i>
-                </div>
-                <h4>Competitions & Wins</h4>
-                <p>Represent our university in top-tier coding contests and hackathons nationwide.</p>
-            </div>
-
-            <div class="about-feature-box">
-                <div class="about-feature-icon">
-                    <i class="fa-solid fa-users"></i>
-                </div>
-                <h4>Mentorship</h4>
-                <p>Guided directly by esteemed faculty and accomplished alumni in top tech companies.</p>
-            </div>
-
-            <div class="about-feature-box">
-                <div class="about-feature-icon">
-                    <i class="fa-solid fa-rocket"></i>
-                </div>
-                <h4>Career Growth</h4>
-                <p>Practical portfolio building, peer code reviews, and mock interview prep.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= BRANCHES / ECOSYSTEM ================= -->
-<section class="section branches-section" id="branches">
-    <div class="section-header-row">
-        <div>
-            <div class="section-tag">02 / Ecosystem</div>
-            <h2 class="section-title">Three specialized branches.</h2>
-        </div>
-        <p class="section-desc">
-            Tailored learning and project tracks to accommodate every stage of technical development.
-        </p>
-    </div>
-
-    <div class="branches-wrapper">
-        <!-- SPARK -->
-        <div class="branch-card spark">
-            <div>
-                <div class="branch-card-top">
-                    <div class="branch-card-badge">01 • SPARK</div>
-                    <div class="branch-logo-wrap">
-                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/spark-logo.png" alt="SPARK Logo" loading="lazy">
-                    </div>
-                </div>
-                <h3>SPARK</h3>
-                <p class="branch-motto">"Your Curiosity, Our Spark"</p>
-                <p class="branch-desc">
-                    The entry gateway for beginners. We offer structured bootcamps, interactive meetups, and ideation sessions to turn curiosity into first working prototypes.
-                </p>
-                <div class="branch-tags">
-                    <span>Ideation</span>
-                    <span>Foundations</span>
-                    <span>Prototyping</span>
-                </div>
-            </div>
-            <a href="https://sparkmbmu.netlify.app/" target="_blank" rel="noopener noreferrer" class="branch-action-link">
-                Visit SPARK Portal <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-        </div>
-
-        <!-- KAIZEN -->
-        <div class="branch-card kaizen">
-            <div>
-                <div class="branch-card-top">
-                    <div class="branch-card-badge">02 • KAIZEN</div>
-                    <div class="branch-logo-wrap">
-                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/kaizen-logo.png" alt="KAIZEN Logo" loading="lazy">
-                    </div>
-                </div>
-                <h3>KAIZEN</h3>
-                <p class="branch-motto">"Change For The Better"</p>
-                <p class="branch-desc">
-                    Focuses on continuous technical mastery. Deep dive into backend architectures, clean code practices, modern UI/UX, AI/ML pipelines, and cloud computing.
-                </p>
-                <div class="branch-tags">
-                    <span>Fullstack</span>
-                    <span>AI & ML</span>
-                    <span>System Design</span>
-                </div>
-            </div>
-            <a href="#resources" class="branch-action-link">
-                Explore Tracks <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-
-        <!-- PHOENIX -->
-        <div class="branch-card phoenix">
-            <div>
-                <div class="branch-card-top">
-                    <div class="branch-card-badge">03 • PHOENIX</div>
-                    <div class="branch-logo-wrap">
-                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/phoenix-logo.png" alt="PHOENIX Logo" loading="lazy">
-                    </div>
-                </div>
-                <h3>PHOENIX</h3>
-                <p class="branch-motto">"Redefining The Horizons"</p>
-                <p class="branch-desc">
-                    The high-intensity competitive wing. Teams formulate innovative solutions to solve industry challenges, compete in hackathons, and publish open-source repos.
-                </p>
-                <div class="branch-tags">
-                    <span>Hackathons</span>
-                    <span>Research</span>
-                    <span>Open Source</span>
-                </div>
-            </div>
-            <a href="#journey" class="branch-action-link">
-                View Journey <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- ================= MENTOR SHOWCASE ================= -->
-<section class="section mentor-section" id="mentor">
-    <div class="section-tag">03 / Faculty Advisor</div>
-    <div class="mentor-box">
-        <div class="mentor-image-container">
-            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_auto,h_750,f_auto,q_auto/v1/epic_portal/mentor/abhishek-gour.jpg" alt="Dr. Abhishek Gour" loading="lazy">
-            <span class="mentor-tag">EPIC Mentor</span>
-        </div>
-        <div class="mentor-content">
-            <small>Guiding Excellence</small>
-            <h3>Dr. Abhishek Gour</h3>
-            <p>
-                The foundational pillar of EPIC, Dr. Abhishek Gour has mentored countless engineers, inspiring students to achieve excellence in national tech competitions, algorithmic problem solving, and impactful software projects.
-            </p>
-            <div class="mentor-meta-badges">
-                <div class="mentor-meta-badge">
-                    <i class="fa-solid fa-building-columns"></i>
-                    <span>MBM University</span>
-                </div>
-                <div class="mentor-meta-badge">
-                    <i class="fa-solid fa-award"></i>
-                    <span>Faculty Advisor</span>
-                </div>
-                <div class="mentor-meta-badge">
-                    <i class="fa-solid fa-users"></i>
-                    <span>Club Patron</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= PEOPLE / CURRENT YEAR CORE TEAM (10 MEMBERS) ================= -->
-<section class="section team-section" id="team">
-    <div class="section-header-row">
-        <div>
-            <div class="section-tag">04 / Leadership</div>
-            <h2 class="section-title">Meet the Core Team</h2>
-        </div>
-        <p class="section-desc">
-            The dedicated student leaders coordinating operations, technical tracks, and workshops at EPIC.
-        </p>
-    </div>
-
-    <div class="team-grid">
-        <!-- 1. Vinti Jingar -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951230/vinti.jpg" alt="Vinti Jingar" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder">VJ</div>
-            </div>
-            <h4>Vinti Jingar</h4>
-            <div class="team-pills">
-                <span class="team-pill">3rd Year</span>
-                <span class="team-pill branch-tag">IT</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 2. Niyati Bhandari -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/niyati-bhandari.jpg" alt="Niyati Bhandari" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder" style="display:none;">NB</div>
-            </div>
-            <h4>Niyati Bhandari</h4>
-            <div class="team-pills">
-                <span class="team-pill">3rd Year</span>
-                <span class="team-pill branch-tag">EEE</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 3. Renu Gehlot -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/renu-gehlot.jpg" alt="Renu Gehlot" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder" style="display:none;">RG</div>
-            </div>
-            <h4>Renu Gehlot</h4>
-            <div class="team-pills">
-                <span class="team-pill">3rd Year</span>
-                <span class="team-pill branch-tag">IT</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 4. Samarth Mathur -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786946024/IMG_20260817_074456.jpg" alt="Samarth Mathur" loading="lazy">
-                <div class="team-photo-placeholder">SM</div>
-            </div>
-            <h4>Samarth Mathur</h4>
-            <div class="team-pills">
-                <span class="team-pill">3rd Year</span>
-                <span class="team-pill branch-tag">AI</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 5. Kritika -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786912563/Kritika.jpg" alt="Kritika" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder" style="display:none;">K</div>
-            </div>
-            <h4>Kritika</h4>
-            <div class="team-pills">
-                <span class="team-pill">2nd Year</span>
-                <span class="team-pill branch-tag">Civil</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 6. Adil Khan -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/adil-khan.jpg" alt="Adil Khan" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder" style="display:none;">AK</div>
-            </div>
-            <h4>Adil Khan</h4>
-            <div class="team-pills">
-                <span class="team-pill">2nd Year</span>
-                <span class="team-pill branch-tag">CSE</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 7. Udit Sharma -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/udit-sharma.png" alt="Udit Sharma" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder" style="display:none;">US</div>
-            </div>
-            <h4>Udit Sharma</h4>
-            <div class="team-pills">
-                <span class="team-pill">2nd Year</span>
-                <span class="team-pill branch-tag">IT</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 8. Vanshika Singh -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/vanshika-singh.jpg" alt="Vanshika Singh" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder" style="display:none;">VS</div>
-            </div>
-            <h4>Vanshika Singh</h4>
-            <div class="team-pills">
-                <span class="team-pill">2nd Year</span>
-                <span class="team-pill branch-tag">IT</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 9. Ishika Gupta -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/ishika-gupta.jpg" alt="Ishika Gupta" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder" style="display:none;">IG</div>
-            </div>
-            <h4>Ishika Gupta</h4>
-            <div class="team-pills">
-                <span class="team-pill">2nd Year</span>
-                <span class="team-pill branch-tag">AIDS</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 10. Tejasvini Jain -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786911144/tejasvini_jain.jpg" alt="Tejasvini Jain" loading="lazy">
-                <div class="team-photo-placeholder">TJ</div>
-            </div>
-            <h4>Tejasvini Jain</h4>
-            <div class="team-pills">
-                <span class="team-pill">2nd Year</span>
-                <span class="team-pill branch-tag">EEE</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- ================= ALUMNI / LAST YEAR CORE TEAM (2025-26) ================= -->
-<section class="section team-section alumni-section" id="alumni">
-    <div class="section-header-row">
-        <div>
-            <div class="section-tag">05 / Alumni</div>
-            <h2 class="section-title">Last Year Team 2025-26</h2>
-        </div>
-        <p class="section-desc">
-            The outgoing core team that laid the groundwork for EPIC's growth and success.
-        </p>
-    </div>
-
-    <div class="team-grid">
-        <!-- 1. Mayank Aggarwal -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                 <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/mayank-aggarwal.jpg" alt="Mayank Aggarwal" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder">MA</div>
-            </div>
-            <h4>Mayank Aggarwal</h4>
-            <div class="team-pills">
-                <span class="team-pill">Final Year</span>
-                <span class="team-pill branch-tag">CSE</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 2. Mohit Gaur -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951230/mohitgaur.jpg" alt="Mohit Gaur" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder">MG</div>
-            </div>
-            <h4>Mohit Gaur</h4>
-            <div class="team-pills">
-                <span class="team-pill">3rd Year</span>
-                <span class="team-pill branch-tag">IT</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 3. Hemansh Mishra -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786952045/hemansh.jpg" alt="Hemansh Mishra" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder">HM</div>
-            </div>
-            <h4>Hemansh Mishra</h4>
-            <div class="team-pills">
-                <span class="team-pill">3rd Year</span>
-                <span class="team-pill branch-tag">ECE</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 4. Renu Gehlot -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                 <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/renu-gehlot.jpg" alt="Renu Gehlot" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder">RG</div>
-            </div>
-            <h4>Renu Gehlot</h4>
-            <div class="team-pills">
-                <span class="team-pill">3rd Year</span>
-                <span class="team-pill branch-tag">IT</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 5. Himanshi Mathur -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951912/himanshi.jpg" alt="Himanshi Mathur" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder">HiM</div>
-            </div>
-            <h4>Himanshi Mathur</h4>
-            <div class="team-pills">
-                <span class="team-pill">3rd Year</span>
-                <span class="team-pill branch-tag">EEE</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 6. Garvit Jain -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951436/garvit.png" alt="Garvit Jain" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder">GJ</div>
-            </div>
-            <h4>Garvit Jain</h4>
-            <div class="team-pills">
-                <span class="team-pill">3rd Year</span>
-                <span class="team-pill branch-tag">ECE</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 7. Vinti Jingar -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951230/vinti.jpg" alt="Vinti Jingar" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder">VJ</div>
-            </div>
-            <h4>Vinti Jingar</h4>
-            <div class="team-pills">
-                <span class="team-pill">3rd Year</span>
-                <span class="team-pill branch-tag">IT</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 8. Raghav Khandelwal -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951715/raghav.jpg" alt="Raghav Khandelwal" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder">RK</div>
-            </div>
-            <h4>Raghav Khandelwal</h4>
-            <div class="team-pills">
-                <span class="team-pill">3rd Year</span>
-                <span class="team-pill branch-tag">CSE</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- ================= CONTINUOUS JOURNEY TIMELINE ================= -->
-<section class="section events-section" id="journey">
-    <div class="section-header-row">
-        <div>
-            <div class="section-tag">06 / Our Journey</div>
-            <h2 class="section-title">Milestones & History</h2>
-        </div>
-        <p class="section-desc">
-            A look back at the defining events and growth phases that shaped EPIC into the community it is today.
-        </p>
-    </div>
-
-    <div class="timeline-container">
-        <div class="timeline-line"></div>
-        <div class="timeline-line-fill" id="timelineLineFill"></div>
-
-        <!-- Milestone 1 -->
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <div class="timeline-header-row">
-                    <span class="timeline-date-chip">Sep 2024</span>
-                    <span class="timeline-tag-badge">Foundation</span>
-                </div>
-                <h4>Club Foundation</h4>
-                <p>
-                    Established under the visionary mentorship of Dr. Abhishek Gour Sir, laying the foundation for student innovation, collaboration, and high-impact computing at MBM University. 🚀
-                </p>
-            </div>
-        </div>
-
-        <!-- Milestone 2 -->
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <div class="timeline-header-row">
-                    <span class="timeline-date-chip">Oct - Nov 2024</span>
-                    <span class="timeline-tag-badge">Workshops</span>
-                </div>
-                <h4>First Step & GitHub Bootcamps</h4>
-                <p>
-                    Introduced juniors to programming fundamentals, Git version control, collaborative workflows, and competitive programming problem-solving strategies.
-                </p>
-            </div>
-        </div>
-
-        <!-- Milestone 3 -->
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <div class="timeline-header-row">
-                    <span class="timeline-date-chip">2025</span>
-                    <span class="timeline-tag-badge">Cohort</span>
-                </div>
-                <h4>StudyPods 5.0 Project Drive</h4>
-                <p>
-                    A 4-week intensive sprint where teams built production systems in Frontend, Backend, AI/ML, and UI/UX, presenting live functional prototypes.
-                </p>
-            </div>
-        </div>
-
-        <!-- Milestone 4 -->
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <div class="timeline-header-row">
-                    <span class="timeline-date-chip">2026</span>
-                    <span class="timeline-tag-badge">Hackathon</span>
-                </div>
-                <h4>Hack-a-Day</h4>
-                <p>
-                    A competitive 24-hour engineering challenge turning prompt problems into working applications across Web and AI tracks.
-                </p>
-            </div>
-        </div>
-
-        <!-- Milestone 5 -->
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-                <div class="timeline-header-row">
-                    <span class="timeline-date-chip">2026</span>
-                    <span class="timeline-tag-badge">Flagship Event</span>
-                </div>
-                <h4>Converge 2026</h4>
-                <p>
-                    Our flagship annual project expo uniting top student projects, alumni reviews, and technical demonstrations across all engineering departments.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= GALLERY ================= -->
-<section class="section gallery-section" id="gallery">
-    <div class="section-header-row">
-        <div>
-            <div class="section-tag">07 / Highlights</div>
-            <h2 class="section-title">Moments & Highlights</h2>
-        </div>
-        <p class="section-desc">
-            Snapshots of our workshops, demo days, and project showcases.
-        </p>
-    </div>
-
-    <div class="gallery-grid">
-        <div class="gallery-item">
-            <div class="gallery-img-box">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/projects/studypods.jpg" alt="StudyPods 5.0" loading="lazy" onerror="this.src='assets/images/projects/studypods.jpg'">
-            </div>
-            <div class="gallery-item-details">
-                <small>Project Expo</small>
-                <h4>StudyPods 5.0 Showcase</h4>
-            </div>
-        </div>
-
-        <div class="gallery-item">
-            <div class="gallery-img-box">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_600,h_400,f_auto,q_auto,w_auto/v1/epic_portal/mentor/abhishek-gour.jpg" alt="Mentorship Session" loading="lazy" onerror="this.src='assets/images/mentor/abhishek-gour.jpeg'">
-            </div>
-            <div class="gallery-item-details">
-                <small>Mentorship</small>
-                <h4>Faculty Guidance & Review</h4>
-            </div>
-        </div>
-
-        <div class="gallery-item">
-            <div class="gallery-img-box">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_600,h_400,f_auto,q_auto,w_auto/v1/epic_portal/team/mayank-aggarwal.jpg" alt="Team Colloquium" loading="lazy" onerror="this.src='assets/images/team/mayank-aggarwal.jpg'">
-            </div>
-            <div class="gallery-item-details">
-                <small>Leadership</small>
-                <h4>Team Planning & Colloquium</h4>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ================= RESOURCES ================= -->
-<section class="section resources-section" id="resources">
-    <div class="section-header-row">
-        <div>
-            <div class="section-tag">08 / Knowledge Hub</div>
-            <h2 class="section-title">Curated Resources</h2>
-        </div>
-        <p class="section-desc">
-            High-quality guides, roadmaps, and starter templates curated by senior club members.
-        </p>
-    </div>
-
-    <div class="resources-grid">
-        <div class="resource-card">
-            <div>
-                <div class="resource-icon-box">
-                    <i class="fa-solid fa-book-bookmark"></i>
-                </div>
-                <h4>Learning Roadmaps</h4>
-                <p>Structured curriculum for Web Development, AI/ML, Cloud Computing, and DevOps.</p>
-            </div>
-            <span class="resource-link resource-link-disabled">
-                Coming Soon <i class="fa-solid fa-clock"></i>
-            </span>
-        </div>
-
-        <div class="resource-card">
-            <div>
-                <div class="resource-icon-box">
-                    <i class="fa-solid fa-code-fork"></i>
-                </div>
-                <h4>Open Repositories</h4>
-                <p>Starter repos, competition boilerplate, and project templates authored by EPIC members.</p>
-            </div>
-            <a href="https://github.com/epic-mbmu" target="_blank" rel="noopener noreferrer" class="resource-link">
-                Browse Repos <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            </a>
-        </div>
-
-        <div class="resource-card">
-            <div>
-                <div class="resource-icon-box">
-                    <i class="fa-solid fa-laptop-code"></i>
-                </div>
-                <h4>Competition Playbooks</h4>
-                <p>Tips, problem-solving strategies, and presentation templates for winning hackathons.</p>
-            </div>
-            <span class="resource-link resource-link-disabled">
-                Coming Soon <i class="fa-solid fa-clock"></i>
-            </span>
-        </div>
-    </div>
-</section>
-
-<!-- ================= CONTACT & REGISTRATION FORM ================= -->
-<section class="section contact-section" id="contact">
-    <div class="section-header-row">
-        <div>
-            <div class="section-tag">09 / Get in Touch</div>
-            <h2 class="section-title">Connect & Register</h2>
-        </div>
-        <p class="section-desc">
-            Reach out with queries, proposal ideas, or join our community membership program.
-        </p>
-    </div>
-
-    <div class="contact-wrapper">
-        <div class="contact-info-card">
-            <h3>Let's build together</h3>
-            <p>
-                Have questions about our events, projects, or how to contribute? Send us a message or join our WhatsApp community.
-            </p>
-
-            <div class="contact-detail-items">
-                <div class="contact-detail-item">
-                    <div class="contact-detail-icon">
-                        <i class="fa-solid fa-envelope"></i>
-                    </div>
-                    <div class="contact-detail-text">
-                        <small>Direct Email</small>
-                        <strong>dsc.clubs@mbm.ac.in</strong>
-                    </div>
-                </div>
-
-                <div class="contact-detail-item">
-                    <div class="contact-detail-icon">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </div>
-                    <div class="contact-detail-text">
-                        <small>WhatsApp Community</small>
-                        <strong>+91 78509 40248</strong>
-                    </div>
-                </div>
-
-                <div class="contact-detail-item">
-                    <div class="contact-detail-icon">
-                        <i class="fa-solid fa-location-dot"></i>
-                    </div>
-                    <div class="contact-detail-text">
-                        <small>Campus Base</small>
-                        <strong>MBM University, Jodhpur, Rajasthan</strong>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="contact-form-box">
-            <div class="form-tabs">
-                <button class="form-tab-btn active" id="contactTabBtn" type="button">Quick Message</button>
-                <button class="form-tab-btn" id="registerTabBtn" type="button">Member Registration</button>
-            </div>
-
-            <!-- Contact Message Form -->
-            <form class="custom-form" id="contactForm">
-                <!-- Honeypot (hidden from humans, bots fill it) -->
-                <div class="form-hp" aria-hidden="true">
-                    <label for="website">Website</label>
-                    <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
-                </div>
-                    <div class="form-row">
-                    <div class="form-group">
-                        <label for="contactName">Your Name</label>
-                        <input type="text" id="contactName" class="form-control" placeholder="e.g. Rahul Sharma" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contactEmail">Email Address</label>
-                        <input type="email" id="contactEmail" class="form-control" placeholder="name@domain.com" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="contactPhone">Phone Number</label>
-                    <input type="tel" id="contactPhone" class="form-control" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10">
-                </div>
-
-                <div class="form-group">
-                    <label for="contactDomain">Domain / Area of Interest</label>
-                    <select id="contactDomain" class="form-control">
-                        <option value="SPARK (Beginner Track)">SPARK (Beginner Track)</option>
-                        <option value="KAIZEN (Fullstack & AI/ML)">KAIZEN (Fullstack & AI/ML)</option>
-                        <option value="PHOENIX (Competitive Hackathons)">PHOENIX (Competitive Hackathons)</option>
-                        <option value="General Query / Mentorship">General Query / Mentorship</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="contactMessage">Message</label>
-                    <textarea id="contactMessage" class="form-control" rows="4" placeholder="How can we help you?" required></textarea>
-                </div>
-
-                <button type="submit" class="primary-btn btn-full-width">
-                    Send Message <i class="fa-regular fa-paper-plane"></i>
+            <div class="chatbot-header-actions">
+                <button class="chatbot-header-btn" id="chatbotClear" title="Clear chat history" aria-label="Clear chat">
+                    <i class="fa-solid fa-rotate-right"></i>
                 </button>
+                <button class="chatbot-header-btn" id="chatbotClose" title="Close chat" aria-label="Close chat">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </div>
 
-                <div class="form-success-msg" id="formSuccessMsg">
-                    ✓ Thank you! Your message has been received. We'll get back to you shortly.
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="chat-msg-wrap bot">
+                <div class="chat-msg bot">
+                    👋 Hello! I'm your EPIC AI assistant. Ask me anything about our wings, workshops, membership, or
+                    leadership team.
                 </div>
-            </form>
-
-            <!-- Registration Form -->
-            <div class="registration-embed-container" id="registerContainer">
-                <form class="custom-form" id="registerForm">
-                    <!-- Honeypot -->
-                    <div class="form-hp" aria-hidden="true">
-                        <label for="reg-website">Website</label>
-                        <input type="text" id="reg-website" name="website" tabindex="-1" autocomplete="off">
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="regName">Full Name <span class="required">*</span></label>
-                            <input type="text" id="regName" class="form-control" placeholder="e.g. Rahul Sharma" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="regGender">Gender <span class="required">*</span></label>
-                            <select id="regGender" class="form-control" required>
-                                <option value="" disabled selected>Select</option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
-                                <option value="Other">Other</option>
-                                <option value="Prefer not to say">Prefer not to say</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="regMobile">Mobile Number <span class="required">*</span></label>
-                            <input type="tel" id="regMobile" class="form-control" placeholder="10-digit number" pattern="[0-9]{10}" maxlength="10" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="regEmail">Email Address <span class="required">*</span></label>
-                            <input type="email" id="regEmail" class="form-control" placeholder="name@domain.com" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="regBranch">Branch <span class="required">*</span></label>
-                        <select id="regBranch" class="form-control" required>
-                            <option value="" disabled selected>Select your branch</option>
-                            <option value="CSE">CSE</option>
-                            <option value="IT">IT</option>
-                            <option value="AI">AI</option>
-                            <option value="ECE">ECE</option>
-                            <option value="ECC">ECC</option>
-                            <option value="EEE">EEE</option>
-                            <option value="EE">EE</option>
-                            <option value="Civil">Civil</option>
-                            <option value="Chemical">Chemical</option>
-                            <option value="BCT">BCT</option>
-                            <option value="Petroleum">Petroleum</option>
-                            <option value="P & I">P & I</option>
-                            <option value="Mining">Mining</option>
-                            <option value="Architecture">Architecture</option>
-                            <option value="Mechanical">Mechanical</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Previous Coding Experience</label>
-                        <div class="radio-group">
-                            <label class="radio-option">
-                                <input type="radio" name="regExperience" value="No" checked>
-                                <span>No</span>
-                            </label>
-                            <label class="radio-option">
-                                <input type="radio" name="regExperience" value="Yes">
-                                <span>Yes</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="form-group experience-detail-group" id="experienceDetailGroup" style="display: none;">
-                        <label for="regExperienceDetail">Tell us about your experience</label>
-                        <textarea id="regExperienceDetail" class="form-control" rows="3" placeholder="e.g. I've built 2 web projects using React, solved 200+ problems on LeetCode..."></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="regQuestion">Anything you'd like to ask?</label>
-                        <textarea id="regQuestion" class="form-control" rows="3" placeholder="Any questions, suggestions, or things you'd like us to know..."></textarea>
-                    </div>
-
-                    <button type="submit" class="primary-btn btn-full-width" id="registerSubmitBtn">
-                        Submit Registration <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-
-                    <div class="form-success-msg" id="registerSuccessMsg">
-                        Registration submitted successfully! We'll reach out to you soon.
-                    </div>
-                </form>
+                <span class="chat-timestamp">Just now</span>
+            </div>
+            <div class="chat-chips">
+                <button class="chat-chip-btn" data-query="How do I join EPIC?">How to join?</button>
+                <button class="chat-chip-btn" data-query="What are the 3 wings?">What are the 3 wings?</button>
+                <button class="chat-chip-btn" data-query="Do I need coding experience?">Do I need coding?</button>
+                <button class="chat-chip-btn" data-query="Who is the faculty advisor?">Faculty Advisor?</button>
+                <button class="chat-chip-btn" data-query="Who is in the core team?">Core Team?</button>
             </div>
         </div>
-    </div>
-</section>
 
-<!-- ================= FAQ ACCORDION ================= -->
-<section class="section faq-section" id="faq">
-    <div class="section-header-row faq-header-centered">
-        <div class="section-tag">10 / Frequently Asked Questions</div>
-        <h2 class="section-title">Got Questions? We've Got Answers.</h2>
-        <p class="section-desc">
-            Everything you need to know about joining, contributing, and growing with EPIC.
-        </p>
+        <form class="chatbot-footer" id="chatbotForm">
+            <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Ask a doubt or question..."
+                autocomplete="off" required aria-label="Type your question">
+            <button type="submit" class="chatbot-send-btn" aria-label="Send Message">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </form>
     </div>
 
-    <div class="faq-list">
-        <div class="faq-item active">
-            <button class="faq-header" type="button">
-                <span>Who can join EPIC?</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-content">
-                <p>Any student from MBM University passionate about computing, software engineering, robotics, or design is welcome! We welcome all years and all engineering disciplines.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-header" type="button">
-                <span>Do I need prior programming experience?</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-content">
-                <p>Not at all. Our <strong>SPARK</strong> branch is specifically tailored for absolute beginners, providing roadmaps, peer mentors, and first-step workshops to get you up to speed.</p>
-            </div>
-        </div>
-
-
-
-        <div class="faq-item">
-            <button class="faq-header" type="button">
-                <span>What kind of projects do members build?</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-content">
-                <p>Our members build full-stack web platforms, machine learning models, mobile apps, IoT systems, and algorithmic bots for national competitions and community impact.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-header" type="button">
-                <span>Is there any membership fee?</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-content">
-                <p>No, EPIC is completely free to join. We believe in accessible education and collaboration. All workshops, events, and mentorship sessions are open to all members at no cost.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-header" type="button">
-                <span>Can final-year students join EPIC?</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-content">
-                <p>Absolutely! Final-year students are welcome to join as mentors and contributors. Many of our alumni have gone on to roles at companies like Boeing, IBM, and IIM, and they continue to guide current members.</p>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <button class="faq-header" type="button">
-                <span>Which technologies does EPIC focus on?</span>
-                <i class="fa-solid fa-chevron-down"></i>
-            </button>
-            <div class="faq-content">
-                <p>We cover a wide range: Web Development (React, Node.js, Python), AI/ML (TensorFlow, PyTorch), Cloud Computing (GCP, AWS), System Design, Competitive Programming, and more. Each wing has its own focus areas.</p>
-            </div>
-        </div>
-    </div>
-</section>
-</main>
-
-<!-- ================= FOOTER ================= -->
-<footer>
-    <div class="footer-inner">
-        <div class="footer-top">
+    <!-- ================= STREAMLINED NAVBAR ================= -->
+    <header class="navbar-container" id="navbarContainer">
+        <nav class="navbar">
             <a href="#home" class="logo">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/epic-logo.png" alt="EPIC Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/epic-logo.png"
+                    alt="EPIC Logo" class="logo-img"
+                    onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                 <span class="logo-box" style="display:none;">E</span>
                 <div class="logo-text">
                     <span class="brand-title">EPIC</span>
@@ -1280,25 +203,1215 @@
                 </div>
             </a>
 
-            <div class="footer-tagline">
-                Empowering People Through Innovative Computing
+            <div class="nav-links" id="navLinks">
+                <a href="#about" class="active">About</a>
+                <a href="#branches">Ecosystem</a>
+                <a href="#team">People</a>
+                <a href="#journey">Journey</a>
+                <a href="#contact">Contact</a>
+
+                <a href="#contact" class="join-button">
+                    Join Club
+                </a>
             </div>
 
-            <div class="footer-social-links">
-                <a href="https://wa.me/917850940248" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                <a href="https://www.instagram.com/gdg_mbmu?igsh=OWgzYnNoMmwzMjJ6" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://linkedin.com/company/epic-mbmu" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="mailto:dsc.clubs@mbm.ac.in" title="Email"><i class="fa-regular fa-envelope"></i></a>
+            <div class="nav-actions">
+                <button id="navThemeToggle" class="nav-theme-btn" aria-label="Toggle Light/Dark Theme"
+                    title="Toggle Theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="menu-button" id="menuButton" aria-label="Toggle Menu" aria-expanded="false"
+                    aria-controls="navLinks">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <main id="main-content">
+        <section class="hero" id="home">
+            <div class="hero-wrapper">
+                <div class="hero-content">
+                    <div class="hero-pill">
+                        <span class="hero-pill-dot"></span>
+                        <span>Supported by Google Developer Groups • 2026</span>
+                    </div>
+
+                    <h1>
+                        Empowering People Through <br>
+                        <span class="accent-highlight">Innovative Computing</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        EPIC is a premier technical society at MBM University. We bring together engineering minds, turn
+                        ideas into production-ready software, and compete on the biggest stages.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#branches" class="primary-btn">
+                            Explore Ecosystem <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#about" class="secondary-btn">
+                            Learn More
+                        </a>
+                    </div>
+
+                    <div class="hero-stats-strip">
+                        <div class="hero-stat-item">
+                            <strong>500+</strong>
+                            <span>Builders</span>
+                        </div>
+                        <div class="hero-stat-item">
+                            <strong>30+</strong>
+                            <span>Projects</span>
+                        </div>
+                        <div class="hero-stat-item">
+                            <strong>25+</strong>
+                            <span>Sessions</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="hero-visual-card">
+                        <div class="hero-card-header">
+                            <div>
+                                <h3 class="hero-card-title">EPIC Ecosystem</h3>
+                                <p class="hero-card-subtitle">Specialized tracks for every builder</p>
+                            </div>
+                            <span class="club-tag">3 Wings</span>
+                        </div>
+
+                        <div class="hero-card-branches">
+                            <div class="hero-branch-mini spark">
+                                <div class="hero-branch-icon">
+                                    <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/spark-logo.png"
+                                        alt="SPARK" loading="lazy">
+                                </div>
+                                <div class="hero-branch-info">
+                                    <h4>SPARK</h4>
+                                    <p>Ideation, beginner foundations & prototype incubator.</p>
+                                </div>
+                            </div>
+
+                            <div class="hero-branch-mini kaizen">
+                                <div class="hero-branch-icon">
+                                    <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/kaizen-logo.png"
+                                        alt="KAIZEN" loading="lazy">
+                                </div>
+                                <div class="hero-branch-info">
+                                    <h4>KAIZEN</h4>
+                                    <p>Continuous learning, system engineering & technical growth.</p>
+                                </div>
+                            </div>
+
+                            <div class="hero-branch-mini phoenix">
+                                <div class="hero-branch-icon">
+                                    <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/phoenix-logo.png"
+                                        alt="PHOENIX" loading="lazy">
+                                </div>
+                                <div class="hero-branch-info">
+                                    <h4>PHOENIX</h4>
+                                    <p>Competitive programming, national hackathons & grand projects.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ABOUT SECTION ================= -->
+        <section class="section about-section" id="about">
+            <div class="section-header-row">
+                <div>
+                    <div class="section-tag">01 / Who We Are</div>
+                    <h2 class="section-title">Built by students.<br>Driven by innovation.</h2>
+                </div>
+                <p class="section-desc">
+                    We bridge the gap between academic theory and industry engineering through collaborative projects,
+                    hands-on workshops, and competitive challenges.
+                </p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card-big">
+                    <p class="lead">
+                        EPIC is not just a student club — it's an ecosystem designed to turn curious learners into
+                        high-impact builders and leaders.
+                    </p>
+                    <p class="about-card-text-muted">
+                        Whether you are writing your first line of code in SPARK, honing your engineering architecture
+                        in KAIZEN, or competing at national hackathons with PHOENIX, EPIC provides the mentorship,
+                        peers, and opportunities to excel.
+                    </p>
+                    <a href="#team" class="primary-btn btn-inline-flex">
+                        Meet Our Leadership <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <div class="about-features">
+                    <div class="about-feature-box">
+                        <div class="about-feature-icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h4>Real Projects</h4>
+                        <p>Build end-to-end production applications across AI, Web, Systems, and Cloud.</p>
+                    </div>
+
+                    <div class="about-feature-box">
+                        <div class="about-feature-icon">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                        <h4>Competitions & Wins</h4>
+                        <p>Represent our university in top-tier coding contests and hackathons nationwide.</p>
+                    </div>
+
+                    <div class="about-feature-box">
+                        <div class="about-feature-icon">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h4>Mentorship</h4>
+                        <p>Guided directly by esteemed faculty and accomplished alumni in top tech companies.</p>
+                    </div>
+
+                    <div class="about-feature-box">
+                        <div class="about-feature-icon">
+                            <i class="fa-solid fa-rocket"></i>
+                        </div>
+                        <h4>Career Growth</h4>
+                        <p>Practical portfolio building, peer code reviews, and mock interview prep.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= BRANCHES / ECOSYSTEM ================= -->
+        <section class="section branches-section" id="branches">
+            <div class="section-header-row">
+                <div>
+                    <div class="section-tag">02 / Ecosystem</div>
+                    <h2 class="section-title">Three specialized branches.</h2>
+                </div>
+                <p class="section-desc">
+                    Tailored learning and project tracks to accommodate every stage of technical development.
+                </p>
+            </div>
+
+            <div class="branches-wrapper">
+                <!-- SPARK -->
+                <div class="branch-card spark">
+                    <div>
+                        <div class="branch-card-top">
+                            <div class="branch-card-badge">01 • SPARK</div>
+                            <div class="branch-logo-wrap">
+                                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/spark-logo.png"
+                                    alt="SPARK Logo" loading="lazy">
+                            </div>
+                        </div>
+                        <h3>SPARK</h3>
+                        <p class="branch-motto">"Your Curiosity, Our Spark"</p>
+                        <p class="branch-desc">
+                            The entry gateway for beginners. We offer structured bootcamps, interactive meetups, and
+                            ideation sessions to turn curiosity into first working prototypes.
+                        </p>
+                        <div class="branch-tags">
+                            <span>Ideation</span>
+                            <span>Foundations</span>
+                            <span>Prototyping</span>
+                        </div>
+                    </div>
+                    <a href="https://sparkmbmu.netlify.app/" target="_blank" rel="noopener noreferrer"
+                        class="branch-action-link">
+                        Visit SPARK Portal <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+                <!-- KAIZEN -->
+                <div class="branch-card kaizen">
+                    <div>
+                        <div class="branch-card-top">
+                            <div class="branch-card-badge">02 • KAIZEN</div>
+                            <div class="branch-logo-wrap">
+                                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/kaizen-logo.png"
+                                    alt="KAIZEN Logo" loading="lazy">
+                            </div>
+                        </div>
+                        <h3>KAIZEN</h3>
+                        <p class="branch-motto">"Change For The Better"</p>
+                        <p class="branch-desc">
+                            Focuses on continuous technical mastery. Deep dive into backend architectures, clean code
+                            practices, modern UI/UX, AI/ML pipelines, and cloud computing.
+                        </p>
+                        <div class="branch-tags">
+                            <span>Fullstack</span>
+                            <span>AI & ML</span>
+                            <span>System Design</span>
+                        </div>
+                    </div>
+                    <a href="#resources" class="branch-action-link">
+                        Explore Tracks <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+
+                <!-- PHOENIX -->
+                <div class="branch-card phoenix">
+                    <div>
+                        <div class="branch-card-top">
+                            <div class="branch-card-badge">03 • PHOENIX</div>
+                            <div class="branch-logo-wrap">
+                                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/phoenix-logo.png"
+                                    alt="PHOENIX Logo" loading="lazy">
+                            </div>
+                        </div>
+                        <h3>PHOENIX</h3>
+                        <p class="branch-motto">"Redefining The Horizons"</p>
+                        <p class="branch-desc">
+                            The high-intensity competitive wing. Teams formulate innovative solutions to solve industry
+                            challenges, compete in hackathons, and publish open-source repos.
+                        </p>
+                        <div class="branch-tags">
+                            <span>Hackathons</span>
+                            <span>Research</span>
+                            <span>Open Source</span>
+                        </div>
+                    </div>
+                    <a href="#journey" class="branch-action-link">
+                        View Journey <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= MENTOR SHOWCASE ================= -->
+        <section class="section mentor-section" id="mentor">
+            <div class="section-tag">03 / Faculty Advisor</div>
+            <div class="mentor-box">
+                <div class="mentor-image-container">
+                    <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_auto,h_750,f_auto,q_auto/v1/epic_portal/mentor/abhishek-gour.jpg"
+                        alt="Dr. Abhishek Gour" loading="lazy">
+                    <span class="mentor-tag">EPIC Mentor</span>
+                </div>
+                <div class="mentor-content">
+                    <small>Guiding Excellence</small>
+                    <h3>Dr. Abhishek Gour</h3>
+                    <p>
+                        The foundational pillar of EPIC, Dr. Abhishek Gour has mentored countless engineers, inspiring
+                        students to achieve excellence in national tech competitions, algorithmic problem solving, and
+                        impactful software projects.
+                    </p>
+                    <div class="mentor-meta-badges">
+                        <div class="mentor-meta-badge">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <span>MBM University</span>
+                        </div>
+                        <div class="mentor-meta-badge">
+                            <i class="fa-solid fa-award"></i>
+                            <span>Faculty Advisor</span>
+                        </div>
+                        <div class="mentor-meta-badge">
+                            <i class="fa-solid fa-users"></i>
+                            <span>Club Patron</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PEOPLE / CURRENT YEAR CORE TEAM (10 MEMBERS) ================= -->
+        <section class="section team-section" id="team">
+            <div class="section-header-row">
+                <div>
+                    <div class="section-tag">04 / Leadership</div>
+                    <h2 class="section-title">Meet the Core Team</h2>
+                </div>
+                <p class="section-desc">
+                    The dedicated student leaders coordinating operations, technical tracks, and workshops at EPIC.
+                </p>
+            </div>
+
+            <div class="team-grid">
+                <!-- 1. Vinti Jingar -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951230/vinti.jpg"
+                            alt="Vinti Jingar" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder">VJ</div>
+                    </div>
+                    <h4>Vinti Jingar</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">3rd Year</span>
+                        <span class="team-pill branch-tag">IT</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 2. Niyati Bhandari -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/niyati-bhandari.jpg"
+                            alt="Niyati Bhandari" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder" style="display:none;">NB</div>
+                    </div>
+                    <h4>Niyati Bhandari</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">3rd Year</span>
+                        <span class="team-pill branch-tag">EEE</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 3. Renu Gehlot -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786987425/Renu_Gehlot.jpg"
+                            alt="Renu Gehlot" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder" style="display:none;">RG</div>
+                    </div>
+                    <h4>Renu Gehlot</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">3rd Year</span>
+                        <span class="team-pill branch-tag">IT</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 4. Samarth Mathur -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786946024/IMG_20260817_074456.jpg"
+                            alt="Samarth Mathur" loading="lazy">
+                        <div class="team-photo-placeholder">SM</div>
+                    </div>
+                    <h4>Samarth Mathur</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">3rd Year</span>
+                        <span class="team-pill branch-tag">AI</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 5. Kritika -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786912563/Kritika.jpg"
+                            alt="Kritika" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder" style="display:none;">K</div>
+                    </div>
+                    <h4>Kritika</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">2nd Year</span>
+                        <span class="team-pill branch-tag">Civil</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 6. Adil Khan -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786992586/Adil.jpg" alt="Adil Khan"
+                            loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder" style="display:none;">AK</div>
+                    </div>
+                    <h4>Adil Khan</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">2nd Year</span>
+                        <span class="team-pill branch-tag">CSE</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 7. Udit Sharma -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/udit-sharma.png"
+                            alt="Udit Sharma" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder" style="display:none;">US</div>
+                    </div>
+                    <h4>Udit Sharma</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">2nd Year</span>
+                        <span class="team-pill branch-tag">IT</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 8. Vanshika Singh -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/vanshika-singh.jpg"
+                            alt="Vanshika Singh" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder" style="display:none;">VS</div>
+                    </div>
+                    <h4>Vanshika Singh</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">2nd Year</span>
+                        <span class="team-pill branch-tag">IT</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 9. Ishika Gupta -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/ishika-gupta.jpg"
+                            alt="Ishika Gupta" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder" style="display:none;">IG</div>
+                    </div>
+                    <h4>Ishika Gupta</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">2nd Year</span>
+                        <span class="team-pill branch-tag">AIDS</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 10. Tejasvini Jain -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786911144/tejasvini_jain.jpg"
+                            alt="Tejasvini Jain" loading="lazy">
+                        <div class="team-photo-placeholder">TJ</div>
+                    </div>
+                    <h4>Tejasvini Jain</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">2nd Year</span>
+                        <span class="team-pill branch-tag">EEE</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= ALUMNI / LAST YEAR CORE TEAM (2025-26) ================= -->
+        <section class="section team-section alumni-section" id="alumni">
+            <div class="section-header-row">
+                <div>
+                    <div class="section-tag">05 / Alumni</div>
+                    <h2 class="section-title">Last Year Team 2025-26</h2>
+                </div>
+                <p class="section-desc">
+                    The outgoing core team that laid the groundwork for EPIC's growth and success.
+                </p>
+            </div>
+
+            <div class="team-grid">
+                <!-- 1. Mayank Aggarwal -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/mayank-aggarwal.jpg"
+                            alt="Mayank Aggarwal" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder">MA</div>
+                    </div>
+                    <h4>Mayank Aggarwal</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">Final Year</span>
+                        <span class="team-pill branch-tag">CSE</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 2. Mohit Gaur -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951230/mohitgaur.jpg"
+                            alt="Mohit Gaur" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder">MG</div>
+                    </div>
+                    <h4>Mohit Gaur</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">3rd Year</span>
+                        <span class="team-pill branch-tag">IT</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 3. Hemansh Mishra -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786952045/hemansh.jpg"
+                            alt="Hemansh Mishra" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder">HM</div>
+                    </div>
+                    <h4>Hemansh Mishra</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">3rd Year</span>
+                        <span class="team-pill branch-tag">ECE</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 4. Renu Gehlot -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786987425/Renu_Gehlot.jpg"
+                            alt="Renu Gehlot" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder">RG</div>
+                    </div>
+                    <h4>Renu Gehlot</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">3rd Year</span>
+                        <span class="team-pill branch-tag">IT</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 5. Himanshi Mathur -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951912/himanshi.jpg"
+                            alt="Himanshi Mathur" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder">HiM</div>
+                    </div>
+                    <h4>Himanshi Mathur</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">3rd Year</span>
+                        <span class="team-pill branch-tag">EEE</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 6. Garvit Jain -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951436/garvit.png"
+                            alt="Garvit Jain" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder">GJ</div>
+                    </div>
+                    <h4>Garvit Jain</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">3rd Year</span>
+                        <span class="team-pill branch-tag">ECE</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 7. Vinti Jingar -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951230/vinti.jpg"
+                            alt="Vinti Jingar" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder">VJ</div>
+                    </div>
+                    <h4>Vinti Jingar</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">3rd Year</span>
+                        <span class="team-pill branch-tag">IT</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+
+                <!-- 8. Raghav Khandelwal -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951715/raghav.jpg"
+                            alt="Raghav Khandelwal" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder">RK</div>
+                    </div>
+                    <h4>Raghav Khandelwal</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">3rd Year</span>
+                        <span class="team-pill branch-tag">CSE</span>
+                    </div>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTINUOUS JOURNEY TIMELINE ================= -->
+        <section class="section events-section" id="journey">
+            <div class="section-header-row">
+                <div>
+                    <div class="section-tag">06 / Our Journey</div>
+                    <h2 class="section-title">Milestones & History</h2>
+                </div>
+                <p class="section-desc">
+                    A look back at the defining events and growth phases that shaped EPIC into the community it is
+                    today.
+                </p>
+            </div>
+
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                <div class="timeline-line-fill" id="timelineLineFill"></div>
+
+                <!-- Milestone 1 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header-row">
+                            <span class="timeline-date-chip">Sep 2024</span>
+                            <span class="timeline-tag-badge">Foundation</span>
+                        </div>
+                        <h4>Club Foundation</h4>
+                        <p>
+                            Established under the visionary mentorship of Dr. Abhishek Gour Sir, laying the foundation
+                            for student innovation, collaboration, and high-impact computing at MBM University. 🚀
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Milestone 2 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header-row">
+                            <span class="timeline-date-chip">Oct - Nov 2024</span>
+                            <span class="timeline-tag-badge">Workshops</span>
+                        </div>
+                        <h4>First Step & GitHub Bootcamps</h4>
+                        <p>
+                            Introduced juniors to programming fundamentals, Git version control, collaborative
+                            workflows, and competitive programming problem-solving strategies.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Milestone 3 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header-row">
+                            <span class="timeline-date-chip">2025</span>
+                            <span class="timeline-tag-badge">Cohort</span>
+                        </div>
+                        <h4>StudyPods 5.0 Project Drive</h4>
+                        <p>
+                            A 4-week intensive sprint where teams built production systems in Frontend, Backend, AI/ML,
+                            and UI/UX, presenting live functional prototypes.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Milestone 4 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header-row">
+                            <span class="timeline-date-chip">2026</span>
+                            <span class="timeline-tag-badge">Hackathon</span>
+                        </div>
+                        <h4>Hack-a-Day</h4>
+                        <p>
+                            A competitive 24-hour engineering challenge turning prompt problems into working
+                            applications across Web and AI tracks.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Milestone 5 -->
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header-row">
+                            <span class="timeline-date-chip">2026</span>
+                            <span class="timeline-tag-badge">Flagship Event</span>
+                        </div>
+                        <h4>Converge 2026</h4>
+                        <p>
+                            Our flagship annual project expo uniting top student projects, alumni reviews, and technical
+                            demonstrations across all engineering departments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= GALLERY ================= -->
+        <section class="section gallery-section" id="gallery">
+            <div class="section-header-row">
+                <div>
+                    <div class="section-tag">07 / Highlights</div>
+                    <h2 class="section-title">Moments & Highlights</h2>
+                </div>
+                <p class="section-desc">
+                    Snapshots of our workshops, demo days, and project showcases.
+                </p>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-img-box">
+                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/projects/studypods.jpg"
+                            alt="StudyPods 5.0" loading="lazy"
+                            onerror="this.src='assets/images/projects/studypods.jpg'">
+                    </div>
+                    <div class="gallery-item-details">
+                        <small>Project Expo</small>
+                        <h4>StudyPods 5.0 Showcase</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-img-box">
+                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_600,h_400,f_auto,q_auto,w_auto/v1/epic_portal/mentor/abhishek-gour.jpg"
+                            alt="Mentorship Session" loading="lazy"
+                            onerror="this.src='assets/images/mentor/abhishek-gour.jpeg'">
+                    </div>
+                    <div class="gallery-item-details">
+                        <small>Mentorship</small>
+                        <h4>Faculty Guidance & Review</h4>
+                    </div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-img-box">
+                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_600,h_400,f_auto,q_auto,w_auto/v1/epic_portal/team/mayank-aggarwal.jpg"
+                            alt="Team Colloquium" loading="lazy"
+                            onerror="this.src='assets/images/team/mayank-aggarwal.jpg'">
+                    </div>
+                    <div class="gallery-item-details">
+                        <small>Leadership</small>
+                        <h4>Team Planning & Colloquium</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= RESOURCES ================= -->
+        <section class="section resources-section" id="resources">
+            <div class="section-header-row">
+                <div>
+                    <div class="section-tag">08 / Knowledge Hub</div>
+                    <h2 class="section-title">Curated Resources</h2>
+                </div>
+                <p class="section-desc">
+                    High-quality guides, roadmaps, and starter templates curated by senior club members.
+                </p>
+            </div>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div>
+                        <div class="resource-icon-box">
+                            <i class="fa-solid fa-book-bookmark"></i>
+                        </div>
+                        <h4>Learning Roadmaps</h4>
+                        <p>Structured curriculum for Web Development, AI/ML, Cloud Computing, and DevOps.</p>
+                    </div>
+                    <span class="resource-link resource-link-disabled">
+                        Coming Soon <i class="fa-solid fa-clock"></i>
+                    </span>
+                </div>
+
+                <div class="resource-card">
+                    <div>
+                        <div class="resource-icon-box">
+                            <i class="fa-solid fa-code-fork"></i>
+                        </div>
+                        <h4>Open Repositories</h4>
+                        <p>Starter repos, competition boilerplate, and project templates authored by EPIC members.</p>
+                    </div>
+                    <a href="https://github.com/epic-mbmu" target="_blank" rel="noopener noreferrer"
+                        class="resource-link">
+                        Browse Repos <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </a>
+                </div>
+
+                <div class="resource-card">
+                    <div>
+                        <div class="resource-icon-box">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h4>Competition Playbooks</h4>
+                        <p>Tips, problem-solving strategies, and presentation templates for winning hackathons.</p>
+                    </div>
+                    <span class="resource-link resource-link-disabled">
+                        Coming Soon <i class="fa-solid fa-clock"></i>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= CONTACT & REGISTRATION FORM ================= -->
+        <section class="section contact-section" id="contact">
+            <div class="section-header-row">
+                <div>
+                    <div class="section-tag">09 / Get in Touch</div>
+                    <h2 class="section-title">Connect & Register</h2>
+                </div>
+                <p class="section-desc">
+                    Reach out with queries, proposal ideas, or join our community membership program.
+                </p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info-card">
+                    <h3>Let's build together</h3>
+                    <p>
+                        Have questions about our events, projects, or how to contribute? Send us a message or join our
+                        WhatsApp community.
+                    </p>
+
+                    <div class="contact-detail-items">
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="contact-detail-text">
+                                <small>Direct Email</small>
+                                <strong>dsc.clubs@mbm.ac.in</strong>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div class="contact-detail-text">
+                                <small>WhatsApp Community</small>
+                                <strong>+91 78509 40248</strong>
+                            </div>
+                        </div>
+
+                        <div class="contact-detail-item">
+                            <div class="contact-detail-icon">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div class="contact-detail-text">
+                                <small>Campus Base</small>
+                                <strong>MBM University, Jodhpur, Rajasthan</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-box">
+                    <div class="form-tabs">
+                        <button class="form-tab-btn active" id="contactTabBtn" type="button">Quick Message</button>
+                        <button class="form-tab-btn" id="registerTabBtn" type="button">Member Registration</button>
+                    </div>
+
+                    <!-- Contact Message Form -->
+                    <form class="custom-form" id="contactForm">
+                        <!-- Honeypot (hidden from humans, bots fill it) -->
+                        <div class="form-hp" aria-hidden="true">
+                            <label for="website">Website</label>
+                            <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="contactName">Your Name</label>
+                                <input type="text" id="contactName" class="form-control" placeholder="e.g. Rahul Sharma"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email Address</label>
+                                <input type="email" id="contactEmail" class="form-control" placeholder="name@domain.com"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactPhone">Phone Number</label>
+                            <input type="tel" id="contactPhone" class="form-control" placeholder="10-digit number"
+                                pattern="[0-9]{10}" maxlength="10">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactDomain">Domain / Area of Interest</label>
+                            <select id="contactDomain" class="form-control">
+                                <option value="SPARK (Beginner Track)">SPARK (Beginner Track)</option>
+                                <option value="KAIZEN (Fullstack & AI/ML)">KAIZEN (Fullstack & AI/ML)</option>
+                                <option value="PHOENIX (Competitive Hackathons)">PHOENIX (Competitive Hackathons)
+                                </option>
+                                <option value="General Query / Mentorship">General Query / Mentorship</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactMessage">Message</label>
+                            <textarea id="contactMessage" class="form-control" rows="4"
+                                placeholder="How can we help you?" required></textarea>
+                        </div>
+
+                        <button type="submit" class="primary-btn btn-full-width">
+                            Send Message <i class="fa-regular fa-paper-plane"></i>
+                        </button>
+
+                        <div class="form-success-msg" id="formSuccessMsg">
+                            ✓ Thank you! Your message has been received. We'll get back to you shortly.
+                        </div>
+                    </form>
+
+                    <!-- Registration Form -->
+                    <div class="registration-embed-container" id="registerContainer">
+                        <form class="custom-form" id="registerForm">
+                            <!-- Honeypot -->
+                            <div class="form-hp" aria-hidden="true">
+                                <label for="reg-website">Website</label>
+                                <input type="text" id="reg-website" name="website" tabindex="-1" autocomplete="off">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="regName">Full Name <span class="required">*</span></label>
+                                    <input type="text" id="regName" class="form-control" placeholder="e.g. Rahul Sharma"
+                                        required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="regGender">Gender <span class="required">*</span></label>
+                                    <select id="regGender" class="form-control" required>
+                                        <option value="" disabled selected>Select</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Other">Other</option>
+                                        <option value="Prefer not to say">Prefer not to say</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="regMobile">Mobile Number <span class="required">*</span></label>
+                                    <input type="tel" id="regMobile" class="form-control" placeholder="10-digit number"
+                                        pattern="[0-9]{10}" maxlength="10" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="regEmail">Email Address <span class="required">*</span></label>
+                                    <input type="email" id="regEmail" class="form-control" placeholder="name@domain.com"
+                                        required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="regBranch">Branch <span class="required">*</span></label>
+                                <select id="regBranch" class="form-control" required>
+                                    <option value="" disabled selected>Select your branch</option>
+                                    <option value="CSE">CSE</option>
+                                    <option value="IT">IT</option>
+                                    <option value="AI">AI</option>
+                                    <option value="ECE">ECE</option>
+                                    <option value="ECC">ECC</option>
+                                    <option value="EEE">EEE</option>
+                                    <option value="EE">EE</option>
+                                    <option value="Civil">Civil</option>
+                                    <option value="Chemical">Chemical</option>
+                                    <option value="BCT">BCT</option>
+                                    <option value="Petroleum">Petroleum</option>
+                                    <option value="P & I">P & I</option>
+                                    <option value="Mining">Mining</option>
+                                    <option value="Architecture">Architecture</option>
+                                    <option value="Mechanical">Mechanical</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Previous Coding Experience</label>
+                                <div class="radio-group">
+                                    <label class="radio-option">
+                                        <input type="radio" name="regExperience" value="No" checked>
+                                        <span>No</span>
+                                    </label>
+                                    <label class="radio-option">
+                                        <input type="radio" name="regExperience" value="Yes">
+                                        <span>Yes</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group experience-detail-group" id="experienceDetailGroup"
+                                style="display: none;">
+                                <label for="regExperienceDetail">Tell us about your experience</label>
+                                <textarea id="regExperienceDetail" class="form-control" rows="3"
+                                    placeholder="e.g. I've built 2 web projects using React, solved 200+ problems on LeetCode..."></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="regQuestion">Anything you'd like to ask?</label>
+                                <textarea id="regQuestion" class="form-control" rows="3"
+                                    placeholder="Any questions, suggestions, or things you'd like us to know..."></textarea>
+                            </div>
+
+                            <button type="submit" class="primary-btn btn-full-width" id="registerSubmitBtn">
+                                Submit Registration <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+
+                            <div class="form-success-msg" id="registerSuccessMsg">
+                                Registration submitted successfully! We'll reach out to you soon.
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FAQ ACCORDION ================= -->
+        <section class="section faq-section" id="faq">
+            <div class="section-header-row faq-header-centered">
+                <div class="section-tag">10 / Frequently Asked Questions</div>
+                <h2 class="section-title">Got Questions? We've Got Answers.</h2>
+                <p class="section-desc">
+                    Everything you need to know about joining, contributing, and growing with EPIC.
+                </p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item active">
+                    <button class="faq-header" type="button">
+                        <span>Who can join EPIC?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Any student from MBM University passionate about computing, software engineering, robotics,
+                            or design is welcome! We welcome all years and all engineering disciplines.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-header" type="button">
+                        <span>Do I need prior programming experience?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Not at all. Our <strong>SPARK</strong> branch is specifically tailored for absolute
+                            beginners, providing roadmaps, peer mentors, and first-step workshops to get you up to
+                            speed.</p>
+                    </div>
+                </div>
+
+
+
+                <div class="faq-item">
+                    <button class="faq-header" type="button">
+                        <span>What kind of projects do members build?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Our members build full-stack web platforms, machine learning models, mobile apps, IoT
+                            systems, and algorithmic bots for national competitions and community impact.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-header" type="button">
+                        <span>Is there any membership fee?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>No, EPIC is completely free to join. We believe in accessible education and collaboration.
+                            All workshops, events, and mentorship sessions are open to all members at no cost.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-header" type="button">
+                        <span>Can final-year students join EPIC?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>Absolutely! Final-year students are welcome to join as mentors and contributors. Many of our
+                            alumni have gone on to roles at companies like Boeing, IBM, and IIM, and they continue to
+                            guide current members.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-header" type="button">
+                        <span>Which technologies does EPIC focus on?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>We cover a wide range: Web Development (React, Node.js, Python), AI/ML (TensorFlow, PyTorch),
+                            Cloud Computing (GCP, AWS), System Design, Competitive Programming, and more. Each wing has
+                            its own focus areas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <a href="#home" class="logo">
+                    <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/epic-logo.png"
+                        alt="EPIC Logo" class="logo-img"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <span class="logo-box" style="display:none;">E</span>
+                    <div class="logo-text">
+                        <span class="brand-title">EPIC</span>
+                        <span class="brand-subtitle">MBM University</span>
+                    </div>
+                </a>
+
+                <div class="footer-tagline">
+                    Empowering People Through Innovative Computing
+                </div>
+
+                <div class="footer-social-links">
+                    <a href="https://wa.me/917850940248" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i
+                            class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/gdg_mbmu?igsh=OWgzYnNoMmwzMjJ6" target="_blank"
+                        rel="noopener noreferrer" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://linkedin.com/company/epic-mbmu" target="_blank" rel="noopener noreferrer"
+                        title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="mailto:dsc.clubs@mbm.ac.in" title="Email"><i class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <span>&copy; 2026 EPIC Technical Club. All rights reserved.</span>
+                <span>Built by EPIC Members • MBM University</span>
             </div>
         </div>
+    </footer>
 
-        <div class="footer-bottom">
-            <span>&copy; 2026 EPIC Technical Club. All rights reserved.</span>
-            <span>Built by EPIC Members • MBM University</span>
-        </div>
-    </div>
-</footer>
-
-<script src="assets/js/script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
+
 </html>
