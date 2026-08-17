@@ -3,6 +3,9 @@
 .env.local
 .env.*.local
 admin.html
+admin-auth-config.js
+assets/js/admin-auth-config.js
+admin-repo/
 
 # Node Dependencies
 node_modules/

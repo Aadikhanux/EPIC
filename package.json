@@ -4,6 +4,7 @@
   "description": "EPIC Technical Club Portal - MBM University",
   "scripts": {
     "upload-images": "node scripts/upload_to_cloudinary.js",
+    "sync:admin": "node scripts/sync_admin_env.js",
     "build:css": "npx cssnano assets/css/style.css assets/css/style.min.css",
     "build:js": "npx terser assets/js/script.js -o assets/js/script.min.js -c -m",
     "build": "npm run build:css && npm run build:js"
