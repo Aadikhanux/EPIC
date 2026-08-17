@@ -210,15 +210,52 @@ document.addEventListener('DOMContentLoaded', () => {
             registerContainer.classList.add('active');
         });
 
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const honeypot = document.getElementById('website');
             if (honeypot && honeypot.value) return;
 
-            const name = document.getElementById('contactName').value;
-            const email = document.getElementById('contactEmail').value;
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const phone = (document.getElementById('contactPhone')?.value || '').trim();
             const domain = document.getElementById('contactDomain').value;
+            const message = document.getElementById('contactMessage').value.trim();
+
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = 'Sending... <i class="fa-solid fa-spinner fa-spin"></i>';
+            }
+
+            const messagePayload = {
+                name,
+                email,
+                phone,
+                domain,
+                message,
+                submittedAt: new Date().toISOString()
+            };
+
+            // Post to Firebase Realtime Database
+            const dbUrl = window.FIREBASE_DB_URL || localStorage.getItem('epic_firebase_db_url') || "https://epic-3b86d-default-rtdb.asia-southeast1.firebasedatabase.app";
+            if (dbUrl && !dbUrl.includes("YOUR_PROJECT_ID") && !dbUrl.includes("your-project-id")) {
+                try {
+                    const cleanUrl = dbUrl.replace(/\/+$/, '');
+                    await fetch(`${cleanUrl}/messages.json`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(messagePayload)
+                    });
+                } catch (err) {
+                    console.warn('[Firebase] Contact message sync failed:', err);
+                }
+            }
+
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Send Message <i class="fa-solid fa-paper-plane"></i>';
+            }
 
             if (formSuccessMsg) {
                 formSuccessMsg.style.display = 'block';
@@ -247,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (registerForm) {
-        registerForm.addEventListener('submit', (e) => {
+        registerForm.addEventListener('submit', async (e) => {
             e.preventDefault();
 
             const hp = document.getElementById('reg-website');
@@ -297,7 +334,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const submitBtn = document.getElementById('registerSubmitBtn');
             if (submitBtn) {
                 submitBtn.classList.add('loading');
-                submitBtn.textContent = 'Submitting...';
+                submitBtn.innerHTML = 'Submitting... <i class="fa-solid fa-spinner fa-spin"></i>';
+                submitBtn.disabled = true;
             }
 
             const experienceRadio = document.querySelector('input[name="regExperience"]:checked');
@@ -310,29 +348,43 @@ document.addEventListener('DOMContentLoaded', () => {
                 codingExperience: experienceRadio ? experienceRadio.value : 'No',
                 experienceDetail: document.getElementById('regExperienceDetail').value.trim(),
                 question: document.getElementById('regQuestion').value.trim(),
-                timestamp: new Date().toISOString()
+                submittedAt: new Date().toISOString()
             };
 
+            // Post to Firebase Realtime Database
+            const dbUrl = window.FIREBASE_DB_URL || localStorage.getItem('epic_firebase_db_url') || "https://epic-3b86d-default-rtdb.asia-southeast1.firebasedatabase.app";
+            if (dbUrl && !dbUrl.includes("YOUR_PROJECT_ID") && !dbUrl.includes("your-project-id")) {
+                try {
+                    const cleanUrl = dbUrl.replace(/\/+$/, '');
+                    await fetch(`${cleanUrl}/registrations.json`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                } catch (err) {
+                    console.warn('[Firebase] Registration sync failed:', err);
+                }
+            }
+
+            if (submitBtn) {
+                submitBtn.classList.remove('loading');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Submit Registration <i class="fa-solid fa-arrow-right"></i>';
+            }
+
+            console.log('Registration payload:', payload);
+
+            if (registerSuccessMsg) {
+                registerSuccessMsg.style.display = 'block';
+                registerSuccessMsg.innerHTML = 'Thank you <strong>' + payload.name + '</strong>! Your registration has been submitted. We will contact you at <em>' + payload.email + '</em> soon.';
+            }
+
+            registerForm.reset();
+            if (experienceDetailGroup) experienceDetailGroup.style.display = 'none';
+
             setTimeout(() => {
-                if (submitBtn) {
-                    submitBtn.classList.remove('loading');
-                    submitBtn.innerHTML = 'Submit Registration <i class="fa-solid fa-arrow-right"></i>';
-                }
-
-                console.log('Registration payload:', payload);
-
-                if (registerSuccessMsg) {
-                    registerSuccessMsg.style.display = 'block';
-                    registerSuccessMsg.innerHTML = 'Thank you <strong>' + payload.name + '</strong>! Your registration has been submitted. We will contact you at <em>' + payload.email + '</em> soon.';
-                }
-
-                registerForm.reset();
-                if (experienceDetailGroup) experienceDetailGroup.style.display = 'none';
-
-                setTimeout(() => {
-                    if (registerSuccessMsg) registerSuccessMsg.style.display = 'none';
-                }, 8000);
-            }, 1200);
+                if (registerSuccessMsg) registerSuccessMsg.style.display = 'none';
+            }, 8000);
         });
     }
 
@@ -360,7 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             keywords: ['team', 'core', 'members', 'leads', 'leadership', 'president'],
-            response: "Our current year core leadership team includes:<br>• <strong>Mayank Aggarwal</strong> (Final Year • CSE)<br>• <strong>Vinti Jingar</strong> (3rd Year • IT)<br>• <strong>Niyati Bhandari</strong> (3rd Year • EEE)<br>• <strong>Renu Gehlot</strong> (3rd Year • EEE)<br>• <strong>Kritika</strong> (2nd Year • Civil)<br>• <strong>Samarth Mathur</strong> (3rd Year • AI)<br>• <strong>Adil Khan</strong> (2nd Year • CSE)<br>• <strong>Udit Sharma</strong> (2nd Year • IT)<br>• <strong>Vanshika Singh</strong> (2nd Year • IT)<br>• <strong>Ishika Gupta</strong> (2nd Year • AIDS)<br>• <strong>Tejasvini Jain</strong> (2nd Year • CSE)"
+            response: "Our current year core leadership team includes:<br>• <strong>Vinti Jingar</strong> (3rd Year • IT)<br>• <strong>Niyati Bhandari</strong> (3rd Year • EEE)<br>• <strong>Renu Gehlot</strong> (3rd Year • IT)<br>• <strong>Samarth Mathur</strong> (3rd Year • AI)<br>• <strong>Kritika</strong> (2nd Year • Civil)<br>• <strong>Adil Khan</strong> (2nd Year • CSE)<br>• <strong>Udit Sharma</strong> (2nd Year • IT)<br>• <strong>Vanshika Singh</strong> (2nd Year • IT)<br>• <strong>Ishika Gupta</strong> (2nd Year • AIDS)<br>• <strong>Tejasvini Jain</strong> (2nd Year • EEE)"
         },
         {
             keywords: ['mentor', 'abhishek', 'gour', 'faculty', 'advisor', 'patron', 'teacher'],

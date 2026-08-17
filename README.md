@@ -23,6 +23,7 @@ EPIC bridges the gap between academic curriculum and industry engineering. We bu
 - **HTML5** with semantic markup and ARIA attributes
 - **CSS3** with custom properties (design tokens), light/dark theming
 - **Vanilla JavaScript** (no frameworks)
+- **Firebase Realtime Database** for form submissions and remote CSS control
 - **Cloudinary CDN** for optimized image delivery (`w_auto`, `f_auto`, `q_auto`)
 - **Google Fonts** — Inter, Space Grotesk, DM Mono
 - **Font Awesome 6.5** for icons
@@ -41,6 +42,9 @@ EPIC bridges the gap between academic curriculum and industry engineering. We bu
 | Accessibility | Skip-to-content link, focus-visible styles, ARIA roles, semantic HTML |
 | SEO | Open Graph, Twitter Cards, JSON-LD structured data, canonical URL |
 | Induction deck | 28-slide fullscreen presentation with keyboard/touch/wheel navigation |
+| Firebase forms | Quick messages and member registrations stored in Firebase Realtime DB |
+| Remote CSS switch | Real-time CSS killswitch controllable from any device via Firebase |
+| Admin dashboard | View messages, registrations, export CSV, and toggle CSS remotely |
 
 ---
 
@@ -48,16 +52,24 @@ EPIC bridges the gap between academic curriculum and industry engineering. We bu
 
 ```
 EPIC/
-├── index.html                  Main landing page
-├── induction.html              Interactive slide deck
-├── 404.html                    Custom error page
-├── robots.txt                  Crawler instructions
+├── index.html                        Main landing page
+├── induction.html                    Interactive slide deck
+├── admin.html                        Admin dashboard (local / private)
+├── epic-induction-control.html       Standalone CSS controller for presentations
+├── epic-induction-control/
+│   └── index.html                    Same controller at /epic-induction-control route
+├── 404.html                          Custom error page
+├── robots.txt                        Crawler instructions
 ├── assets/
-│   ├── css/style.css           Design tokens, themes, components, responsive
-│   └── js/script.js            Theme switcher, chatbot, navbar, timeline, FAQ
+│   ├── css/style.css                 Design tokens, themes, components, responsive
+│   └── js/
+│       ├── script.js                 Theme, chatbot, navbar, timeline, FAQ, forms
+│       ├── firebase-config.js        Firebase project configuration
+│       └── remote-css-listener.js    Real-time CSS killswitch listener
 ├── scripts/
-│   └── upload_to_cloudinary.js Bulk image uploader
-├── .env.example                Environment variable template
+│   └── upload_to_cloudinary.js       Bulk image uploader
+├── .env                              Environment variables (gitignored)
+├── .env.example                      Environment variable template
 ├── .gitignore
 └── package.json
 ```
@@ -90,13 +102,88 @@ npm run build
 
 This generates `style.min.css` and `script.min.js` using cssnano and terser.
 
-### Cloudinary Asset Upload
+### Environment Setup
 
 ```bash
 cp .env.example .env
-# Fill in your Cloudinary credentials
+# Fill in your Cloudinary and Firebase credentials
+```
+
+### Cloudinary Asset Upload
+
+```bash
 npm run upload-images
 ```
+
+---
+
+## Firebase Integration
+
+The portal uses **Firebase Realtime Database** for three features:
+
+### 1. Form Submissions
+
+- **Quick Messages** (`/messages`) — Contact form submissions from visitors
+- **Member Registrations** (`/registrations`) — New member signup data
+
+### 2. Remote CSS Killswitch
+
+A real-time toggle at `/killswitch/cssDisabled` that enables or disables all stylesheets on the live site instantly — useful for induction presentations demonstrating what CSS does.
+
+### 3. Admin Dashboard
+
+Open `admin.html` to access:
+- **Quick Messages inbox** — Search, view, and delete contact messages
+- **Member Registrations roster** — Search, view, delete, and export as CSV
+- **CSS Killswitch** — Toggle stylesheets on/off across the live site
+
+### Firebase Database Structure
+
+```json
+{
+  "killswitch": {
+    "cssDisabled": false
+  },
+  "messages": {
+    "-uniqueKey": {
+      "name": "...",
+      "email": "...",
+      "phone": "...",
+      "domain": "...",
+      "message": "...",
+      "submittedAt": "2026-08-17T16:00:00.000Z"
+    }
+  },
+  "registrations": {
+    "-uniqueKey": {
+      "name": "...",
+      "gender": "...",
+      "mobile": "...",
+      "email": "...",
+      "branch": "...",
+      "codingExperience": "Yes/No",
+      "experienceDetail": "...",
+      "question": "...",
+      "submittedAt": "2026-08-17T16:00:00.000Z"
+    }
+  }
+}
+```
+
+### Firebase Security
+
+Set the following rules in **Firebase Console → Realtime Database → Rules**:
+
+```json
+{
+  "rules": {
+    ".read": true,
+    ".write": true
+  }
+}
+```
+
+For production, restrict the API key in **Google Cloud Console → Credentials** to only allow HTTP referrers from `epicmbm.netlify.app/*`.
 
 ---
 
@@ -106,12 +193,11 @@ npm run upload-images
 
 | Name | Year | Branch |
 |------|------|--------|
-| Mayank Aggarwal | Final Year | CSE |
 | Vinti Jingar | 3rd Year | IT |
 | Niyati Bhandari | 3rd Year | EEE |
-| Renu Gehlot | 3rd Year | EEE |
-| Kritika | 2nd Year | Civil |
+| Renu Gehlot | 3rd Year | IT |
 | Samarth Mathur | 3rd Year | AI |
+| Kritika | 2nd Year | Civil |
 | Adil Khan | 2nd Year | CSE |
 | Udit Sharma | 2nd Year | IT |
 | Vanshika Singh | 2nd Year | IT |
@@ -134,4 +220,4 @@ npm run upload-images
 
 ## License
 
-2026 EPIC Technical Club. Built by EPIC members at MBM University.
+© 2026 EPIC Technical Club. Built by EPIC members at MBM University.

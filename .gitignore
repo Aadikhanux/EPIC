@@ -1,7 +1,8 @@
-# Environment Variables (Keep Private)
+# Environment Variables & Private Tools (Keep Private)
 .env
 .env.local
 .env.*.local
+admin.html
 
 # Node Dependencies
 node_modules/

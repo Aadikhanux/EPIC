@@ -50,6 +50,9 @@
     </script>
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Firebase Configuration & Remote CSS Switch Listener -->
+    <script src="assets/js/firebase-config.js"></script>
+    <script src="assets/js/remote-css-listener.js"></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -485,23 +488,7 @@
     </div>
 
     <div class="team-grid">
-        <!-- 1. Mayank Aggarwal -->
-        <div class="team-card">
-            <div class="team-photo-wrap">
-                <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/mayank-aggarwal.jpg" alt="Mayank Aggarwal" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
-                <div class="team-photo-placeholder" style="display:none;">MA</div>
-            </div>
-            <h4>Mayank Aggarwal</h4>
-            <div class="team-pills">
-                <span class="team-pill">Final Year</span>
-                <span class="team-pill branch-tag">CSE</span>
-            </div>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="team-card-linkedin" title="LinkedIn">
-                <i class="fa-brands fa-linkedin-in"></i>
-            </a>
-        </div>
-
-        <!-- 2. Vinti Jingar -->
+        <!-- 1. Vinti Jingar -->
         <div class="team-card">
             <div class="team-photo-wrap">
                 <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786951230/vinti.jpg" alt="Vinti Jingar" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
@@ -517,7 +504,7 @@
             </a>
         </div>
 
-        <!-- 3. Niyati Bhandari -->
+        <!-- 2. Niyati Bhandari -->
         <div class="team-card">
             <div class="team-photo-wrap">
                 <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/niyati-bhandari.jpg" alt="Niyati Bhandari" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
@@ -533,7 +520,7 @@
             </a>
         </div>
 
-        <!-- 4. Renu Gehlot -->
+        <!-- 3. Renu Gehlot -->
         <div class="team-card">
             <div class="team-photo-wrap">
                 <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/renu-gehlot.jpg" alt="Renu Gehlot" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
@@ -549,7 +536,7 @@
             </a>
         </div>
 
-        <!-- 5. Samarth Mathur -->
+        <!-- 4. Samarth Mathur -->
         <div class="team-card">
             <div class="team-photo-wrap">
                 <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786946024/IMG_20260817_074456.jpg" alt="Samarth Mathur" loading="lazy">
@@ -565,7 +552,7 @@
             </a>
         </div>
 
-        <!-- 6. Kritika -->
+        <!-- 5. Kritika -->
         <div class="team-card">
             <div class="team-photo-wrap">
                 <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786912563/Kritika.jpg" alt="Kritika" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
@@ -581,7 +568,7 @@
             </a>
         </div>
 
-        <!-- 7. Adil Khan -->
+        <!-- 6. Adil Khan -->
         <div class="team-card">
             <div class="team-photo-wrap">
                 <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/adil-khan.jpg" alt="Adil Khan" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
@@ -597,7 +584,7 @@
             </a>
         </div>
 
-        <!-- 8. Udit Sharma -->
+        <!-- 7. Udit Sharma -->
         <div class="team-card">
             <div class="team-photo-wrap">
                 <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/udit-sharma.png" alt="Udit Sharma" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
@@ -613,7 +600,7 @@
             </a>
         </div>
 
-        <!-- 9. Vanshika Singh -->
+        <!-- 8. Vanshika Singh -->
         <div class="team-card">
             <div class="team-photo-wrap">
                 <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/vanshika-singh.jpg" alt="Vanshika Singh" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
@@ -629,7 +616,7 @@
             </a>
         </div>
 
-        <!-- 10. Ishika Gupta -->
+        <!-- 9. Ishika Gupta -->
         <div class="team-card">
             <div class="team-photo-wrap">
                 <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/ishika-gupta.jpg" alt="Ishika Gupta" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
@@ -645,7 +632,7 @@
             </a>
         </div>
 
-        <!-- 11. Tejasvini Jain -->
+        <!-- 10. Tejasvini Jain -->
         <div class="team-card">
             <div class="team-photo-wrap">
                 <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786911144/tejasvini_jain.jpg" alt="Tejasvini Jain" loading="lazy">
