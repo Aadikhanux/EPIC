@@ -1194,7 +1194,7 @@ img {
 
 .team-photo-wrap img {
     object-fit: cover;
-    object-position: center 20%;
+    object-position: center;
 }
 
 .team-photo-placeholder {
