@@ -1197,6 +1197,10 @@ img {
     object-position: center;
 }
 
+.team-photo-face-fix {
+    object-position: center center;
+}
+
 .team-photo-placeholder {
     display: grid;
     place-items: center;
