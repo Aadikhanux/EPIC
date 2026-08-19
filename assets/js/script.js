@@ -57,6 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const navbarContainer = document.getElementById('navbarContainer');
     const scrollProgress = document.getElementById('scrollProgress');
     const backToTopBtn = document.getElementById('backToTop');
+    const timelineContainer = document.querySelector('.timeline-container');
+    const timelineLineFill = document.getElementById('timelineLineFill');
+    const timelineItems = document.querySelectorAll('.timeline-item');
 
     let lastScrollY = window.scrollY;
     let ticking = false;
@@ -70,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Progress Bar
                 if (scrollProgress) {
-                    scrollProgress.style.width = `${scrollPercent}%`;
+                    scrollProgress.style.transform = `scaleX(${Math.min(1, Math.max(0, scrollPercent / 100))})`;
                 }
 
                 // Smart Header
@@ -98,10 +101,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // SPARK Timeline dynamic fill tracking
-                const timelineContainer = document.querySelector('.timeline-container');
-                const timelineLineFill = document.getElementById('timelineLineFill');
-                const timelineItems = document.querySelectorAll('.timeline-item');
-
                 if (timelineContainer && timelineLineFill) {
                     const rect = timelineContainer.getBoundingClientRect();
                     const viewportHeight = window.innerHeight;
@@ -128,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
             ticking = true;
         }
-    });
+    }, { passive: true });
 
     if (backToTopBtn) {
         backToTopBtn.addEventListener('click', () => {
@@ -296,9 +295,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const mobile = document.getElementById('regMobile');
             const email = document.getElementById('regEmail');
             const branch = document.getElementById('regBranch');
+            const section = document.getElementById('regSection');
+            const year = document.getElementById('regYear');
             let valid = true;
 
-            [name, gender, mobile, email, branch].forEach(f => {
+            [name, gender, mobile, email, branch, section, year].forEach(f => {
                 f.classList.remove('error');
                 const err = f.parentElement.querySelector('.form-error-msg');
                 if (err) err.classList.remove('visible');
@@ -330,6 +331,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 valid = false;
             }
 
+            if (!section.value.trim()) {
+                section.classList.add('error');
+                valid = false;
+            }
+
+            if (!year.value) {
+                year.classList.add('error');
+                valid = false;
+            }
+
             if (!valid) return;
 
             const submitBtn = document.getElementById('registerSubmitBtn');
@@ -346,6 +357,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobile: mobile.value.trim(),
                 email: email.value.trim(),
                 branch: branch.value,
+                section: section.value.trim(),
+                year: year.value,
                 codingExperience: experienceRadio ? experienceRadio.value : 'No',
                 experienceDetail: document.getElementById('regExperienceDetail').value.trim(),
                 question: document.getElementById('regQuestion').value.trim(),
@@ -600,18 +613,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const sections = document.querySelectorAll('section[id]');
     const navAnchors = document.querySelectorAll('.nav-links a:not(.induction-button):not(.join-button)');
 
-    window.addEventListener('scroll', () => {
-        let currentId = '';
-        const scrollPosition = window.scrollY + 220;
-
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.offsetHeight;
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                currentId = section.getAttribute('id');
-            }
-        });
-
+    const setActiveNavLink = (currentId) => {
         let targetNavId = currentId;
         if (currentId === 'mentor') targetNavId = 'about';
         if (currentId === 'gallery') targetNavId = 'journey';
@@ -623,7 +625,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 anchor.classList.add('active');
             }
         });
-    });
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        const visibleSection = entries
+            .filter(entry => entry.isIntersecting)
+            .sort((a, b) => Math.abs(a.boundingClientRect.top) - Math.abs(b.boundingClientRect.top))[0];
+        if (visibleSection) setActiveNavLink(visibleSection.target.id);
+    }, { rootMargin: '-18% 0px -62% 0px', threshold: 0 });
+
+    sections.forEach(section => sectionObserver.observe(section));
 
     /* ================= 9. TEAM GRID — RESPONSIVE 2-ROW LAYOUT ================= */
     function applyTeamGridLayout() {
@@ -671,7 +682,209 @@ document.addEventListener('DOMContentLoaded', () => {
         teamGridResizeTimer = setTimeout(applyTeamGridLayout, 150);
     });
 
-    /* ================= 10. HERO STAT COUNTER ANIMATION ================= */
+    /* ================= 10. BRANCH DETAIL PANELS ================= */
+    const branchModal = document.getElementById('branchModal');
+    const branchPanel = branchModal?.querySelector('.branch-modal-panel');
+    const branchCards = document.querySelectorAll('.branch-card[data-branch]');
+    const branchLogos = {
+        spark: 'https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/spark-logo.png',
+        kaizen: 'https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/kaizen-logo.png',
+        phoenix: 'https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/phoenix-logo.png'
+    };
+    const branchDetails = {
+        spark: {
+            name: 'SPARK', eyebrow: '01 / Foundation Wing', tagline: 'Your Curiosity, Our Spark',
+            description: 'SPARK is where technical curiosity becomes momentum. It gives new builders a welcoming, structured path from first principles to a working prototype—without assuming prior experience.',
+            represents: 'The entry gateway to EPIC and its culture of experimentation. SPARK helps members discover what excites them, learn confidently with peers, and develop the habit of turning an idea into something tangible.',
+            focus: ['Programming fundamentals', 'HTML & CSS', 'JavaScript', 'Python', 'Git & GitHub', 'UI prototyping', 'Problem solving', 'Idea validation'],
+            activities: ['Beginner-friendly coding bootcamps and guided labs', 'Ideation circles and design-thinking sprints', 'Mini-project weeks with mentor checkpoints', 'Git, portfolio, and developer-tool workshops'],
+            skills: ['Strong technical foundations', 'Confidence to build independently', 'Team communication and presentation', 'A first project-ready portfolio'],
+            images: [
+                ['https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=82', 'Students learning together on laptops'],
+                ['https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=82', 'A beginner web development workspace'],
+                ['https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=82', 'A collaborative student ideation session'],
+                ['https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=82', 'Peers building their first prototype']
+            ]
+        },
+        kaizen: {
+            name: 'KAIZEN', eyebrow: '02 / Engineering Wing', tagline: 'Change For The Better',
+            description: 'KAIZEN is the continuous-improvement track for members ready to deepen their engineering craft. It connects disciplined learning with real systems, modern tools, and thoughtful technical decisions.',
+            represents: 'EPIC’s commitment to steady, measurable technical growth. KAIZEN turns foundational knowledge into engineering maturity through iteration, code review, system thinking, and production-style collaboration.',
+            focus: ['React & modern frontend', 'Node.js & APIs', 'Databases', 'AI & machine learning', 'Cloud computing', 'DevOps', 'System design', 'UI/UX'],
+            activities: ['Full-stack and AI/ML learning tracks', 'Architecture discussions and peer code reviews', 'Cloud deployment and DevOps workshops', 'Long-form team projects with technical demos'],
+            skills: ['Writing maintainable production code', 'Designing reliable end-to-end systems', 'Debugging and technical decision-making', 'Collaborating with professional workflows'],
+            images: [
+                ['https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=82', 'Software engineering code on a workstation'],
+                ['https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=82', 'Modern application development'],
+                ['https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1000&q=82', 'Python and machine learning development'],
+                ['https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1000&q=82', 'Reviewing and improving a software system']
+            ]
+        },
+        phoenix: {
+            name: 'PHOENIX', eyebrow: '03 / Competitive Wing', tagline: 'Redefining The Horizons',
+            description: 'PHOENIX brings together ambitious problem-solvers for high-intensity challenges. Members build under pressure, explore bold solutions, and represent EPIC through competitions, research, and open collaboration.',
+            represents: 'The competitive and innovation frontier of EPIC. PHOENIX channels advanced skills into ambitious outcomes—national hackathons, resilient prototypes, open-source work, and solutions with real-world relevance.',
+            focus: ['Competitive programming', 'Data structures & algorithms', 'Rapid prototyping', 'Open source', 'Applied research', 'Product strategy', 'Pitching', 'Advanced engineering'],
+            activities: ['Internal coding contests and algorithm drills', 'National hackathon teams and build sprints', 'Open-source contributions and research explorations', 'Demo days, technical pitches, and competition reviews'],
+            skills: ['Fast, structured problem solving', 'Building and shipping under constraints', 'Leadership in multidisciplinary teams', 'Technical pitching and competition readiness'],
+            images: [
+                ['https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=82', 'An energetic collaborative hackathon'],
+                ['https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=82', 'A team planning an innovative solution'],
+                ['https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=82', 'Developers collaborating during a build sprint'],
+                ['https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1000&q=82', 'Competitive coding and rapid prototyping']
+            ]
+        }
+    };
+
+    let activeBranchCard = null;
+    let modalCloseTimer = null;
+
+    const setBranchOrigin = (card) => {
+        if (!branchPanel || !card) return;
+        const rect = card.getBoundingClientRect();
+        const x = rect.left + rect.width / 2 - window.innerWidth / 2;
+        const y = rect.top + rect.height / 2 - window.innerHeight / 2;
+        branchPanel.style.setProperty('--modal-origin-x', `${x}px`);
+        branchPanel.style.setProperty('--modal-origin-y', `${y}px`);
+    };
+
+    const populateBranchModal = (key) => {
+        const details = branchDetails[key];
+        if (!details || !branchModal) return;
+        branchModal.className = `branch-modal ${key}`;
+        document.getElementById('branchModalLogo').src = branchLogos[key];
+        document.getElementById('branchModalLogo').alt = `${details.name} logo`;
+        document.getElementById('branchModalEyebrow').textContent = details.eyebrow;
+        document.getElementById('branchModalTitle').textContent = details.name;
+        document.getElementById('branchModalTagline').textContent = `“${details.tagline}”`;
+        document.getElementById('branchModalDescription').textContent = details.description;
+        document.getElementById('branchModalRepresents').textContent = details.represents;
+        document.getElementById('branchModalFocus').innerHTML = details.focus.map(item => `<span>${item}</span>`).join('');
+        document.getElementById('branchModalActivities').innerHTML = details.activities.map(item => `<li>${item}</li>`).join('');
+        document.getElementById('branchModalSkills').innerHTML = details.skills.map(item => `<li>${item}</li>`).join('');
+        document.getElementById('branchModalGallery').innerHTML = details.images.map(([src, alt]) =>
+            `<figure class="branch-gallery-item"><img src="${src}" alt="${alt}" loading="lazy"></figure>`
+        ).join('');
+    };
+
+    const openBranchModal = (card) => {
+        if (!branchModal || !branchPanel) return;
+        clearTimeout(modalCloseTimer);
+        activeBranchCard = card;
+        populateBranchModal(card.dataset.branch);
+        setBranchOrigin(card);
+        branchModal.removeAttribute('inert');
+        branchModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('branch-modal-open');
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            branchModal.classList.add('is-open');
+            branchPanel.focus({ preventScroll: true });
+        }));
+    };
+
+    const closeBranchModal = () => {
+        if (!branchModal?.classList.contains('is-open')) return;
+        setBranchOrigin(activeBranchCard);
+        branchModal.classList.add('is-closing');
+        branchModal.classList.remove('is-open');
+        modalCloseTimer = setTimeout(() => {
+            branchModal.classList.remove('is-closing');
+            branchModal.setAttribute('aria-hidden', 'true');
+            branchModal.setAttribute('inert', '');
+            document.body.classList.remove('branch-modal-open');
+            activeBranchCard?.focus({ preventScroll: true });
+        }, 500);
+    };
+
+    branchCards.forEach(card => {
+        card.addEventListener('click', (event) => {
+            if (event.target.closest('a')) return;
+            openBranchModal(card);
+        });
+        card.addEventListener('keydown', (event) => {
+            if ((event.key === 'Enter' || event.key === ' ') && !event.target.closest('a')) {
+                event.preventDefault();
+                openBranchModal(card);
+            }
+        });
+    });
+
+    branchModal?.querySelectorAll('[data-branch-close]').forEach(button => button.addEventListener('click', closeBranchModal));
+    document.addEventListener('keydown', (event) => {
+        if (!branchModal?.classList.contains('is-open')) return;
+        if (event.key === 'Escape') closeBranchModal();
+        if (event.key === 'Tab') {
+            const focusable = [...branchModal.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')];
+            if (!focusable.length) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        }
+    });
+
+    /* ================= 11. REPOSITORY COLLECTION PANEL ================= */
+    const repoLauncher = document.getElementById('openRepositoriesCard');
+    const repoModal = document.getElementById('repoModal');
+    const repoPanel = repoModal?.querySelector('.repo-modal-panel');
+    let repoCloseTimer = null;
+
+    const setRepoOrigin = () => {
+        if (!repoLauncher || !repoPanel) return;
+        const rect = repoLauncher.getBoundingClientRect();
+        repoPanel.style.setProperty('--modal-origin-x', `${rect.left + rect.width / 2 - window.innerWidth / 2}px`);
+        repoPanel.style.setProperty('--modal-origin-y', `${rect.top + rect.height / 2 - window.innerHeight / 2}px`);
+    };
+
+    const openRepoModal = () => {
+        if (!repoModal || !repoPanel) return;
+        clearTimeout(repoCloseTimer);
+        setRepoOrigin();
+        repoModal.removeAttribute('inert');
+        repoModal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('branch-modal-open');
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            repoModal.classList.add('is-open');
+            repoPanel.focus({ preventScroll: true });
+        }));
+    };
+
+    const closeRepoModal = () => {
+        if (!repoModal?.classList.contains('is-open')) return;
+        setRepoOrigin();
+        repoModal.classList.add('is-closing');
+        repoModal.classList.remove('is-open');
+        repoCloseTimer = setTimeout(() => {
+            repoModal.classList.remove('is-closing');
+            repoModal.setAttribute('aria-hidden', 'true');
+            repoModal.setAttribute('inert', '');
+            document.body.classList.remove('branch-modal-open');
+            repoLauncher?.focus({ preventScroll: true });
+        }, 500);
+    };
+
+    repoLauncher?.addEventListener('click', openRepoModal);
+    repoLauncher?.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openRepoModal();
+        }
+    });
+    repoModal?.querySelectorAll('[data-repo-close]').forEach(button => button.addEventListener('click', closeRepoModal));
+    document.addEventListener('keydown', (event) => {
+        if (!repoModal?.classList.contains('is-open')) return;
+        if (event.key === 'Escape') closeRepoModal();
+        if (event.key === 'Tab') {
+            const focusable = [...repoModal.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])')];
+            if (!focusable.length) return;
+            const first = focusable[0];
+            const last = focusable[focusable.length - 1];
+            if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+            else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+        }
+    });
+
+    /* ================= 12. HERO STAT COUNTER ANIMATION ================= */
     const heroStats = document.querySelectorAll('.hero-stat-item strong');
     if (heroStats.length) {
         const animateCount = (el) => {
@@ -703,7 +916,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heroStats.forEach((el) => observer.observe(el));
     }
 
-    /* ================= 11. CONSOLE BRANDING ================= */
+    /* ================= 13. CONSOLE BRANDING ================= */
     console.log(
         "%c EPIC | MBM University ",
         "background:#0f172a;color:#10b981;font-size:16px;font-weight:bold;padding:8px 14px;border-radius:6px;"

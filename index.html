@@ -404,7 +404,8 @@
 
             <div class="branches-wrapper">
                 <!-- SPARK -->
-                <div class="branch-card spark">
+                <div class="branch-card spark" data-branch="spark" tabindex="0" role="button"
+                    aria-haspopup="dialog" aria-label="Open SPARK branch details">
                     <div>
                         <div class="branch-card-top">
                             <div class="branch-card-badge">01 • SPARK</div>
@@ -432,7 +433,8 @@
                 </div>
 
                 <!-- KAIZEN -->
-                <div class="branch-card kaizen">
+                <div class="branch-card kaizen" data-branch="kaizen" tabindex="0" role="button"
+                    aria-haspopup="dialog" aria-label="Open KAIZEN branch details">
                     <div>
                         <div class="branch-card-top">
                             <div class="branch-card-badge">02 • KAIZEN</div>
@@ -459,7 +461,8 @@
                 </div>
 
                 <!-- PHOENIX -->
-                <div class="branch-card phoenix">
+                <div class="branch-card phoenix" data-branch="phoenix" tabindex="0" role="button"
+                    aria-haspopup="dialog" aria-label="Open PHOENIX branch details">
                     <div>
                         <div class="branch-card-top">
                             <div class="branch-card-badge">03 • PHOENIX</div>
@@ -486,6 +489,61 @@
                 </div>
             </div>
         </section>
+
+        <!-- Branch details are populated without navigating away from the page. -->
+        <div class="branch-modal" id="branchModal" aria-hidden="true" inert>
+            <div class="branch-modal-backdrop" data-branch-close></div>
+            <section class="branch-modal-panel" role="dialog" aria-modal="true"
+                aria-labelledby="branchModalTitle" aria-describedby="branchModalDescription" tabindex="-1">
+                <button class="branch-modal-close" type="button" data-branch-close aria-label="Close branch details">
+                    <i class="fa-solid fa-arrow-left"></i><span>Back</span>
+                </button>
+                <div class="branch-modal-scroll">
+                    <header class="branch-modal-hero">
+                        <div class="branch-modal-heading">
+                            <div class="branch-modal-logo"><img id="branchModalLogo" src="" alt=""></div>
+                            <div>
+                                <span class="branch-modal-eyebrow" id="branchModalEyebrow"></span>
+                                <h2 id="branchModalTitle"></h2>
+                                <p class="branch-modal-tagline" id="branchModalTagline"></p>
+                            </div>
+                        </div>
+                        <p class="branch-modal-description" id="branchModalDescription"></p>
+                    </header>
+
+                    <div class="branch-modal-content">
+                        <article class="branch-detail-block branch-detail-represents">
+                            <span class="branch-detail-kicker">Within EPIC</span>
+                            <h3>What this branch represents</h3>
+                            <p id="branchModalRepresents"></p>
+                        </article>
+                        <article class="branch-detail-block">
+                            <span class="branch-detail-kicker">Learn & build</span>
+                            <h3>Focus areas & technologies</h3>
+                            <div class="branch-detail-tags" id="branchModalFocus"></div>
+                        </article>
+                        <article class="branch-detail-block">
+                            <span class="branch-detail-kicker">Get involved</span>
+                            <h3>Activities & experiences</h3>
+                            <ul class="branch-detail-list" id="branchModalActivities"></ul>
+                        </article>
+                        <article class="branch-detail-block">
+                            <span class="branch-detail-kicker">Takeaways</span>
+                            <h3>Skills you will gain</h3>
+                            <ul class="branch-detail-list branch-skill-list" id="branchModalSkills"></ul>
+                        </article>
+                    </div>
+
+                    <section class="branch-gallery-section" aria-labelledby="branchGalleryTitle">
+                        <div class="branch-gallery-heading">
+                            <span class="branch-detail-kicker">Inside the branch</span>
+                            <h3 id="branchGalleryTitle">Learning in action</h3>
+                        </div>
+                        <div class="branch-modal-gallery" id="branchModalGallery"></div>
+                    </section>
+                </div>
+            </section>
+        </div>
 
         <!-- ================= MENTOR SHOWCASE ================= -->
         <section class="section mentor-section" id="mentor">
@@ -526,7 +584,7 @@
         <section class="section team-section" id="team">
             <div class="section-header-row">
                 <div>
-                    <div class="section-tag">04 / Leadership</div>
+                    <div class="section-tag">07 / Leadership</div>
                     <h2 class="section-title">Meet the Core Team</h2>
                 </div>
                 <p class="section-desc">
@@ -593,7 +651,8 @@
                 <div class="team-card">
                     <div class="team-photo-wrap">
                         <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786946024/IMG_20260817_074456.jpg"
-                            alt="Samarth Mathur" loading="lazy">
+                            alt="Samarth Mathur" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                         <div class="team-photo-placeholder">SM</div>
                     </div>
                     <h4>Samarth Mathur</h4>
@@ -627,7 +686,7 @@
                 <!-- 6. Adil Khan -->
                 <div class="team-card">
                     <div class="team-photo-wrap">
-                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786992586/Adil.jpg" alt="Adil Khan"
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1787080078/Adil_Khan.jpg" alt="Adil Khan"
                             loading="lazy"
                             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                         <div class="team-photo-placeholder" style="display:none;">AK</div>
@@ -700,7 +759,8 @@
                 <div class="team-card">
                     <div class="team-photo-wrap">
                         <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786911144/tejasvini_jain.jpg"
-                            alt="Tejasvini Jain" loading="lazy">
+                            alt="Tejasvini Jain" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                         <div class="team-photo-placeholder">TJ</div>
                     </div>
                     <h4>Tejasvini Jain</h4>
@@ -719,7 +779,7 @@
         <section class="section team-section alumni-section" id="alumni">
             <div class="section-header-row">
                 <div>
-                    <div class="section-tag">05 / Alumni</div>
+                    <div class="section-tag">08 / Alumni</div>
                     <h2 class="section-title">Last Year Team 2025-26</h2>
                 </div>
                 <p class="section-desc">
@@ -871,6 +931,21 @@
                         <i class="fa-brands fa-linkedin-in"></i>
                     </a>
                 </div>
+
+                <!-- 9. Pradyuman Caoudharry -->
+                <div class="team-card">
+                    <div class="team-photo-wrap">
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1787079134/pradyumanch_1.jpg"
+                            alt="Pradyuman Caoudharry" loading="lazy"
+                            onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
+                        <div class="team-photo-placeholder">PC</div>
+                    </div>
+                    <h4>Pradyuman Caoudharry</h4>
+                    <div class="team-pills">
+                        <span class="team-pill">Final Year</span>
+                        <span class="team-pill branch-tag">CSE</span>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -878,7 +953,7 @@
         <section class="section events-section" id="journey">
             <div class="section-header-row">
                 <div>
-                    <div class="section-tag">06 / Our Journey</div>
+                    <div class="section-tag">04 / Our Journey</div>
                     <h2 class="section-title">Milestones & History</h2>
                 </div>
                 <p class="section-desc">
@@ -902,7 +977,7 @@
                         <h4>Club Foundation</h4>
                         <p>
                             Established under the visionary mentorship of Dr. Abhishek Gour Sir, laying the foundation
-                            for student innovation, collaboration, and high-impact computing at MBM University. 🚀
+                            for student innovation, collaboration, and high-impact computing at MBM University. 
                         </p>
                     </div>
                 </div>
@@ -912,13 +987,13 @@
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <div class="timeline-header-row">
-                            <span class="timeline-date-chip">Oct - Nov 2024</span>
-                            <span class="timeline-tag-badge">Workshops</span>
+                            <span class="timeline-date-chip">Oct - Nov 2025</span>
+                            <span class="timeline-tag-badge">Google Cloud Study jams</span>
                         </div>
-                        <h4>First Step & GitHub Bootcamps</h4>
+                        <h4>Google Cloud Study jams</h4>
                         <p>
-                            Introduced juniors to programming fundamentals, Git version control, collaborative
-                            workflows, and competitive programming problem-solving strategies.
+Google Cloud Study Jams is a hands-on learning initiative designed to introduce students to Google Cloud technologies through guided learning and practical exploration. 
+Participants get the opportunity to understand cloud concepts, work with various cloud services, and strengthen their technical skills through structured learning activities and hands-on practice.
                         </p>
                     </div>
                 </div>
@@ -929,12 +1004,12 @@
                     <div class="timeline-content">
                         <div class="timeline-header-row">
                             <span class="timeline-date-chip">2025</span>
-                            <span class="timeline-tag-badge">Cohort</span>
+                            <span class="timeline-tag-badge">Project Competition</span>
                         </div>
                         <h4>StudyPods 5.0 Project Drive</h4>
                         <p>
-                            A 4-week intensive sprint where teams built production systems in Frontend, Backend, AI/ML,
-                            and UI/UX, presenting live functional prototypes.
+Study Pods 5.0 is a project-building competition organized by EPIC, bringing together students to build innovative and practical solutions. Participants competed across four domains — Frontend, Backend, UI/UX, and AI/ML. 
+Each team was supported by a dedicated mentor throughout the competition, providing guidance and helping participants turn their ideas into functional projects.
                         </p>
                     </div>
                 </div>
@@ -949,8 +1024,8 @@
                         </div>
                         <h4>Hack-a-Day</h4>
                         <p>
-                            A competitive 24-hour engineering challenge turning prompt problems into working
-                            applications across Web and AI tracks.
+Hack-a-Day is a 24-hour full-day coding and innovation competition organized by EPIC, designed to challenge participants to build solutions within a limited timeframe.
+ The competition features multiple stages based on skill level, including Beginner, Intermediate, and Advanced challenges, allowing participants of different experience levels to compete, learn, collaborate, and showcase their problem-solving abilities.
                         </p>
                     </div>
                 </div>
@@ -977,7 +1052,7 @@
         <section class="section gallery-section" id="gallery">
             <div class="section-header-row">
                 <div>
-                    <div class="section-tag">07 / Highlights</div>
+                    <div class="section-tag">05 / Highlights</div>
                     <h2 class="section-title">Moments & Highlights</h2>
                 </div>
                 <p class="section-desc">
@@ -1028,7 +1103,7 @@
         <section class="section resources-section" id="resources">
             <div class="section-header-row">
                 <div>
-                    <div class="section-tag">08 / Knowledge Hub</div>
+                    <div class="section-tag">06 / Knowledge Hub</div>
                     <h2 class="section-title">Curated Resources</h2>
                 </div>
                 <p class="section-desc">
@@ -1050,7 +1125,8 @@
                     </span>
                 </div>
 
-                <div class="resource-card">
+                <div class="resource-card repo-launch-card" id="openRepositoriesCard" tabindex="0" role="button"
+                    aria-haspopup="dialog" aria-label="Open EPIC repository collections">
                     <div>
                         <div class="resource-icon-box">
                             <i class="fa-solid fa-code-fork"></i>
@@ -1058,10 +1134,9 @@
                         <h4>Open Repositories</h4>
                         <p>Starter repos, competition boilerplate, and project templates authored by EPIC members.</p>
                     </div>
-                    <a href="https://github.com/epic-mbmu" target="_blank" rel="noopener noreferrer"
-                        class="resource-link">
-                        Browse Repos <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
+                    <span class="resource-link">
+                        Explore Collections <i class="fa-solid fa-arrow-right"></i>
+                    </span>
                 </div>
 
                 <div class="resource-card">
@@ -1078,6 +1153,56 @@
                 </div>
             </div>
         </section>
+
+        <!-- ================= REPOSITORY COLLECTIONS MODAL ================= -->
+        <div class="branch-modal repo-modal" id="repoModal" aria-hidden="true" inert>
+            <div class="branch-modal-backdrop" data-repo-close></div>
+            <section class="branch-modal-panel repo-modal-panel" role="dialog" aria-modal="true"
+                aria-labelledby="repoModalTitle" aria-describedby="repoModalDescription" tabindex="-1">
+                <button class="branch-modal-close" type="button" data-repo-close aria-label="Close repositories">
+                    <i class="fa-solid fa-arrow-left"></i><span>Back</span>
+                </button>
+                <div class="branch-modal-scroll">
+                    <header class="repo-modal-hero">
+                        <span class="branch-detail-kicker">EPIC Open Source</span>
+                        <h2 id="repoModalTitle">Open Repositories</h2>
+                        <p id="repoModalDescription">Explore code, project resources, and collaborative work from EPIC's flagship initiatives.</p>
+                    </header>
+
+                    <div class="repo-collections-grid">
+                        <article class="repo-collection-card study-pods">
+                            <div class="repo-collection-header">
+                                <div class="repo-collection-icon"><i class="fa-solid fa-layer-group"></i></div>
+                                <div><span>Collection 01</span><h3>Study Pods</h3></div>
+                            </div>
+                            <p>Project repositories built during EPIC Study Pods across frontend, backend, UI/UX, and AI/ML tracks.</p>
+                            <div class="repo-list">
+                                <!-- Add more Study Pods repositories by duplicating this link block. -->
+                                <a class="repo-item" href="https://github.com/orgs/epic-mbmu/repositories?q=study" target="_blank" rel="noopener noreferrer">
+                                    <div><i class="fa-brands fa-github"></i><span><strong>Study Pods Repositories</strong><small>Browse projects on GitHub</small></span></div>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <article class="repo-collection-card converge">
+                            <div class="repo-collection-header">
+                                <div class="repo-collection-icon"><i class="fa-solid fa-code-branch"></i></div>
+                                <div><span>Collection 02</span><h3>Converge</h3></div>
+                            </div>
+                            <p>Repositories created for Converge collaborations, challenges, prototypes, and technical showcases.</p>
+                            <div class="repo-list">
+                                <!-- Add more Converge repositories by duplicating this link block. -->
+                                <a class="repo-item" href="https://github.com/orgs/epic-mbmu/repositories?q=converge" target="_blank" rel="noopener noreferrer">
+                                    <div><i class="fa-brands fa-github"></i><span><strong>Converge Repositories</strong><small>Browse projects on GitHub</small></span></div>
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
 
         <!-- ================= CONTACT & REGISTRATION FORM ================= -->
         <section class="section contact-section" id="contact">
@@ -1230,25 +1355,44 @@
                                 </div>
                             </div>
 
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="regBranch">Branch <span class="required">*</span></label>
+                                    <select id="regBranch" class="form-control" required>
+                                        <option value="" disabled selected>Select your branch</option>
+                                        <option value="CSE">CSE</option>
+                                        <option value="IT">IT</option>
+                                        <option value="AI">AI</option>
+                                        <option value="ECE">ECE</option>
+                                        <option value="ECC">ECC</option>
+                                        <option value="EEE">EEE</option>
+                                        <option value="EE">EE</option>
+                                        <option value="Civil">Civil</option>
+                                        <option value="Chemical">Chemical</option>
+                                        <option value="BCT">BCT</option>
+                                        <option value="Petroleum">Petroleum</option>
+                                        <option value="P & I">P & I</option>
+                                        <option value="Mining">Mining</option>
+                                        <option value="Architecture">Architecture</option>
+                                        <option value="Mechanical">Mechanical</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="regSection">Section <span class="required">*</span></label>
+                                    <input type="text" id="regSection" name="section" class="form-control"
+                                        placeholder="Type your section" autocomplete="off" autocorrect="off"
+                                        autocapitalize="characters" spellcheck="false" required>
+                                </div>
+                            </div>
+
                             <div class="form-group">
-                                <label for="regBranch">Branch <span class="required">*</span></label>
-                                <select id="regBranch" class="form-control" required>
-                                    <option value="" disabled selected>Select your branch</option>
-                                    <option value="CSE">CSE</option>
-                                    <option value="IT">IT</option>
-                                    <option value="AI">AI</option>
-                                    <option value="ECE">ECE</option>
-                                    <option value="ECC">ECC</option>
-                                    <option value="EEE">EEE</option>
-                                    <option value="EE">EE</option>
-                                    <option value="Civil">Civil</option>
-                                    <option value="Chemical">Chemical</option>
-                                    <option value="BCT">BCT</option>
-                                    <option value="Petroleum">Petroleum</option>
-                                    <option value="P & I">P & I</option>
-                                    <option value="Mining">Mining</option>
-                                    <option value="Architecture">Architecture</option>
-                                    <option value="Mechanical">Mechanical</option>
+                                <label for="regYear">Year <span class="required">*</span></label>
+                                <select id="regYear" name="year" class="form-control" required>
+                                    <option value="" disabled selected>Select academic year</option>
+                                    <option value="1st Year">1st Year</option>
+                                    <option value="2nd Year">2nd Year</option>
+                                    <option value="3rd Year">3rd Year</option>
+                                    <option value="Final Year">Final Year</option>
                                 </select>
                             </div>
 
@@ -1375,6 +1519,21 @@
                 </div>
             </div>
         </section>
+
+        <script>
+            // Set the custom section order during parsing to prevent a post-load layout jump.
+            (() => {
+                const team = document.getElementById('team');
+                const alumni = document.getElementById('alumni');
+                const journey = document.getElementById('journey');
+                const resources = document.getElementById('resources');
+                if (!team || !alumni || !journey || !resources) return;
+                const parent = team.parentNode;
+                parent.insertBefore(journey, team);
+                parent.insertBefore(team, resources.nextSibling);
+                parent.insertBefore(alumni, team.nextSibling);
+            })();
+        </script>
     </main>
 
     <!-- ================= FOOTER ================= -->
