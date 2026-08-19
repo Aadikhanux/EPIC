@@ -8,7 +8,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ================= 1. THEME SWITCHER (LIGHT / DARK) ================= */
-    const themeToggleBtns = document.querySelectorAll('#themeToggle, #navThemeToggle, .theme-toggle-btn');
+    const themeToggleBtns = document.querySelectorAll('#themeToggle, .theme-toggle-btn');
     const htmlElement = document.documentElement;
 
     // Detect saved theme or system preference
@@ -414,11 +414,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const botKnowledge = [
         {
             keywords: ['join', 'membership', 'register', 'apply', 'enroll', 'form'],
-            response: "You can easily join EPIC by heading down to our <strong>Connect & Register</strong> section on this page! You can also join our official WhatsApp group at <a href='https://wa.me/917850940248' target='_blank' style='color:var(--brand-accent);font-weight:600;'>+91 78509 40248</a> for workshop updates."
+            response: "You can easily join EPIC by heading down to our <strong>Connect & Register</strong> section on this page! You can also join our <a href='https://chat.whatsapp.com/JN6rYcY6eHpGC34X1JVWuM?s=cl&amp;p=a&amp;ilr=0' target='_blank' rel='noopener noreferrer' style='color:var(--brand-accent);font-weight:600;'>official WhatsApp community</a> for workshop updates."
         },
         {
             keywords: ['wing', 'wings', 'spark', 'kaizen', 'phoenix', 'branch', 'branches', 'ecosystem'],
-            response: "EPIC has 3 specialized wings:<br>⚡ <strong>SPARK</strong> — For beginners taking their first steps in programming.<br>🛠️ <strong>KAIZEN</strong> — Continuous learning in Web, Backend, AI/ML & Systems.<br>🔥 <strong>PHOENIX</strong> — High-intensity national hackathons & competitive challenges."
+            response: "EPIC has 3 specialized wings:<br>⚡ <strong>SPARK</strong> — For beginners taking their first steps in programming.<br>🛠️ <strong>KAIZEN</strong> — Continuous learning in Web, Backend, AI/ML & Systems.<br>🔥 <strong>PHOENIX</strong> — Freelancing, client communication, and professional project delivery."
         },
         {
             keywords: ['coding', 'experience', 'beginner', 'fresher', 'prior', 'prerequisite', 'know nothing'],
@@ -442,7 +442,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             keywords: ['contact', 'email', 'phone', 'whatsapp', 'reach', 'number'],
-            response: "You can reach us directly at <strong>dsc.clubs@mbm.ac.in</strong> or chat with us on WhatsApp at <strong>+91 78509 40248</strong>."
+            response: "You can reach us directly at <strong>dsc.clubs@mbm.ac.in</strong> or join our <a href='https://chat.whatsapp.com/JN6rYcY6eHpGC34X1JVWuM?s=cl&amp;p=a&amp;ilr=0' target='_blank' rel='noopener noreferrer' style='color:var(--brand-accent);font-weight:600;'>WhatsApp community</a>."
         },
         {
             keywords: ['hi', 'hello', 'hey', 'greetings', 'help'],
@@ -709,7 +709,7 @@ document.addEventListener('DOMContentLoaded', () => {
         kaizen: {
             name: 'KAIZEN', eyebrow: '02 / Engineering Wing', tagline: 'Change For The Better',
             description: 'KAIZEN is the continuous-improvement track for members ready to deepen their engineering craft. It connects disciplined learning with real systems, modern tools, and thoughtful technical decisions.',
-            represents: 'EPIC’s commitment to steady, measurable technical growth. KAIZEN turns foundational knowledge into engineering maturity through iteration, code review, system thinking, and production-style collaboration.',
+            represents: "EPIC's commitment to steady, measurable technical growth. KAIZEN turns foundational knowledge into specialized, domain-focused expertise through iteration, code review, system thinking, and production-style collaboration.",
             focus: ['React & modern frontend', 'Node.js & APIs', 'Databases', 'AI & machine learning', 'Cloud computing', 'DevOps', 'System design', 'UI/UX'],
             activities: ['Full-stack and AI/ML learning tracks', 'Architecture discussions and peer code reviews', 'Cloud deployment and DevOps workshops', 'Long-form team projects with technical demos'],
             skills: ['Writing maintainable production code', 'Designing reliable end-to-end systems', 'Debugging and technical decision-making', 'Collaborating with professional workflows'],
@@ -721,17 +721,17 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         phoenix: {
-            name: 'PHOENIX', eyebrow: '03 / Competitive Wing', tagline: 'Redefining The Horizons',
-            description: 'PHOENIX brings together ambitious problem-solvers for high-intensity challenges. Members build under pressure, explore bold solutions, and represent EPIC through competitions, research, and open collaboration.',
-            represents: 'The competitive and innovation frontier of EPIC. PHOENIX channels advanced skills into ambitious outcomes—national hackathons, resilient prototypes, open-source work, and solutions with real-world relevance.',
-            focus: ['Competitive programming', 'Data structures & algorithms', 'Rapid prototyping', 'Open source', 'Applied research', 'Product strategy', 'Pitching', 'Advanced engineering'],
-            activities: ['Internal coding contests and algorithm drills', 'National hackathon teams and build sprints', 'Open-source contributions and research explorations', 'Demo days, technical pitches, and competition reviews'],
-            skills: ['Fast, structured problem solving', 'Building and shipping under constraints', 'Leadership in multidisciplinary teams', 'Technical pitching and competition readiness'],
+            name: 'PHOENIX', eyebrow: '03 / Freelancing Wing', tagline: 'Redefining The Horizons',
+            description: 'Freelancing as a career path, hands-on experience, earn while you learn.',
+            represents: 'The professional and entrepreneurial wing of EPIC. PHOENIX bridges the gap between learning a skill and earning through it by building confidence, business awareness, client experience, and a strong body of work.',
+            focus: ['Freelance platforms', 'Portfolio building', 'Client acquisition', 'Proposal writing', 'Project estimation', 'UI/UX delivery', 'Full-stack projects', 'Personal branding'],
+            activities: ['Freelance profile and portfolio review sessions', 'Client communication and proposal-writing workshops', 'Real-world project scoping and delivery simulations', 'Pricing, negotiation, invoicing, and personal-branding sessions'],
+            skills: ['Finding and approaching suitable clients', 'Writing clear proposals and project scopes', 'Managing timelines, feedback, and revisions', 'Delivering professional work and building client trust'],
             images: [
-                ['https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=82', 'An energetic collaborative hackathon'],
-                ['https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=82', 'A team planning an innovative solution'],
-                ['https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=82', 'Developers collaborating during a build sprint'],
-                ['https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1000&q=82', 'Competitive coding and rapid prototyping']
+                ['https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=82', 'Freelancers collaborating in a professional workspace'],
+                ['https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=82', 'A team discussing client goals and project scope'],
+                ['https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=82', 'Developers delivering a client project together'],
+                ['https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1000&q=82', 'Independent professional software development']
             ]
         }
     };
@@ -768,6 +768,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const openBranchModal = (card) => {
+        if (card.dataset.page) {
+            window.location.href = card.dataset.page;
+            return;
+        }
         if (!branchModal || !branchPanel) return;
         clearTimeout(modalCloseTimer);
         activeBranchCard = card;
