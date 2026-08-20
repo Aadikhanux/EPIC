@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Questions | EPIC Technical Club</title>
+    <meta name="description" content="Test your technology knowledge with the EPIC Technical Club quiz.">
+    <script src="../assets/js/page-theme.js"></script>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/branch-page.css">
+    <link rel="stylesheet" href="../assets/css/quiz.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="branch-page quiz-page">
+    <header class="branch-page-nav">
+        <a href="../" class="branch-page-brand" aria-label="Back to EPIC homepage">
+            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/epic-logo.png" alt="EPIC logo">
+            <span><strong>EPIC</strong><small>MBM University</small></span>
+        </a>
+        <div class="branch-page-nav-actions">
+            <a href="../" class="branch-page-back"><i class="fa-solid fa-arrow-left"></i> Back home</a>
+            <button class="page-theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-moon"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="quiz-hero">
+            <span class="quiz-eyebrow"><i class="fa-solid fa-bolt"></i> EPIC Knowledge Challenge</span>
+            <h1>Quiz Questions</h1>
+            <p>Put your coding and technology fundamentals to the test.</p>
+        </section>
+
+        <section class="quiz-shell" aria-live="polite">
+            <div class="quiz-topbar">
+                <span id="quizProgress">Question 1 of 8</span>
+                <span id="quizScore">Score: 0</span>
+            </div>
+            <div class="quiz-progress-track"><span id="quizProgressBar"></span></div>
+
+            <article class="quiz-card" id="quizCard">
+                <span class="quiz-category" id="quizCategory"></span>
+                <h2 id="quizQuestion"></h2>
+                <div class="quiz-options" id="quizOptions"></div>
+                <p class="quiz-feedback" id="quizFeedback"></p>
+                <button class="quiz-next" id="quizNext" type="button" disabled>Next question <i class="fa-solid fa-arrow-right"></i></button>
+            </article>
+
+            <article class="quiz-card quiz-result" id="quizResult" hidden>
+                <div class="quiz-result-icon"><i class="fa-solid fa-trophy"></i></div>
+                <span class="quiz-category">Challenge complete</span>
+                <h2 id="resultTitle">Great work!</h2>
+                <p id="resultScore"></p>
+                <button class="quiz-next" id="quizRestart" type="button"><i class="fa-solid fa-rotate-right"></i> Try again</button>
+            </article>
+        </section>
+    </main>
+
+    <footer class="bp-footer">
+        <div class="bp-footer-inner">
+            <div class="bp-footer-bottom">
+                <span>&copy; 2026 EPIC Technical Club. All rights reserved.</span>
+                <div class="bp-footer-links"><a href="../">Home</a><a href="../#branches">Branches</a><a href="../#contact">Connect</a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="../assets/js/quiz.js"></script>
+</body>
+</html>

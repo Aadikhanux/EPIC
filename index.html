@@ -117,11 +117,6 @@
         </div>
     </div>
 
-    <!-- ================= FLOATING BACK TO TOP ================= -->
-    <button class="back-to-top" id="backToTop" title="Back to Top" aria-label="Back to Top">
-        <i class="fa-solid fa-arrow-up"></i>
-    </button>
-
     <!-- ================= MOBILE BOTTOM SOCIAL BAR ================= -->
     <div class="mobile-social-bar" aria-label="Social links">
         <a href="https://chat.whatsapp.com/JN6rYcY6eHpGC34X1JVWuM?s=cl&amp;p=a&amp;ilr=0" target="_blank"
@@ -139,6 +134,9 @@
             title="LinkedIn">
             <i class="fa-brands fa-linkedin-in"></i>
         </a>
+        <button type="button" class="theme-toggle-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
     </div>
 
 
@@ -220,6 +218,10 @@
                 <a href="#journey">Journey</a>
                 <a href="#contact">Contact</a>
 
+                <a href="quiz/" class="quiz-nav-button">
+                    <i class="fa-solid fa-circle-question"></i> Quiz Questions
+                </a>
+
                 <a href="#contact" class="join-button">
                     Join Club
                 </a>
@@ -265,15 +267,15 @@
 
                     <div class="hero-stats-strip">
                         <div class="hero-stat-item">
-                            <strong>500+</strong>
+                            <strong>1500+</strong>
                             <span>Builders</span>
                         </div>
                         <div class="hero-stat-item">
-                            <strong>30+</strong>
+                            <strong>100+</strong>
                             <span>Projects</span>
                         </div>
                         <div class="hero-stat-item">
-                            <strong>25+</strong>
+                            <strong>50+</strong>
                             <span>Sessions</span>
                         </div>
                     </div>
@@ -333,27 +335,31 @@
             <div class="section-header-row">
                 <div>
                     <div class="section-tag">01 / Who We Are</div>
-                    <h2 class="section-title">Built by students.<br>Driven by innovation.</h2>
+                    <h2 class="section-title">Where curiosity<br>becomes impact.</h2>
                 </div>
                 <p class="section-desc">
-                    We bridge the gap between what you learn in class and what industry actually demands through
-                    projects, workshops, and challenges built to test real skills.
+                    A student-led community where learning ends in something real.
                 </p>
             </div>
 
             <div class="about-grid">
                 <div class="about-card-big">
+                    <span class="about-card-kicker"><i class="fa-solid fa-bolt"></i> The EPIC difference</span>
                     <p class="lead">
-                        EPIC is not just a student club — it's an ecosystem designed to turn curious learners into
-                        high-impact builders and leaders.
+                        Learn it. Build it.<br><span>Take it beyond the classroom.</span>
                     </p>
                     <p class="about-card-text-muted">
-                        Whether you're writing your first line of code in SPARK, sharpening your engineering skills in
-                        KAIZEN, or turning your skills into income through PHOENIX, EPIC provides the mentorship, peers,
-                        and opportunities to help you excel.
+                        One community. Three paths. Every stage of your journey covered.
                     </p>
+                    <div class="about-path" aria-label="EPIC learning journey">
+                        <span><strong>SPARK</strong><small>Discover</small></span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span><strong>KAIZEN</strong><small>Master</small></span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <span><strong>PHOENIX</strong><small>Deliver</small></span>
+                    </div>
                     <a href="#team" class="primary-btn btn-inline-flex">
-                        Meet Our Leadership <i class="fa-solid fa-arrow-right"></i>
+                        Meet the people <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
 
@@ -362,17 +368,16 @@
                         <div class="about-feature-icon">
                             <i class="fa-solid fa-code"></i>
                         </div>
-                        <h4>Real Projects</h4>
-                        <p>Practical portfolio building, peer code reviews, and exposure to real world problem
-                            statements.</p>
+                        <h4>Build for real</h4>
+                        <p>Ideas become working products.</p>
                     </div>
 
                     <div class="about-feature-box">
                         <div class="about-feature-icon">
                             <i class="fa-solid fa-trophy"></i>
                         </div>
-                        <h4>Competitions & Wins</h4>
-                        <p>Represent our university in top-tier coding contests and hackathons nationwide.</p>
+                        <h4>Compete boldly</h4>
+                        <p>Test your skills on bigger stages.</p>
                     </div>
 
                     <div class="about-feature-box">
@@ -380,15 +385,15 @@
                             <i class="fa-solid fa-users"></i>
                         </div>
                         <h4>Mentorship</h4>
-                        <p>Guided directly by esteemed faculty and accomplished alumni in top tech companies.</p>
+                        <p>Learn with peers, alumni, and faculty.</p>
                     </div>
 
                     <div class="about-feature-box">
                         <div class="about-feature-icon">
                             <i class="fa-solid fa-rocket"></i>
                         </div>
-                        <h4>Career Growth</h4>
-                        <p>Practical portfolio building, peer code reviews, and mock interview prep.</p>
+                        <h4>Grow beyond code</h4>
+                        <p>Build confidence, craft, and a career.</p>
                     </div>
                 </div>
             </div>
@@ -679,8 +684,8 @@
                 <!-- 5. Kritika -->
                 <div class="team-card">
                     <div class="team-photo-wrap">
-                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1786912563/Kritika.jpg"
-                            alt="Kritika" loading="lazy" class="team-photo-zoom"
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1787217239/kritika_new.jpg"
+                            alt="Kritika" loading="lazy" class="team-photo-zoom kritika-photo"
                             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                         <div class="team-photo-placeholder" style="display:none;">K</div>
                     </div>
@@ -698,7 +703,7 @@
                 <!-- 6. Adil Khan -->
                 <div class="team-card">
                     <div class="team-photo-wrap">
-                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1787080078/Adil_Khan.jpg"
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1787169190/Adil_new.jpg"
                             alt="Adil Khan" loading="lazy"
                             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                         <div class="team-photo-placeholder" style="display:none;">AK</div>
@@ -755,7 +760,7 @@
                 <!-- 9. Ishika Gupta -->
                 <div class="team-card">
                     <div class="team-photo-wrap">
-                        <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/c_fill,g_face,w_300,h_300,f_auto,q_auto,w_auto/v1/epic_portal/team/ishika-gupta.jpg"
+                        <img src="https://res.cloudinary.com/sitqyj0b/image/upload/v1787215885/ishika_new.jpg"
                             alt="Ishika Gupta" loading="lazy"
                             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                         <div class="team-photo-placeholder" style="display:none;">IG</div>
@@ -847,7 +852,7 @@
                 <div class="team-card">
                     <div class="team-photo-wrap">
                         <img src="https://res.cloudinary.com/sitqyj0b/image/upload/c_fill,g_face,w_400,h_400,f_auto,q_auto/v1787166224/hemansh_new.jpg"
-                            alt="Hemansh Mishra" loading="lazy" class="team-photo-zoom"
+                            alt="Hemansh Mishra" loading="lazy" class="team-photo-zoom hemansh-photo"
                             onerror="this.style.display='none'; this.nextElementSibling.style.display='grid'">
                         <div class="team-photo-placeholder">HM</div>
                     </div>
@@ -1022,9 +1027,10 @@
                         </div>
                         <h4>Internal SIH Session</h4>
                         <p>
-                            A platform organized by EPIC where 52 teams pitched innovative solutions for the Smart India
-                            Hackathon before a panel of judges. It focused on innovation, problem-solving, teamwork, and
-                            identifying ideas for further development.
+                            Organized by EPIC, this platform brought together 52 teams who pitched innovative solutions
+                            for the Smart India Hackathon before a panel of judges, showcasing innovation,
+                            problem-solving, and collaborative teamwork while identifying promising ideas for further
+                            development.
                         </p>
                     </div>
                 </div>
@@ -1537,6 +1543,18 @@
                     <div class="faq-content">
                         <p>Any student from MBM University passionate about computing, software engineering, coding,
                             or design is welcome! We welcome all years and all engineering disciplines.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-header" type="button">
+                        <span>Why should I join EPIC?</span>
+                        <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-content">
+                        <p>EPIC gives you hands-on coding experience, exposure to real-world projects, mentorship from
+                            seniors, and a community of like-minded engineers, whether you're just starting out or
+                            already competing at national hackathons.</p>
                     </div>
                 </div>
 

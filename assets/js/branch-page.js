@@ -20,10 +20,14 @@ const branchPages = {
             { value: '4', label: 'Focus Tracks' }
         ],
         images: [
-            ['https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=82', 'Students learning together on laptops'],
-            ['https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1100&q=82', 'A beginner web development workspace'],
-            ['https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1100&q=82', 'A collaborative student ideation session'],
-            ['https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1100&q=82', 'Peers building their first prototype']
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213201/spark_02.jpg', 'SPARK members learning and building together'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213202/spark_03.jpg', 'SPARK collaborative learning session'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213201/spark_04.jpg', 'SPARK students working on technical activities'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213201/spark_05.jpg', 'A hands-on SPARK workshop'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_08.jpg', 'SPARK members sharing ideas'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_07.jpg', 'Students participating in a SPARK session'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_01.jpg', 'A memorable moment from SPARK'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_06.jpg', 'The SPARK community in action']
         ]
     },
     kaizen: {
@@ -33,9 +37,9 @@ const branchPages = {
         logo: 'https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/kaizen-logo.png',
         description: 'KAIZEN is the continuous-improvement track for members ready to deepen their engineering craft. It connects disciplined learning with real systems, modern tools, and thoughtful technical decisions.',
         represents: "EPIC's commitment to steady, measurable technical growth. KAIZEN turns foundational knowledge into specialized, domain-focused expertise through iteration, code review, system thinking, and production-style collaboration.",
-        focus: ['React & modern frontend', 'Node.js & APIs', 'Databases', 'AI & machine learning', 'Cloud computing', 'DevOps', 'System design', 'UI/UX'],
-        activities: ['Full-stack and AI/ML learning tracks', 'Architecture discussions and peer code reviews', 'Cloud deployment and DevOps workshops', 'Long-form team projects with technical demos'],
-        skills: ['Writing maintainable production code', 'Designing reliable end-to-end systems', 'Debugging and technical decision-making', 'Collaborating with professional workflows'],
+        focus: ['Web Development', 'AI/ML', 'UI/UX Design', 'Android Development', 'Cloud Computing', 'Data Structures & Algorithms', 'System Design Basics', 'Version Control Workflows'],
+        activities: ['Domain-specific bootcamps (AI/ML, Web, Android, Cloud, UI/UX)', 'Intermediate project builds with mentor guidance', 'Code review and pair-programming sessions', 'Tool and framework-specific workshops'],
+        skills: ['Specialization in a chosen tech domain', 'Ability to build full-scale projects independently', 'Hands-on experience with industry-relevant tools', 'A stronger, domain-focused portfolio'],
         stats: [
             { value: '40+', label: 'Active Members' },
             { value: '8', label: 'Tech Tracks' },
@@ -43,10 +47,11 @@ const branchPages = {
             { value: '6', label: 'Domains' }
         ],
         images: [
-            ['https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1400&q=82', 'Software engineering code on a workstation'],
-            ['https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1100&q=82', 'Modern application development'],
-            ['https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1100&q=82', 'Python and machine learning development'],
-            ['https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1100&q=82', 'Reviewing and improving a software system']
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214204/kaizen_05.jpg', 'KAIZEN members developing their engineering skills'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214204/kaizen_04.jpg', 'A collaborative KAIZEN learning session'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214204/kaizen_02.jpg', 'KAIZEN students working together'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214205/kaizen_01.jpg', 'Hands-on learning at KAIZEN'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214203/kaizen_03.jpg', 'The KAIZEN community in action']
         ]
     },
     phoenix: {
@@ -56,9 +61,9 @@ const branchPages = {
         logo: 'https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/phoenix-logo.png',
         description: 'PHOENIX bridges the gap between learning a skill and earning through it. Freelancing as a career path, hands-on experience, earn while you learn — building confidence, business awareness, and a strong body of work.',
         represents: 'The professional and entrepreneurial wing of EPIC. PHOENIX builds confidence, business awareness, client experience, and a strong body of work by bridging the gap between learning a skill and earning through it.',
-        focus: ['Freelance platforms', 'Portfolio building', 'Client acquisition', 'Proposal writing', 'Project estimation', 'UI/UX delivery', 'Full-stack projects', 'Personal branding'],
-        activities: ['Freelance profile and portfolio review sessions', 'Client communication and proposal-writing workshops', 'Real-world project scoping and delivery simulations', 'Pricing, negotiation, invoicing, and personal-branding sessions'],
-        skills: ['Finding and approaching suitable clients', 'Writing clear proposals and project scopes', 'Managing timelines, feedback, and revisions', 'Delivering professional work and building client trust'],
+        focus: ['Client Communication', 'Freelance Project Delivery', 'Portfolio Building', 'Pricing & Proposals', 'Web/App Development', 'UI/UX for Clients', 'Time & Scope Management', 'Personal Branding'],
+        activities: ['Freelance project matching and onboarding', 'Peer code reviews and delivery checkpoints', 'Client communication and proposal-writing workshops', 'Portfolio and personal-branding sessions'],
+        skills: ['Practical portfolio building through real client work', 'Experience handling freelance projects end-to-end', 'Peer code review and quality feedback', 'Resume-worthy, real-world project experience'],
         stats: [
             { value: '35+', label: 'Active Members' },
             { value: '15+', label: 'Client Projects' },

@@ -56,7 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ================= 3. SMART HEADER (HIDE ON SCROLL DOWN, SHOW ON UP) ================= */
     const navbarContainer = document.getElementById('navbarContainer');
     const scrollProgress = document.getElementById('scrollProgress');
-    const backToTopBtn = document.getElementById('backToTop');
     const timelineContainer = document.querySelector('.timeline-container');
     const timelineLineFill = document.getElementById('timelineLineFill');
     const timelineItems = document.querySelectorAll('.timeline-item');
@@ -91,15 +90,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
-                // Back to Top Button
-                if (backToTopBtn) {
-                    if (currentScrollY > 400) {
-                        backToTopBtn.classList.add('show');
-                    } else {
-                        backToTopBtn.classList.remove('show');
-                    }
-                }
-
                 // SPARK Timeline dynamic fill tracking
                 if (timelineContainer && timelineLineFill) {
                     const rect = timelineContainer.getBoundingClientRect();
@@ -128,15 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ticking = true;
         }
     }, { passive: true });
-
-    if (backToTopBtn) {
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-    }
 
     /* ================= 4. MOBILE MENU ================= */
     const menuButton = document.getElementById('menuButton');
@@ -720,33 +701,38 @@ document.addEventListener('DOMContentLoaded', () => {
             activities: ['Beginner-friendly coding bootcamps and guided labs', 'Ideation circles and design-thinking sprints', 'Mini-project weeks with mentor checkpoints', 'Git, portfolio, and developer-tool workshops'],
             skills: ['Strong technical foundations', 'Confidence to build independently', 'Team communication and presentation', 'A first project-ready portfolio'],
             images: [
-                ['https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=82', 'Students learning together on laptops'],
-                ['https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=82', 'A beginner web development workspace'],
-                ['https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1000&q=82', 'A collaborative student ideation session'],
-                ['https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=82', 'Peers building their first prototype']
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213201/spark_02.jpg', 'SPARK members learning and building together'],
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213202/spark_03.jpg', 'SPARK collaborative learning session'],
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213201/spark_04.jpg', 'SPARK students working on technical activities'],
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213201/spark_05.jpg', 'A hands-on SPARK workshop'],
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_08.jpg', 'SPARK members sharing ideas'],
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_07.jpg', 'Students participating in a SPARK session'],
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_01.jpg', 'A memorable moment from SPARK'],
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_06.jpg', 'The SPARK community in action']
             ]
         },
         kaizen: {
             name: 'KAIZEN', eyebrow: '02 / Engineering Wing', tagline: 'Change For The Better',
             description: 'KAIZEN is the continuous-improvement track for members ready to deepen their engineering craft. It connects disciplined learning with real systems, modern tools, and thoughtful technical decisions.',
             represents: "EPIC's commitment to steady, measurable technical growth. KAIZEN turns foundational knowledge into specialized, domain-focused expertise through iteration, code review, system thinking, and production-style collaboration.",
-            focus: ['React & modern frontend', 'Node.js & APIs', 'Databases', 'AI & machine learning', 'Cloud computing', 'DevOps', 'System design', 'UI/UX'],
-            activities: ['Full-stack and AI/ML learning tracks', 'Architecture discussions and peer code reviews', 'Cloud deployment and DevOps workshops', 'Long-form team projects with technical demos'],
-            skills: ['Writing maintainable production code', 'Designing reliable end-to-end systems', 'Debugging and technical decision-making', 'Collaborating with professional workflows'],
+            focus: ['Web Development', 'AI/ML', 'UI/UX Design', 'Android Development', 'Cloud Computing', 'Data Structures & Algorithms', 'System Design Basics', 'Version Control Workflows'],
+            activities: ['Domain-specific bootcamps (AI/ML, Web, Android, Cloud, UI/UX)', 'Intermediate project builds with mentor guidance', 'Code review and pair-programming sessions', 'Tool and framework-specific workshops'],
+            skills: ['Specialization in a chosen tech domain', 'Ability to build full-scale projects independently', 'Hands-on experience with industry-relevant tools', 'A stronger, domain-focused portfolio'],
             images: [
-                ['https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=82', 'Software engineering code on a workstation'],
-                ['https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1000&q=82', 'Modern application development'],
-                ['https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=1000&q=82', 'Python and machine learning development'],
-                ['https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=1000&q=82', 'Reviewing and improving a software system']
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214204/kaizen_05.jpg', 'KAIZEN members developing their engineering skills'],
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214204/kaizen_04.jpg', 'A collaborative KAIZEN learning session'],
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214204/kaizen_02.jpg', 'KAIZEN students working together'],
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214205/kaizen_01.jpg', 'Hands-on learning at KAIZEN'],
+                ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214203/kaizen_03.jpg', 'The KAIZEN community in action']
             ]
         },
         phoenix: {
             name: 'PHOENIX', eyebrow: '03 / Freelancing Wing', tagline: 'Redefining The Horizons',
             description: 'Freelancing as a career path, hands-on experience, earn while you learn.',
             represents: 'The professional and entrepreneurial wing of EPIC. PHOENIX bridges the gap between learning a skill and earning through it by building confidence, business awareness, client experience, and a strong body of work.',
-            focus: ['Freelance platforms', 'Portfolio building', 'Client acquisition', 'Proposal writing', 'Project estimation', 'UI/UX delivery', 'Full-stack projects', 'Personal branding'],
-            activities: ['Freelance profile and portfolio review sessions', 'Client communication and proposal-writing workshops', 'Real-world project scoping and delivery simulations', 'Pricing, negotiation, invoicing, and personal-branding sessions'],
-            skills: ['Finding and approaching suitable clients', 'Writing clear proposals and project scopes', 'Managing timelines, feedback, and revisions', 'Delivering professional work and building client trust'],
+            focus: ['Client Communication', 'Freelance Project Delivery', 'Portfolio Building', 'Pricing & Proposals', 'Web/App Development', 'UI/UX for Clients', 'Time & Scope Management', 'Personal Branding'],
+            activities: ['Freelance project matching and onboarding', 'Peer code reviews and delivery checkpoints', 'Client communication and proposal-writing workshops', 'Portfolio and personal-branding sessions'],
+            skills: ['Practical portfolio building through real client work', 'Experience handling freelance projects end-to-end', 'Peer code review and quality feedback', 'Resume-worthy, real-world project experience'],
             images: [
                 ['https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=82', 'Freelancers collaborating in a professional workspace'],
                 ['https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=82', 'A team discussing client goals and project scope'],
@@ -940,7 +926,47 @@ document.addEventListener('DOMContentLoaded', () => {
         heroStats.forEach((el) => observer.observe(el));
     }
 
-    /* ================= 13. CONSOLE BRANDING ================= */
+    /* ================= 13. KEYBOARD SECTION NAVIGATION ================= */
+    const pageSections = [...document.querySelectorAll('main > section[id]')];
+    if (pageSections.length) {
+        let sectionScrollFrame = 0;
+        const fastScrollTo = (targetY) => {
+            cancelAnimationFrame(sectionScrollFrame);
+            const startY = window.scrollY;
+            const distance = targetY - startY;
+            const duration = 240;
+            const startTime = performance.now();
+
+            const animate = (now) => {
+                const progress = Math.min((now - startTime) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                window.scrollTo(0, startY + distance * eased);
+                if (progress < 1) sectionScrollFrame = requestAnimationFrame(animate);
+            };
+            sectionScrollFrame = requestAnimationFrame(animate);
+        };
+
+        document.addEventListener('keydown', (event) => {
+            if (!['ArrowUp', 'ArrowDown'].includes(event.key) || event.altKey || event.ctrlKey || event.metaKey) return;
+            if (event.target.closest('input, textarea, select, [contenteditable="true"]')) return;
+            if (document.querySelector('[role="dialog"].is-open')) return;
+
+            const anchorY = 100;
+            const currentIndex = pageSections.reduce((closest, section, index) => {
+                const distance = Math.abs(section.getBoundingClientRect().top - anchorY);
+                return distance < closest.distance ? { index, distance } : closest;
+            }, { index: 0, distance: Infinity }).index;
+            const nextIndex = currentIndex + (event.key === 'ArrowDown' ? 1 : -1);
+            const targetSection = pageSections[nextIndex];
+            if (!targetSection) return;
+
+            event.preventDefault();
+            const targetY = window.scrollY + targetSection.getBoundingClientRect().top;
+            fastScrollTo(targetY);
+        });
+    }
+
+    /* ================= 14. CONSOLE BRANDING ================= */
     console.log(
         "%c EPIC | MBM University ",
         "background:#0f172a;color:#10b981;font-size:16px;font-weight:bold;padding:8px 14px;border-radius:6px;"
