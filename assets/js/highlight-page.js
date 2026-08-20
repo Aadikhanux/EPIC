@@ -97,6 +97,130 @@ if (highlight) {
         }).join('');
     }
     document.getElementById('highlightGallery').innerHTML = highlight.images.map(([src, alt]) =>
-        `<figure><img src="${src}" alt="${alt}" loading="lazy"></figure>`
+        `<figure><img src="${src}" alt="${alt}" loading="lazy"><figcaption style="display:none;">${alt}</figcaption></figure>`
     ).join('');
+
+    // --- Image Card Modal System for Highlights with Left/Right Navigation ---
+    function setupHighlightImageModal() {
+        const galleryItems = highlight.images.map(([src, alt]) => ({ src, caption: alt }));
+        let currentIndex = 0;
+
+        let modal = document.getElementById('imageCardModal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'imageCardModal';
+            modal.className = 'image-card-modal';
+            modal.setAttribute('aria-hidden', 'true');
+            modal.setAttribute('role', 'dialog');
+            modal.innerHTML = `
+                <div class="image-card-backdrop" data-close-card></div>
+                <div class="image-card-dialog">
+                    <div class="image-card-header">
+                        <div class="image-card-header-left">
+                            <span class="image-card-tag"><i class="fa-regular fa-image"></i> ${highlight.title} Gallery</span>
+                            <span class="image-card-counter" id="imageCardCounter">1 / ${galleryItems.length}</span>
+                        </div>
+                        <button class="image-card-close" type="button" data-close-card aria-label="Close image card"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
+                    <div class="image-card-media">
+                        <button class="image-card-nav-btn prev" id="imageCardPrev" type="button" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                        <img id="imageCardImg" src="" alt="">
+                        <button class="image-card-nav-btn next" id="imageCardNext" type="button" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                    <div class="image-card-footer">
+                        <div class="image-card-caption" id="imageCardCaption"></div>
+                    </div>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        const imgEl = modal.querySelector('#imageCardImg');
+        const capEl = modal.querySelector('#imageCardCaption');
+        const counterEl = modal.querySelector('#imageCardCounter');
+        const prevBtn = modal.querySelector('#imageCardPrev');
+        const nextBtn = modal.querySelector('#imageCardNext');
+
+        const updateCardView = (idx, animated = true) => {
+            if (idx < 0) idx = galleryItems.length - 1;
+            if (idx >= galleryItems.length) idx = 0;
+            currentIndex = idx;
+
+            const item = galleryItems[currentIndex];
+            if (!item) return;
+
+            if (animated) {
+                imgEl.classList.add('fading');
+                setTimeout(() => {
+                    imgEl.src = item.src;
+                    imgEl.alt = item.caption || `${highlight.title} Photo`;
+                    capEl.textContent = item.caption || `${highlight.title} Event Moment`;
+                    if (counterEl) counterEl.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
+                    imgEl.classList.remove('fading');
+                }, 150);
+            } else {
+                imgEl.src = item.src;
+                imgEl.alt = item.caption || `${highlight.title} Photo`;
+                capEl.textContent = item.caption || `${highlight.title} Event Moment`;
+                if (counterEl) counterEl.textContent = `${currentIndex + 1} / ${galleryItems.length}`;
+            }
+        };
+
+        const openModal = (index) => {
+            updateCardView(index, false);
+            modal.classList.add('is-open');
+            modal.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('image-card-open');
+        };
+
+        const closeModal = () => {
+            modal.classList.remove('is-open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('image-card-open');
+            setTimeout(() => {
+                if (!modal.classList.contains('is-open')) imgEl.src = '';
+            }, 300);
+        };
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateCardView(currentIndex - 1);
+            });
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                updateCardView(currentIndex + 1);
+            });
+        }
+
+        modal.querySelectorAll('[data-close-card]').forEach(el => el.addEventListener('click', closeModal));
+
+        document.addEventListener('keydown', (e) => {
+            if (!modal.classList.contains('is-open')) return;
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'ArrowLeft') updateCardView(currentIndex - 1);
+            if (e.key === 'ArrowRight') updateCardView(currentIndex + 1);
+        });
+
+        document.querySelectorAll('.highlight-page-gallery figure').forEach((fig, idx) => {
+            fig.style.cursor = 'pointer';
+            fig.addEventListener('click', () => {
+                openModal(idx);
+            });
+        });
+
+        // Hero cover image click opens modal
+        if (cover) {
+            cover.style.cursor = 'pointer';
+            cover.title = 'Click to view full image card';
+            cover.addEventListener('click', () => {
+                openModal(0);
+            });
+        }
+    }
+
+    setupHighlightImageModal();
 }

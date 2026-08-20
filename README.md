@@ -52,11 +52,22 @@ EPIC bridges the gap between academic curriculum and industry engineering. We bu
 EPIC/
 ├── index.html                        Main landing page
 ├── 404.html                          Custom error page
+├── induction.html                    Induction & orientation portal
 ├── robots.txt                        Crawler instructions
+├── spark/index.html                  SPARK Foundation Wing page
+├── kaizen/index.html                 KAIZEN Engineering Wing page
+├── phoenix/index.html                PHOENIX Freelancing Wing page
+├── converge/index.html               CONVERGE Flagship Event page
+├── hack-a-day/index.html             HACK-A-DAY Hackathon page
+├── studypods/index.html              StudyPods Peer Learning page
 ├── assets/
-│   ├── css/style.css                 Design tokens, themes, components, responsive
+│   ├── css/
+│   │   ├── style.css                 Core design system, tokens, components, responsive
+│   │   └── branch-page.css           Dedicated wing & highlight subpage styling
 │   └── js/
 │       ├── script.js                 Theme, chatbot, navbar, timeline, FAQ, forms
+│       ├── branch-page.js            Branch page data rendering & animations
+│       ├── page-theme.js             Theme persistence helper
 │       ├── firebase-config.js        Firebase project configuration
 │       └── remote-css-listener.js    Real-time CSS killswitch listener
 ├── scripts/

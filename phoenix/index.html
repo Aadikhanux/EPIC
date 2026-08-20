@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHOENIX | EPIC Technical Club</title>
+    <meta name="description" content="PHOENIX is the freelancing wing of EPIC Technical Club at MBM University — portfolio building, client acquisition, and earning while you learn.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="PHOENIX | EPIC Technical Club">
+    <meta property="og:description" content="Redefining the horizons. Freelancing, client projects, and professional growth.">
+    <meta property="og:image" content="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_600/v1/epic_portal/logos/phoenix-logo.png">
+
+    <!-- Theme -->
+    <script src="../assets/js/page-theme.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/branch-page.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body class="branch-page" data-branch-page="phoenix">
+
+    <header class="branch-page-nav">
+        <a href="../" class="branch-page-brand" aria-label="Back to EPIC homepage">
+            <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/epic-logo.png" alt="EPIC logo">
+            <span><strong>EPIC</strong><small>MBM University</small></span>
+        </a>
+        <div class="branch-page-nav-actions">
+            <a href="../#branches" class="branch-page-back"><i class="fa-solid fa-arrow-left"></i> All branches</a>
+            <button class="page-theme-toggle" aria-label="Toggle Theme"><i class="fa-solid fa-moon"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <section class="bp-hero">
+            <div class="bp-hero-inner">
+                <div class="bp-logo-wrap bp-reveal">
+                    <img id="bpLogo" src="" alt="">
+                </div>
+                <span class="bp-eyebrow bp-reveal bp-reveal-delay-1" id="bpEyebrow"></span>
+                <h1 class="bp-hero-title bp-reveal bp-reveal-delay-2" id="bpTitle"></h1>
+                <p class="bp-tagline bp-reveal bp-reveal-delay-3" id="bpTagline"></p>
+                <p class="bp-description bp-reveal bp-reveal-delay-3" id="bpDescription"></p>
+                <a href="#explore" class="bp-hero-cta bp-reveal bp-reveal-delay-4">
+                    Explore the branch <i class="fa-solid fa-arrow-down"></i>
+                </a>
+            </div>
+        </section>
+
+        <section class="bp-section bp-section-divider" id="explore">
+            <div class="bp-section-header bp-reveal">
+                <span class="bp-section-kicker">Within EPIC</span>
+                <h2 class="bp-section-title">What this branch represents</h2>
+                <p class="bp-section-subtitle" id="bpRepresents"></p>
+            </div>
+            <div class="bp-stats" id="bpStats"></div>
+        </section>
+
+        <section class="bp-section">
+            <div class="bp-section-header bp-reveal">
+                <span class="bp-section-kicker">Deep dive</span>
+                <h2 class="bp-section-title">Focus, activities & skills</h2>
+            </div>
+            <div class="bp-bento">
+                <div class="bp-bento-card bp-bento-wide bp-reveal">
+                    <div class="bp-card-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3>Focus areas & technologies</h3>
+                    <div class="bp-focus-tags" id="bpFocus"></div>
+                </div>
+                <div class="bp-bento-card bp-bento-narrow bp-reveal bp-reveal-delay-1">
+                    <div class="bp-card-icon"><i class="fa-solid fa-handshake"></i></div>
+                    <h3>Activities & experiences</h3>
+                    <ul class="bp-checklist" id="bpActivities"></ul>
+                </div>
+                <div class="bp-bento-card bp-bento-half bp-reveal bp-reveal-delay-2">
+                    <div class="bp-card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                    <h3>Skills you will gain</h3>
+                    <ul class="bp-checklist" id="bpSkills"></ul>
+                </div>
+                <div class="bp-bento-card bp-bento-half bp-reveal bp-reveal-delay-3" style="display:flex;align-items:center;justify-content:center;text-align:center;">
+                    <div>
+                        <i class="fa-solid fa-quote-left" style="font-size:28px;color:var(--bp-accent);opacity:0.25;margin-bottom:14px;display:block;"></i>
+                        <p style="font-size:clamp(18px,2.5vw,24px);font-weight:700;font-family:'Space Grotesk',sans-serif;line-height:1.35;color:var(--text-primary);">
+                            Don't just learn skills — monetize them. Rise from the ashes.
+                        </p>
+                        <p style="margin-top:12px;color:var(--text-muted);font-size:13px;">— The Phoenix Spirit</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bp-section bp-section-divider">
+            <div class="bp-section-header bp-reveal">
+                <span class="bp-section-kicker">Inside the branch</span>
+                <h2 class="bp-section-title">Learning in action</h2>
+            </div>
+            <div class="bp-gallery" id="bpGallery"></div>
+        </section>
+
+        <section class="bp-section">
+            <div class="bp-section-header bp-reveal">
+                <span class="bp-section-kicker">Keep exploring</span>
+                <h2 class="bp-section-title">Other branches</h2>
+            </div>
+            <div class="bp-cross-nav" id="bpCrossNav"></div>
+        </section>
+    </main>
+
+    <footer class="bp-footer">
+        <div class="bp-footer-inner">
+            <div class="bp-footer-top">
+                <a href="../" class="bp-footer-brand" aria-label="EPIC Homepage">
+                    <img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/epic-logo.png" alt="EPIC Logo">
+                    <div class="bp-footer-brand-text">
+                        <span class="bp-footer-brand-title">EPIC</span>
+                        <span class="bp-footer-brand-sub">MBM University</span>
+                    </div>
+                </a>
+                <div class="bp-footer-tagline">
+                    Empowering People Through Innovative Computing
+                </div>
+                <div class="bp-footer-socials">
+                    <a href="https://chat.whatsapp.com/JN6rYcY6eHpGC34X1JVWuM?s=cl&amp;p=a&amp;ilr=0" target="_blank" rel="noopener noreferrer" title="WhatsApp Community"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://www.instagram.com/gdg_mbmu?igsh=OWgzYnNoMmwzMjJ6" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/dsc-mbm/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="mailto:dsc.clubs@mbm.ac.in" title="Email"><i class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+            <div class="bp-footer-bottom">
+                <span>&copy; 2026 EPIC Technical Club. All rights reserved.</span>
+                <div class="bp-footer-links">
+                    <a href="../">Home</a>
+                    <a href="../#branches">All Branches</a>
+                    <a href="../#contact">Connect & Register</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../assets/js/branch-page.js"></script>
+</body>
+</html>

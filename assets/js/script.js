@@ -272,6 +272,25 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ================= 5b. REGISTRATION FORM ================= */
     const experienceRadios = document.querySelectorAll('input[name="regExperience"]');
     const experienceDetailGroup = document.getElementById('experienceDetailGroup');
+    const regYear = document.getElementById('regYear');
+    const regSectionGroup = document.getElementById('regSectionGroup');
+    const regSection = document.getElementById('regSection');
+
+    if (regYear && regSectionGroup && regSection) {
+        const toggleSectionVisibility = () => {
+            if (regYear.value === '1st Year') {
+                regSectionGroup.style.display = 'block';
+                regSection.required = true;
+            } else {
+                regSectionGroup.style.display = 'none';
+                regSection.required = false;
+                regSection.value = '';
+                regSection.classList.remove('error');
+            }
+        };
+        regYear.addEventListener('change', toggleSectionVisibility);
+        toggleSectionVisibility();
+    }
 
     experienceRadios.forEach(radio => {
         radio.addEventListener('change', () => {
@@ -331,13 +350,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 valid = false;
             }
 
-            if (!section.value.trim()) {
-                section.classList.add('error');
+            if (!year.value) {
+                year.classList.add('error');
                 valid = false;
             }
 
-            if (!year.value) {
-                year.classList.add('error');
+            if (year.value === '1st Year' && !section.value) {
+                section.classList.add('error');
                 valid = false;
             }
 
@@ -357,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mobile: mobile.value.trim(),
                 email: email.value.trim(),
                 branch: branch.value,
-                section: section.value.trim(),
+                section: year.value === '1st Year' ? (section.value || 'N/A') : 'N/A',
                 year: year.value,
                 codingExperience: experienceRadio ? experienceRadio.value : 'No',
                 experienceDetail: document.getElementById('regExperienceDetail').value.trim(),
@@ -376,7 +395,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         body: JSON.stringify(payload)
                     });
                 } catch (err) {
-                    console.warn('[Firebase] Registration sync failed:', err);
+                    console.warn('Firebase registration save error:', err);
                 }
             }
 
@@ -395,6 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             registerForm.reset();
             if (experienceDetailGroup) experienceDetailGroup.style.display = 'none';
+            if (regSectionGroup) regSectionGroup.style.display = 'none';
 
             setTimeout(() => {
                 if (registerSuccessMsg) registerSuccessMsg.style.display = 'none';
