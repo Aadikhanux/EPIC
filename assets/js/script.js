@@ -730,7 +730,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: 'PHOENIX', eyebrow: '03 / Freelancing Wing', tagline: 'Redefining The Horizons',
             description: 'Freelancing as a career path, hands-on experience, earn while you learn.',
             represents: 'The professional and entrepreneurial wing of EPIC. PHOENIX bridges the gap between learning a skill and earning through it by building confidence, business awareness, client experience, and a strong body of work.',
-            focus: ['Client Communication', 'Freelance Project Delivery', 'Portfolio Building', 'Pricing & Proposals', 'Web/App Development', 'UI/UX for Clients', 'Time & Scope Management', 'Personal Branding'],
+            focus: ['Client Acquisition', 'Freelance Platforms', 'Portfolio Building', 'Project Estimation', 'Web/App Development', 'UI/UX for Clients', 'Proposal Writing', 'Personal Branding'],
             activities: ['Freelance project matching and onboarding', 'Peer code reviews and delivery checkpoints', 'Client communication and proposal-writing workshops', 'Portfolio and personal-branding sessions'],
             skills: ['Practical portfolio building through real client work', 'Experience handling freelance projects end-to-end', 'Peer code review and quality feedback', 'Resume-worthy, real-world project experience'],
             images: [
@@ -966,7 +966,111 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ================= 14. CONSOLE BRANDING ================= */
+    /* ================= 14. INTERACTIVE HERO DEPTH ================= */
+    const hero = document.querySelector('.hero');
+    const heroVisual = document.querySelector('.hero-visual');
+    const allowHeroMotion = window.matchMedia('(pointer: fine)').matches
+        && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (hero && heroVisual && allowHeroMotion) {
+        hero.addEventListener('pointermove', (event) => {
+            const bounds = hero.getBoundingClientRect();
+            const x = (event.clientX - bounds.left) / bounds.width;
+            const y = (event.clientY - bounds.top) / bounds.height;
+            hero.style.setProperty('--hero-pointer-x', `${x * 100}%`);
+            hero.style.setProperty('--hero-pointer-y', `${y * 100}%`);
+            heroVisual.style.transform = `perspective(1000px) rotateX(${(0.5 - y) * 3}deg) rotateY(${(x - 0.5) * 4}deg)`;
+        });
+
+        hero.addEventListener('pointerleave', () => {
+            heroVisual.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+        });
+    }
+
+    /* ================= 15. HIGHLIGHT COVER SLIDESHOWS ================= */
+    const highlightSlides = {
+        'ai-for-bharat': [
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262855/ai_for_bharat_5.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262855/ai_for_bharat_4.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262856/ai_for_bharat_2.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262858/ai_for_bharat_3.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262859/ai_for_bharat_1.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262861/ai_for_bharat_6.jpg'
+        ],
+        'first-step': [
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262620/intro_1.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262614/intro_2.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262614/intro_3.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262596/intro_4.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262595/intro_6.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262595/intro_5.jpg'
+        ],
+        'internal-sih': [
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262443/sih_1.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262442/sih_2.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262442/sih_3.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262442/sih_4.jpg'
+        ],
+        studypods: [
+            'https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787158897/sp_01.heic',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787158898/sp_03.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787158892/sp_04.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787159004/sp_05.jpg'
+        ],
+        'hack-a-day': [
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787260030/hack_01_4.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787260031/hack_01_1.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787260032/hack_01_3.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787260032/hack_01_2.jpg'
+        ],
+        converge: [
+            'https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160171/cov_02.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160173/con_04.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160194/cov_01.jpg',
+            'https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160197/con_0.3.jpg'
+        ]
+    };
+
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.querySelectorAll('[data-highlight-slideshow]').forEach((image) => {
+            const slides = highlightSlides[image.dataset.highlightSlideshow];
+            if (!slides || slides.length < 2) return;
+
+            slides.slice(1).forEach((src) => {
+                const preload = new Image();
+                preload.src = src;
+            });
+
+            const secondLayer = image.cloneNode(false);
+            secondLayer.removeAttribute('data-highlight-slideshow');
+            secondLayer.removeAttribute('alt');
+            secondLayer.setAttribute('aria-hidden', 'true');
+            secondLayer.classList.add('highlight-slide-layer');
+            secondLayer.style.opacity = '0';
+            image.parentElement.appendChild(secondLayer);
+
+            let activeLayer = image;
+            let nextLayer = secondLayer;
+            let slideIndex = 0;
+            window.setInterval(() => {
+                slideIndex = (slideIndex + 1) % slides.length;
+                nextLayer.src = slides[slideIndex];
+
+                window.requestAnimationFrame(() => {
+                    activeLayer.style.opacity = '0';
+                    nextLayer.style.opacity = '1';
+                });
+
+                window.setTimeout(() => {
+                    const previousLayer = activeLayer;
+                    activeLayer = nextLayer;
+                    nextLayer = previousLayer;
+                }, 700);
+            }, 2000);
+        });
+    }
+
+    /* ================= 16. CONSOLE BRANDING ================= */
     console.log(
         "%c EPIC | MBM University ",
         "background:#0f172a;color:#10b981;font-size:16px;font-weight:bold;padding:8px 14px;border-radius:6px;"

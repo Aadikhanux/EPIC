@@ -30,31 +30,22 @@
         <section class="quiz-hero">
             <span class="quiz-eyebrow"><i class="fa-solid fa-bolt"></i> EPIC Knowledge Challenge</span>
             <h1>Quiz Questions</h1>
-            <p>Put your coding and technology fundamentals to the test.</p>
+            <p>Read each card and answer aloud.</p>
         </section>
 
-        <section class="quiz-shell" aria-live="polite">
-            <div class="quiz-topbar">
-                <span id="quizProgress">Question 1 of 8</span>
-                <span id="quizScore">Score: 0</span>
+        <section class="quiz-shell" aria-label="Quiz questions">
+            <article class="quiz-card" id="quizCard" aria-live="polite">
+                <div class="quiz-card-top">
+                    <span class="quiz-category" id="quizCategory">Web</span>
+                    <span class="quiz-number" id="quizNumber">01 / 08</span>
+                </div>
+                <h2 id="quizQuestion">What does HTML stand for?</h2>
+            </article>
+            <div class="quiz-controls">
+                <button type="button" id="quizPrevious"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                <div class="quiz-dots" id="quizDots" aria-hidden="true"></div>
+                <button type="button" id="quizNext">Next <i class="fa-solid fa-arrow-right"></i></button>
             </div>
-            <div class="quiz-progress-track"><span id="quizProgressBar"></span></div>
-
-            <article class="quiz-card" id="quizCard">
-                <span class="quiz-category" id="quizCategory"></span>
-                <h2 id="quizQuestion"></h2>
-                <div class="quiz-options" id="quizOptions"></div>
-                <p class="quiz-feedback" id="quizFeedback"></p>
-                <button class="quiz-next" id="quizNext" type="button" disabled>Next question <i class="fa-solid fa-arrow-right"></i></button>
-            </article>
-
-            <article class="quiz-card quiz-result" id="quizResult" hidden>
-                <div class="quiz-result-icon"><i class="fa-solid fa-trophy"></i></div>
-                <span class="quiz-category">Challenge complete</span>
-                <h2 id="resultTitle">Great work!</h2>
-                <p id="resultScore"></p>
-                <button class="quiz-next" id="quizRestart" type="button"><i class="fa-solid fa-rotate-right"></i> Try again</button>
-            </article>
         </section>
     </main>
 

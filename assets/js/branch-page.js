@@ -60,8 +60,8 @@ const branchPages = {
         tagline: 'Redefining The Horizons',
         logo: 'https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/phoenix-logo.png',
         description: 'PHOENIX bridges the gap between learning a skill and earning through it. Freelancing as a career path, hands-on experience, earn while you learn — building confidence, business awareness, and a strong body of work.',
-        represents: 'The professional and entrepreneurial wing of EPIC. PHOENIX builds confidence, business awareness, client experience, and a strong body of work by bridging the gap between learning a skill and earning through it.',
-        focus: ['Client Communication', 'Freelance Project Delivery', 'Portfolio Building', 'Pricing & Proposals', 'Web/App Development', 'UI/UX for Clients', 'Time & Scope Management', 'Personal Branding'],
+        represents: "EPIC's freelancing wing where members turn their skills into income. PHOENIX connects students with real freelance projects, helping them deliver client work, build a strong portfolio, and gain practical, resume-worthy experience along the way.",
+        focus: ['Client Acquisition', 'Freelance Platforms', 'Portfolio Building', 'Project Estimation', 'Web/App Development', 'UI/UX for Clients', 'Proposal Writing', 'Personal Branding'],
         activities: ['Freelance project matching and onboarding', 'Peer code reviews and delivery checkpoints', 'Client communication and proposal-writing workshops', 'Portfolio and personal-branding sessions'],
         skills: ['Practical portfolio building through real client work', 'Experience handling freelance projects end-to-end', 'Peer code review and quality feedback', 'Resume-worthy, real-world project experience'],
         stats: [

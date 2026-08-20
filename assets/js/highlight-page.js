@@ -23,10 +23,10 @@ const highlightPages = {
         type: '24-Hour Coding Competition', title: 'Hack-a-Day', tagline: 'One day. One challenge. Limitless possibilities.',
         cover: 'https://res.cloudinary.com/sitqyj0b/image/upload/v1787128516/Hack-a-Day.jpg',
         heading: 'Building against the clock',
-        description: 'Hack-a-Day is an intensive 24-hour coding competition where participants transform a problem statement into a functional solution. Teams combine technical execution, creativity, and presentation skills under real time constraints.',
-        purpose: 'Challenge students to think quickly, divide responsibilities effectively, and deliver a convincing technical prototype within a focused competition environment.',
-        activities: ['Problem-statement analysis and ideation', 'Rapid design and development sprints', 'Mentor reviews and debugging checkpoints', 'Final product demonstration and judging'],
-        outcomes: ['Faster technical decision-making', 'Experience building under pressure', 'Improved pitching and demonstration skills', 'Stronger multidisciplinary teamwork'],
+        description: 'Hack-a-Day is a full-day coding contest organized by EPIC, challenging participants to build solutions within a limited timeframe. The competition features multiple stages by skill level — Beginner, Intermediate, and Advanced, letting participants across experience levels compete, learn and showcase their problem-solving abilities.',
+        purpose: 'Challenge students across all skill levels to think quickly, set priorities effectively, and deliver a convincing technical prototype within a focused competition environment.',
+        activities: ['Problem-statement analysis and ideation', 'Beginner, Intermediate, and Advanced tracks based on skill level', 'Rapid design and development sprints', 'Mentor reviews and debugging checkpoints', 'Final product demonstration and judging'],
+        outcomes: ['Faster technical decision-making', 'Experience building under pressure', 'Improved pitching and demonstration skills', 'Stronger multidisciplinary teamwork', 'Participation and growth across all skill levels'],
         winnerGroups: [
             { category: 'Logo Design', winners: [{ place: 1, name: 'Dilkush' }, { place: 2, name: 'Vanshika Singh' }] },
             { category: 'Startup', winners: [{ place: 1, name: 'Nandini Sharma' }, { place: 2, name: 'Adil Khan' }] },
@@ -36,20 +36,20 @@ const highlightPages = {
             { category: 'Contest — Advanced', winners: [{ place: 1, name: 'Mohit Pohwani' }] }
         ],
         images: [
-            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787128516/Hack-a-Day.jpg', 'Hack-a-Day coding competition'],
-            ['https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160738/hd_01.jpg', 'Hack-a-Day competition moment'],
-            ['https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160777/hd_03.jpg', 'Hack-a-Day participants and organizers'],
-            ['https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160804/hd_02.jpg', 'Hack-a-Day event highlight']
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787260030/hack_01_4.jpg', 'Hack-a-Day coding competition'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787260031/hack_01_1.jpg', 'Hack-a-Day competition moment'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787260032/hack_01_3.jpg', 'Hack-a-Day participants and organizers'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787260032/hack_01_2.jpg', 'Hack-a-Day event highlight']
         ]
     },
     converge: {
         type: 'Problem-Solving Showcase', title: 'Converge', tagline: 'Different disciplines. Shared ideas. One powerful solution.',
         cover: 'https://res.cloudinary.com/sitqyj0b/image/upload/v1787158172/converge.jpg',
         heading: 'Where ideas and disciplines converge',
-        description: 'Converge brings students from different technical backgrounds together to examine meaningful problems and develop practical, well-reasoned solutions. The experience emphasizes collaboration, structured thinking, and clear communication.',
-        purpose: 'Create a shared platform where diverse skills and perspectives can combine to solve complex problems and produce solutions with genuine technical and social relevance.',
-        activities: ['Collaborative problem discovery', 'Research and solution mapping', 'Cross-domain prototype development', 'Technical presentation and feedback'],
-        outcomes: ['Structured problem-solving ability', 'Cross-disciplinary collaboration', 'Better research and validation habits', 'Confident technical communication'],
+        description: 'Converge 2026 is a three-week internal project competition organized at MBM University, structured to take teams from idea to working product. The competition unfolds in three stages — Pitch, Prototype, and Deployment — with teams evaluated through a demo video, README and the Final Pitch.',
+        purpose: 'Challenge student teams to move beyond ideation, building and pitching a real, demonstrable product across a structured three-week timeline.',
+        activities: ['Week 1: Idea pitching and problem validation', 'Week 2: Prototype development and mentor feedback', 'Week 3: Final deployment and product demo', 'Final Evaluation via live demonstration', 'Winners announced across top project tracks'],
+        outcomes: ['Stronger end-to-end product execution', 'Better documentation and presentation habits', 'Real experience shipping under a deadline', 'Cross-domain teamwork (AI/ML, frontend, backend, etc.)', 'Recognition for top-performing teams'],
         winners: [
             { place: 1, team: 'Envitro' },
             { place: 2, team: 'Equitech' },
