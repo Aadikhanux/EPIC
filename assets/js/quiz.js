@@ -1,14 +1,14 @@
 const questions = [
-    ['AI & Tech', "What's the most funniest thing you have used AI for?"],
-    ['AI & Tech', 'If you could learn any new skill instantly, what would it be?'],
-    ['AI & Tech', 'If you could invent an app, what would it do?'],
-    ['AI & Tech', 'If you had ₹1 lakh to start a tech project, what would you build?'],
-    ['AI & Tech', 'What\'s one "smart" gadget you wish existed but doesn\'t yet?'],
-    ['AI & Tech', 'Why was the QWERTY keyboard layout actually designed the way it is?'],
-    ['AI & Tech', 'Roughly what share of all internet traffic comes from bots, not humans?'],
-    ['AI & Tech', 'What is the full form of EPIC?'],
-    ['AI & Tech', 'Ask your most-used AI chatbot: "If I were an Indian dessert, what dessert would I be?"'],
-    ['AI & Tech', 'How many days do you think you can survive without searching anything on the internet or using AI?']
+    ['AI & Fun', 'What\'s the funniest thing you have used AI for?'],
+    ['Dream Skill', 'If you could learn any new skill instantly, what would it be?'],
+    ['App Idea', 'If you could invent an app, what would it do?'],
+    ['Tech Project', 'If you had \u20B91 lakh to start a tech project, what would you build?'],
+    ['Future Gadget', 'What\'s one "smart" gadget you wish existed but doesn\'t yet?'],
+    ['Tech Trivia', 'Why was the QWERTY keyboard layout actually designed the way it is?'],
+    ['Internet Trivia', 'Roughly what share of all internet traffic comes from bots, not humans?'],
+    ['EPIC', 'What is the full form of EPIC?'],
+    ['AI Challenge', 'Ask your most-used AI chatbot: "If I were an Indian dessert, what dessert would I be?"'],
+    ['Digital Detox', 'How many days do you think you can survive without searching for anything on the internet or using AI?']
 ];
 
 const card = document.getElementById('quizCard');
