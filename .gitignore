@@ -7,6 +7,12 @@ admin-repo/
 # Node Dependencies
 node_modules/
 npm-debug.log*
+.local-server.log
+.local-server-error.log
+
+# Local duplicate working copies
+EPIC/
+EPIC-complete/
 
 # Local Media (most images are served via Cloudinary CDN)
 assets/images/*
