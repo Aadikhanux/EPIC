@@ -456,9 +456,9 @@
     transform: translateY(0);
 }
 
-/* SPARK has eight photos, so keep its cards uniform and evenly aligned. */
+/* SPARK uses four even rows for its twenty gallery images. */
 .bp-spark .bp-gallery {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     grid-auto-rows: auto;
 }
 
@@ -469,22 +469,18 @@
     aspect-ratio: 4 / 3;
 }
 
-/* KAIZEN's five cards form a centered 3 + 2 layout on wide screens. */
+/* KAIZEN uses an even, responsive grid for its eight gallery images. */
 .bp-kaizen .bp-gallery {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-auto-rows: auto;
 }
 
 .bp-kaizen .bp-gallery-item,
 .bp-kaizen .bp-gallery-item:first-child {
-    grid-column: span 2;
+    grid-column: auto;
     grid-row: auto;
     min-height: 0;
     aspect-ratio: 4 / 3;
-}
-
-.bp-kaizen .bp-gallery-item:nth-child(n + 4) {
-    grid-column: span 3;
 }
 
 /* ---------- Cross-Branch Navigation ---------- */
@@ -808,16 +804,9 @@
     }
 
     .bp-kaizen .bp-gallery-item,
-    .bp-kaizen .bp-gallery-item:first-child,
-    .bp-kaizen .bp-gallery-item:nth-child(n + 4) {
+    .bp-kaizen .bp-gallery-item:first-child {
         grid-column: auto;
         min-height: 0;
-    }
-
-    .bp-kaizen .bp-gallery-item:last-child {
-        grid-column: 1 / -1;
-        width: calc(50% - 8px);
-        justify-self: center;
     }
 }
 
@@ -914,11 +903,6 @@
 
     .bp-kaizen .bp-gallery {
         grid-template-columns: 1fr;
-    }
-
-    .bp-kaizen .bp-gallery-item:last-child {
-        grid-column: auto;
-        width: 100%;
     }
 
     .bp-gallery-item,

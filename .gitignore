@@ -8,8 +8,11 @@ admin-repo/
 node_modules/
 npm-debug.log*
 
-# Local Media (All images served via Cloudinary CDN)
-assets/images/
+# Local Media (most images are served via Cloudinary CDN)
+assets/images/*
+!assets/images/highlights/
+assets/images/highlights/*
+!assets/images/highlights/*-ai-cover.png
 
 # OS / Editor Files
 .DS_Store

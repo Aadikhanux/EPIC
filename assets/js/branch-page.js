@@ -27,7 +27,19 @@ const branchPages = {
             ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_08.jpg', 'SPARK members sharing ideas'],
             ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_07.jpg', 'Students participating in a SPARK session'],
             ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_01.jpg', 'A memorable moment from SPARK'],
-            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_06.jpg', 'The SPARK community in action']
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_06.jpg', 'The SPARK community in action'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787262443/sih_1.jpg', 'Students presenting ideas during Internal SIH'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787262442/sih_2.jpg', 'Internal SIH participants developing their solutions'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787262442/sih_3.jpg', 'Teams collaborating during Internal SIH'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787262442/sih_4.jpg', 'A project presentation at Internal SIH'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160171/cov_02.jpg', 'Students collaborating during Converge'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160173/con_04.jpg', 'A team working together during Converge'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160194/cov_01.jpg', 'Converge participants presenting their work'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160197/con_0.3.jpg', 'A memorable moment from Converge'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787260030/hack_01_4.jpg', 'Students coding together during Hack-a-Day'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787260031/hack_01_1.jpg', 'A focused Hack-a-Day competition moment'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787260032/hack_01_3.jpg', 'Hack-a-Day participants and organizers'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787260032/hack_01_2.jpg', 'Teams building solutions during Hack-a-Day']
         ]
     },
     kaizen: {
@@ -51,7 +63,10 @@ const branchPages = {
             ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214204/kaizen_04.jpg', 'A collaborative KAIZEN learning session'],
             ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214204/kaizen_02.jpg', 'KAIZEN students working together'],
             ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214205/kaizen_01.jpg', 'Hands-on learning at KAIZEN'],
-            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214203/kaizen_03.jpg', 'The KAIZEN community in action']
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787214203/kaizen_03.jpg', 'The KAIZEN community in action'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787303204/kaizen_1.jpg', 'KAIZEN members learning and building together'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787303203/kaizen_2.jpg', 'A new moment from the KAIZEN community'],
+            ['https://res.cloudinary.com/sitqyj0b/image/upload/v1787303203/kaizen_3.jpg', 'KAIZEN engineering in action']
         ]
     },
     phoenix: {

@@ -112,6 +112,10 @@ html {
 }
 
 body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
     background-color: var(--bg-main);
     color: var(--text-secondary);
     font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -121,6 +125,17 @@ body {
     -webkit-tap-highlight-color: transparent;
     overflow-x: hidden;
     transition: background-color var(--transition-base), color var(--transition-base);
+}
+
+body > main {
+    flex: 1 0 auto;
+    width: 100%;
+}
+
+body > footer {
+    flex-shrink: 0;
+    width: 100%;
+    margin-top: auto;
 }
 
 a, button {
@@ -249,6 +264,7 @@ img {
 .social-icon.email:hover { background: var(--brand-accent); }
 .social-icon.instagram:hover { background: #e1306c; }
 .social-icon.linkedin:hover { background: #0a66c2; }
+.social-icon.game:hover { background: linear-gradient(135deg, #7c3aed, #10b981); }
 
 .theme-toggle-btn {
     width: 40px;
@@ -709,6 +725,10 @@ img {
     .hero-grid-pattern { background-size: 38px 38px; opacity: .22; }
 }
 
+@media (min-width: 601px) and (max-width: 768px) {
+    .hero-scroll-cue { display: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .hero-orb,
     .hero-visual-card,
@@ -930,7 +950,10 @@ img {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
     font-weight: 600;
+    white-space: nowrap;
 }
+.hero-float-chip > span { min-width: 0; }
+.hero-live-dot { flex: 0 0 8px; }
 .hero-float-chip i { color: #f59e0b; }
 .hero-float-chip-top { top: -22px; right: 24px; }
 .hero-float-chip-bottom { bottom: -18px; left: 22px; }
@@ -3942,6 +3965,7 @@ textarea:focus-visible {
 .mobile-social-bar a.email:hover { background: var(--brand-accent); }
 .mobile-social-bar a.instagram:hover { background: #e1306c; }
 .mobile-social-bar a.linkedin:hover { background: #0a66c2; }
+.mobile-social-bar a.game:hover { background: linear-gradient(135deg, #7c3aed, #10b981); }
 
 .mobile-social-bar .theme-toggle-btn {
     flex: 0 0 40px;
@@ -3953,7 +3977,7 @@ textarea:focus-visible {
         display: flex;
     }
 
-    body {
-        padding-bottom: 62px;
+    .mobile-social-bar ~ footer {
+        padding-bottom: 82px;
     }
 }
