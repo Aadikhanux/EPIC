@@ -1,5 +1,5 @@
 # EPIC — Empowering People Through Innovative Computing
-
+#test
 Official web portal for **EPIC**, a technical club at **MBM University, Jodhpur**, supported by Google Developer Groups.
 
 ![EPIC Logo](https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_800/v1/epic_portal/logos/epic-logo.png)
