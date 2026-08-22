@@ -1,12 +1,14 @@
 const questions = [
-    ['Web', 'What does HTML stand for?'],
-    ['Programming', 'Which keyword is used to declare a JavaScript constant?'],
-    ['CSS', 'Which CSS property changes the color of text?'],
-    ['Git', 'Which Git command creates a local copy of a remote repository?'],
-    ['Python', 'Which symbol starts a comment in Python?'],
-    ['Computer Science', 'What does CPU stand for?'],
-    ['Web', 'Which protocol is commonly used for secure websites?'],
-    ['Algorithms', 'Which search algorithm requires a sorted list?']
+    ['AI & Fun', 'What\'s the funniest thing you have used AI for?'],
+    ['Dream Skill', 'If you could learn any new skill instantly, what would it be?'],
+    ['App Idea', 'If you could invent an app, what would it do?'],
+    ['Tech Project', 'If you had ₹1 lakh to start a tech project, what would you build?'],
+    ['Future Gadget', 'What\'s one "smart" gadget you wish existed but doesn\'t yet?'],
+    ['Tech Trivia', 'Why was the QWERTY keyboard layout actually designed the way it is?'],
+    ['Internet Trivia', 'Roughly what share of all internet traffic comes from bots, not humans?'],
+    ['EPIC', 'What is the full form of EPIC?'],
+    ['AI Challenge', 'Ask your most-used AI chatbot: "If I were an Indian dessert, what dessert would I be?"'],
+    ['Digital Detox', 'How many days do you think you can survive without searching for anything on the internet or using AI?']
 ];
 
 const card = document.getElementById('quizCard');
