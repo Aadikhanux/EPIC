@@ -12,12 +12,9 @@ const questions = [
 ];
 
 const card = document.getElementById('quizCard');
-const category = document.getElementById('quizCategory');
-const number = document.getElementById('quizNumber');
 const question = document.getElementById('quizQuestion');
 const previous = document.getElementById('quizPrevious');
 const next = document.getElementById('quizNext');
-const dots = document.getElementById('quizDots');
 let current = 0;
 let typingTimer;
 let isTransitioning = false;
@@ -35,8 +32,6 @@ function fitQuestionToTwoLines() {
         question.style.fontSize = `${fontSize}px`;
     }
 }
-
-dots.innerHTML = questions.map((_, index) => `<span class="quiz-dot${index === 0 ? ' active' : ''}"></span>`).join('');
 
 function typeQuestion(text) {
     window.clearTimeout(typingTimer);
@@ -76,11 +71,8 @@ function renderQuestion(index) {
     card.classList.add('is-changing');
     window.setTimeout(() => {
         current = index;
-        category.textContent = questions[current][0];
-        number.textContent = `${String(current + 1).padStart(2, '0')} / ${String(questions.length).padStart(2, '0')}`;
         previous.disabled = current === 0;
         next.disabled = current === questions.length - 1;
-        dots.querySelectorAll('.quiz-dot').forEach((dot, dotIndex) => dot.classList.toggle('active', dotIndex === current));
         card.classList.remove('is-changing');
         typeQuestion(questions[current][1]);
         isTransitioning = false;
