@@ -734,10 +734,7 @@ document.addEventListener('DOMContentLoaded', () => {
             activities: ['Freelance project matching and onboarding', 'Peer code reviews and delivery checkpoints', 'Client communication and proposal-writing workshops', 'Portfolio and personal-branding sessions'],
             skills: ['Practical portfolio building through real client work', 'Experience handling freelance projects end-to-end', 'Peer code review and quality feedback', 'Resume-worthy, real-world project experience'],
             images: [
-                ['https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=82', 'Freelancers collaborating in a professional workspace'],
-                ['https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1000&q=82', 'A team discussing client goals and project scope'],
-                ['https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1000&q=82', 'Developers delivering a client project together'],
-                ['https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1000&q=82', 'Independent professional software development']
+                ['https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=82', 'Freelancers collaborating in a professional workspace']
             ]
         }
     };
@@ -998,6 +995,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262861/ai_for_bharat_6.jpg'
         ],
         'first-step': [
+            'https://res.cloudinary.com/sitqyj0b/image/upload/v1787491948/first_step.jpg',
             'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262620/intro_1.jpg',
             'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262614/intro_2.jpg',
             'https://res.cloudinary.com/sitqyj0b/image/upload/v1787262614/intro_3.jpg',

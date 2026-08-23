@@ -19,6 +19,7 @@ assets/images/*
 !assets/images/highlights/
 assets/images/highlights/*
 !assets/images/highlights/*-ai-cover.png
+!assets/images/highlights/converge-cover-generated.png
 
 # OS / Editor Files
 .DS_Store

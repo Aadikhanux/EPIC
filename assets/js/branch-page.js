@@ -86,10 +86,7 @@ const branchPages = {
             { value: '5', label: 'Platforms Used' }
         ],
         images: [
-            ['https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=82', 'Freelancers collaborating in a professional workspace'],
-            ['https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1100&q=82', 'A team discussing client goals and project scope'],
-            ['https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1100&q=82', 'Developers delivering a client project together'],
-            ['https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1100&q=82', 'Independent professional software development']
+            ['https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=82', 'Freelancers collaborating in a professional workspace']
         ]
     }
 };

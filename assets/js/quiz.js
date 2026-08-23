@@ -21,7 +21,20 @@ const dots = document.getElementById('quizDots');
 let current = 0;
 let typingTimer;
 let isTransitioning = false;
-const typingDuration = 3500;
+const typingDuration = 2000;
+
+function fitQuestionToTwoLines() {
+    question.style.fontSize = '';
+    let fontSize = parseFloat(window.getComputedStyle(question).fontSize);
+
+    while (fontSize > 20) {
+        const styles = window.getComputedStyle(question);
+        const lineHeight = parseFloat(styles.lineHeight);
+        if (question.scrollHeight <= lineHeight * 2.1) break;
+        fontSize -= 1;
+        question.style.fontSize = `${fontSize}px`;
+    }
+}
 
 dots.innerHTML = questions.map((_, index) => `<span class="quiz-dot${index === 0 ? ' active' : ''}"></span>`).join('');
 
@@ -32,6 +45,7 @@ function typeQuestion(text) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         question.textContent = text;
         question.classList.remove('is-typing');
+        fitQuestionToTwoLines();
         return;
     }
 
@@ -47,6 +61,7 @@ function typeQuestion(text) {
             typingTimer = window.setTimeout(typeNextCharacter, typingDuration / text.length);
         } else {
             question.classList.remove('is-typing');
+            fitQuestionToTwoLines();
         }
     };
 
@@ -80,3 +95,4 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'ArrowLeft') renderQuestion(current - 1);
     if (event.key === 'ArrowRight') renderQuestion(current + 1);
 });
+window.addEventListener('resize', fitQuestionToTwoLines);
