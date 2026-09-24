@@ -940,3 +940,9 @@
         animation: none;
     }
 }
+
+@media (max-width: 768px) {
+    .bp-bento > *, .bp-stats > *, .bp-cross-nav > * { min-width: 0; }
+    .bp-section, .bp-hero-inner, .bp-footer { overflow-wrap: anywhere; }
+    .bp-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

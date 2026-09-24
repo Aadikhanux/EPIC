@@ -3981,3 +3981,60 @@ textarea:focus-visible {
         padding-bottom: 82px;
     }
 }
+
+/* Keep mobile content within its columns without clipping text. */
+@media (max-width: 868px) {
+    .section, .hero-wrapper, .section-header-row > *,
+    .about-grid > *, .branches-wrapper > *, .contact-wrapper > *,
+    .resources-grid > *, .form-row > *, .timeline-content > * {
+        min-width: 0;
+    }
+
+    .section, .hero, footer, .branch-page-nav {
+        overflow-wrap: anywhere;
+    }
+
+    .nav-links.active {
+        max-height: calc(100dvh - var(--header-height) - 90px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+    }
+
+    .mobile-social-bar {
+        gap: clamp(4px, 2vw, 14px);
+        padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    }
+
+    body:has(.mobile-social-bar) {
+        padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px));
+    }
+
+    .repo-item strong, .repo-item small, .winner-group-card li > strong {
+        white-space: normal;
+        overflow-wrap: anywhere;
+    }
+
+    .hero-float-chip {
+        max-width: calc(100% - 24px);
+        white-space: normal;
+    }
+
+    .chatbot-window {
+        max-height: calc(100dvh - 150px - env(safe-area-inset-bottom, 0px));
+    }
+}
+
+@media (max-width: 600px) {
+    .tabs-wrapper, .form-tabs { flex-wrap: wrap; }
+    .tab-btn { min-width: 0; overflow-wrap: anywhere; }
+    .section-tag { max-width: 100%; overflow-wrap: anywhere; }
+    .hero-stat-item span { overflow-wrap: anywhere; }
+    .highlight-page-hero h1 { font-size: clamp(32px, 10vw, 56px); overflow-wrap: anywhere; }
+}
+
+/* Let the aspect ratio determine gallery height instead of forcing overflow. */
+.highlight-page-studypods .highlight-page-gallery figure {
+    min-width: 0;
+    width: 100%;
+    min-height: 0;
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        try {
+            const saved = localStorage.getItem('epic_theme');
+            document.documentElement.dataset.theme = saved || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        } catch (_) { /* Keep the default theme when storage is unavailable. */ }
+    </script>
+    <title>Event Calendar | EPIC</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="calendar.css">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <main>
+        <section class="section calendar-section" id="event-calendar" aria-labelledby="calendar-title">
+            <a class="calendar-page-back" href="../index.html#event-calendar">&larr; Back to EPIC</a>
+            <div class="section-header-row">
+                <div><div class="section-tag">Calendar / What's next</div><h1 class="section-title" id="calendar-title">Upcoming at EPIC</h1></div>
+                <p class="section-desc">Our upcoming sessions, events, and competitions.</p>
+            </div>
+            <div id="calendar-content"></div>
+            <noscript>Enable JavaScript to view the event calendar.</noscript>
+        </section>
+    </main>
+    <script src="events.js"></script>
+    <script src="calendar.js"></script>
+</body>
+</html>

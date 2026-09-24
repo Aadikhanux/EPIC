@@ -63,6 +63,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="calendar/calendar.css">
     <!-- Firebase Configuration -->
     <script src="assets/js/firebase-config.js"></script>
     <!-- Remote CSS Listener (Presentation Killswitch) -->
@@ -462,6 +463,9 @@
                     </div>
                     <a href="spark/" class="branch-action-link">
                         Explore SPARK <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+                    <a href="https://sparkmbmu.netlify.app" class="branch-action-link" target="_blank" rel="noopener noreferrer">
+                        Visit SPARK website <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
                     </a>
                 </div>
 
@@ -1021,6 +1025,21 @@
                     </a>
                 </div>
             </div>
+        </section>
+
+        <!-- ================= UPCOMING EVENT CALENDAR ================= -->
+        <section class="section calendar-section" id="event-calendar" aria-labelledby="calendar-title">
+            <div class="section-header-row">
+                <div>
+                    <div class="section-tag">Calendar / What's next</div>
+                    <h2 class="section-title" id="calendar-title">Upcoming at EPIC</h2>
+                </div>
+                <p class="section-desc">Make room for something new. Explore our upcoming sessions, events, and competitions. <a href="calendar/">View calendar &rarr;</a></p>
+            </div>
+
+            <!-- Shared calendar layout and schedule are maintained in calendar/. -->
+            <div id="calendar-content"></div>
+            <noscript>Enable JavaScript to view the event calendar.</noscript>
         </section>
 
         <!-- ================= CONTINUOUS JOURNEY TIMELINE ================= -->
@@ -1692,6 +1711,8 @@
                 parent.insertBefore(journey, team);
                 parent.insertBefore(team, resources.nextSibling);
                 parent.insertBefore(alumni, team.nextSibling);
+                const calendar = document.getElementById('event-calendar');
+                if (calendar) parent.insertBefore(calendar, alumni.nextSibling);
             })();
         </script>
     </main>
@@ -1728,12 +1749,14 @@
 
             <div class="footer-bottom">
                 <span>&copy; 2026 EPIC Technical Club. All rights reserved.</span>
-                <span>Built by EPIC Members • MBM University</span>
+                <span>Designed and Developed by Mayank Aggarwal & Adil Khan • MBM University</span>
             </div>
         </div>
     </footer>
 
     <script src="assets/js/script.js"></script>
+    <script src="calendar/events.js"></script>
+    <script src="calendar/calendar.js"></script>
 </body>
 
 </html>

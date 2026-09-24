@@ -85,9 +85,7 @@ const branchPages = {
             { value: '₹2L+', label: 'Earned by Members' },
             { value: '5', label: 'Platforms Used' }
         ],
-        images: [
-            ['https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1400&q=82', 'Freelancers collaborating in a professional workspace']
-        ]
+        images: []
     }
 };
 
@@ -142,7 +140,9 @@ if (branch) {
         `).join('');
 
     // --- Gallery ---
-    document.getElementById('bpGallery').innerHTML = branch.images
+    const gallery = document.getElementById('bpGallery');
+    gallery.closest('section').hidden = branch.images.length === 0;
+    gallery.innerHTML = branch.images
         .map(([src, alt]) => `
             <figure class="bp-gallery-item bp-reveal">
                 <img src="${src}" alt="${alt}" loading="lazy" decoding="async">
@@ -170,6 +170,7 @@ if (branch) {
 
     // --- Image Card Modal System with Left/Right Navigation ---
     function setupBranchImageModal() {
+        if (!branch.images.length) return;
         const galleryItems = branch.images.map(([src, alt]) => ({ src, caption: alt }));
         let currentIndex = 0;
 
