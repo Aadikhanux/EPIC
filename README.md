@@ -78,7 +78,7 @@ EPIC/
 └── package.json
 ```
 
-> **Note**: The Admin Command Hub is maintained in a separate repository at [github.com/Er-Mayank-Aggarwal/EPIC-MBMU-Admin](https://github.com/Er-Mayank-Aggarwal/EPIC-MBMU-Admin).
+> **Admin Studio**: A protected content panel is available at `/admin/` when deployed on Netlify. See [admin setup and content controls](admin/README.md). Netlify Functions and Blobs handle authentication, publishing, and image storage; configure private credentials before signing in.
 
 ---
 

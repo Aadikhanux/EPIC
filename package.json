@@ -3,6 +3,8 @@
   "version": "1.1.0",
   "description": "EPIC Technical Club Portal - MBM University",
   "scripts": {
+    "build:site": "node scripts/build-site.js",
+    "test:admin": "node --test tests/admin-api.test.mjs",
     "upload-images": "node scripts/upload_to_cloudinary.js",
     "build:css": "npx postcss assets/css/style.css -o assets/css/style.min.css",
     "build:js": "npx terser assets/js/script.js -o assets/js/script.min.js -c -m",
@@ -13,5 +15,8 @@
     "cssnano": "^7.0.0",
     "dotenv": "^16.4.5",
     "terser": "^5.30.0"
+  },
+  "dependencies": {
+    "@netlify/blobs": "^11.1.1"
   }
 }

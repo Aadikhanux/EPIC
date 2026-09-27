@@ -1,9 +1,11 @@
-(() => {
+(async () => {
+    const contentURL = new URL('../api/content', document.currentScript.src);
     const host = document.getElementById('calendar-content');
     if (!host) return;
     host.innerHTML = `
             <div class="calendar-layout">
                 <div class="month-calendar" aria-label="Month calendar">
+                    <div class="calendar-eyebrow"><span><i class="fa-regular fa-calendar" aria-hidden="true"></i> THE EPIC CALENDAR</span><span class="calendar-live">What's next</span></div>
                     <div class="month-calendar-nav">
                         <button type="button" id="calendar-prev" aria-label="Previous month"><i class="fa-solid fa-chevron-left" aria-hidden="true"></i></button>
                         <h3 id="calendar-month" aria-live="polite"></h3>
@@ -17,13 +19,20 @@
                     <noscript>Enable JavaScript to view the month calendar.</noscript>
                 </div>
                 <div class="event-agenda">
-                    <div class="event-agenda-heading"><span>Upcoming sessions &amp; events</span><span class="event-agenda-count"></span></div>
+                    <div class="event-agenda-heading"><div><span class="agenda-eyebrow">LEARN. CONNECT. CREATE.</span><h3>On the horizon</h3></div><span class="event-agenda-count"></span></div>
                     <ol class="event-agenda-list" role="list" id="calendar-events"></ol>
                     <p class="event-agenda-note">Dates, timings, and venue details will be shared once confirmed.</p>
                 </div>
             </div>
     `;
-    const events = window.EPIC_EVENTS || [];
+    let events = window.EPIC_EVENTS || [];
+    try {
+        const response = await fetch(contentURL, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
+        if (response.ok) {
+            const content = await response.json();
+            if (Array.isArray(content.events)) events = content.events;
+        }
+    } catch (_) { /* Keep the static schedule available offline. */ }
     const list = document.getElementById('calendar-events');
     const escape = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
     const parseDate = value => {
@@ -43,12 +52,12 @@
         const dateText = date ? new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }).format(date) : 'Date TBA';
         const item = document.createElement('li');
         item.innerHTML = `<details class="event-agenda-item"><summary>
-            <span class="event-session-icon"><img src="https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_auto/v1/epic_portal/logos/epic-logo.png" alt="EPIC logo" loading="lazy" decoding="async"></span>
+            <span class="event-session-icon" aria-hidden="true"><i class="fa-solid ${escape(/^fa-[a-z0-9-]+$/.test(event.icon || '') ? event.icon : 'fa-calendar-days')}"></i></span>
             <span class="event-agenda-details"><span class="event-kind">${escape(event.week)} / ${escape(event.type)}</span>
             <span class="event-session-title">${escape(event.title)}</span>
             <span class="event-schedule"><span><i class="fa-regular fa-calendar" aria-hidden="true"></i> ${escape(dateText)}</span><span><i class="fa-regular fa-clock" aria-hidden="true"></i> ${formatTime(event.time)}</span></span></span>
             <span class="event-expand" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
-            </summary><p class="event-session-description">${escape(event.description)}<br>Venue: ${escape(event.venue || 'To be announced')}</p></details>`;
+            </summary>${event.image && /^(https:\/\/|\/media\/)/.test(event.image) ? `<img class="event-cover" src="${escape(event.image)}" alt="${escape(event.title)}" loading="lazy">` : ''}<p class="event-session-description">${escape(event.description)}<br>Venue: ${escape(event.venue || 'To be announced')}</p></details>`;
         list.append(item);
     }
     if (!events.length) list.textContent = 'New events will be announced soon.';
@@ -58,11 +67,14 @@
     if (!heading || !days) return;
 
     const today = new Date();
-    let month = new Date(today.getFullYear(), today.getMonth(), 1);
+    const firstMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    let month = new Date(firstMonth);
+    const previous = document.getElementById('calendar-prev');
     const monthLabel = new Intl.DateTimeFormat('en', { month: 'long', year: 'numeric' });
     const dateLabel = new Intl.DateTimeFormat('en', { dateStyle: 'full' });
 
     function render() {
+        previous.disabled = month <= firstMonth;
         heading.textContent = monthLabel.format(month);
         days.replaceChildren();
         const start = new Date(month.getFullYear(), month.getMonth(), 1 - month.getDay());
@@ -71,10 +83,13 @@
             for (let day = 0; day < 7; day++) {
                 const date = new Date(start.getFullYear(), start.getMonth(), start.getDate() + week * 7 + day);
                 const cell = document.createElement('td');
+                if (date.getMonth() !== month.getMonth()) {
+                    row.append(cell);
+                    continue;
+                }
                 const number = document.createElement('span');
                 number.textContent = date.getDate();
                 cell.setAttribute('aria-label', dateLabel.format(date));
-                if (date.getMonth() !== month.getMonth()) cell.classList.add('calendar-outside');
                 if (date.toDateString() === today.toDateString()) cell.setAttribute('aria-current', 'date');
                 const scheduled = events.filter(event => parseDate(event.date)?.toDateString() === date.toDateString());
                 if (scheduled.length) {
@@ -89,7 +104,8 @@
         }
     }
 
-    document.getElementById('calendar-prev').addEventListener('click', () => {
+    previous.addEventListener('click', () => {
+        if (month <= firstMonth) return;
         month = new Date(month.getFullYear(), month.getMonth() - 1, 1);
         render();
     });
@@ -98,7 +114,7 @@
         render();
     });
     document.getElementById('calendar-today').addEventListener('click', () => {
-        month = new Date(today.getFullYear(), today.getMonth(), 1);
+        month = new Date(firstMonth);
         render();
     });
     render();
