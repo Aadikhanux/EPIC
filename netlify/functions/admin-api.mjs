@@ -55,10 +55,14 @@ export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', co
             if (route === '/session' && req.method === 'GET') return reply(200, { csrf: session.csrf });
             if (route === '/logout' && req.method === 'POST') { await store.delete(key); return reply(200, { ok: true }, { 'Set-Cookie': cookie('', 0) }); }
             if (route === '/content' && req.method === 'PUT') {
-                const data = validation.validate(await json());
+                const input = await json();
+                const data = validation.validate(input);
                 const record = await store.getWithMetadata('content', { type: 'json' });
                 const current = record?.data || seed;
-                if (req.headers.get('if-match') !== String(current.version || 0)) return reply(409, { error: 'Content changed in another tab. Reload before saving.' });
+                // Keep the application revision in JSON rather than the HTTP
+                // If-Match header, which deployment proxies can interpret or strip.
+                if (!Number.isSafeInteger(input.version) || input.version < 0) return reply(400, { error: 'Missing content version. Refresh the admin panel and try again.' });
+                if (input.version !== (current.version || 0)) return reply(409, { error: 'Content changed in another tab. Reload before saving.' });
                 data.version = (current.version || 0) + 1;
                 const write = await store.setJSON('content', data, record ? { onlyIfMatch: record.etag } : { onlyIfNew: true });
                 if (!write.modified) return reply(409, { error: 'Content changed in another tab. Reload before saving.' });

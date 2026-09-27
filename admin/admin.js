@@ -80,7 +80,7 @@ $('search').oninput = renderList;
 $('add').onclick = () => { data.events.push({ title: 'New event', type: 'Session', week: '', date: '', time: '', venue: '', description: '', icon: 'fa-calendar-days', image: '' }); selected = data.events.length - 1; changed(); renderList(); renderEditor(); };
 $('save').onclick = async () => {
     $('save').disabled = true;
-    try { data = await api('content', { method: 'PUT', headers: { 'If-Match': String(data.version || 0) }, body: JSON.stringify(data) }); dirty = false; status('Published. Your website is now up to date.'); renderList(); renderEditor(); }
+    try { data = await api('content', { method: 'PUT', body: JSON.stringify(data) }); dirty = false; status('Published. Refresh the website to see your changes.'); renderList(); renderEditor(); }
     catch (error) { status(error.message, true); } finally { $('save').disabled = false; }
 };
 $('logout').onclick = async () => {

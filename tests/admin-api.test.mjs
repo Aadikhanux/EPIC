@@ -54,6 +54,21 @@ test('simultaneous publishing allows only one write', async () => {
     const results = await Promise.all([request('content','PUT',data,{...auth,'if-match':'0'}),request('content','PUT',data,{...auth,'if-match':'0'})]);
     assert.deepEqual(results.map(r=>r.status).sort(),[200,409]);
 });
+test('publishing uses the JSON revision without relying on HTTP If-Match', async () => {
+    const { request, login } = fixture(); const auth = await login();
+    const data = await (await request('content')).json();
+    data.events[0].time = '16:30';
+    const first = await request('content','PUT',data,auth);
+    assert.equal(first.status,200);
+    const saved = await first.json();
+    assert.equal(saved.version,1);
+    assert.equal((await (await request('content')).json()).events[0].time,'16:30');
+    saved.events[0].time = '17:00';
+    assert.equal((await request('content','PUT',saved,auth)).status,200);
+    assert.equal((await request('content','PUT',data,auth)).status,409);
+    delete saved.version;
+    assert.equal((await request('content','PUT',saved,auth)).status,400);
+});
 test('invalid dates, unsafe image URLs, and changed catalog IDs are rejected', async () => {
     const { request, login } = fixture(); const auth = await login();
     for(const change of [d=>d.events[0].date='2026-02-30',d=>d.events[0].image='javascript:alert(1)',d=>d.content[0].id='injected',d=>d.events[0].icon='fa-fire" onclick="alert(1)']) {
