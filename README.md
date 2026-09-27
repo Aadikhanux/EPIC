@@ -209,6 +209,7 @@ For production, restrict the API key in **Google Cloud Console → Credentials**
 | Vanshika Singh | 2nd Year | IT |
 | Ishika Gupta | 2nd Year | AIDS |
 | Tejasvini Jain | 2nd Year | EEE |
+| Dilkush Rajpurohit | 2nd Year | ECC |
 
 ---
 
