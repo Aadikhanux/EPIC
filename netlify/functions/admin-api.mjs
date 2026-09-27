@@ -27,7 +27,8 @@ export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', co
                 return image ? new Response(image, { headers: { 'Content-Type': `image/${route.endsWith('.jpg') ? 'jpeg' : route.split('.').pop()}`, 'X-Content-Type-Options': 'nosniff', 'Cache-Control': 'public, max-age=31536000, immutable' } }) : reply(404, { error: 'Image not found.' });
             }
             if (route === '/login' && req.method === 'POST') {
-                if (!env.ADMIN_USERNAME || !env.ADMIN_PASSWORD_HASH || !env.ADMIN_PASSWORD_SALT) return reply(503, { error: 'Admin login has not been configured on Netlify yet.' });
+                const missing = ['ADMIN_USERNAME', 'ADMIN_PASSWORD_HASH', 'ADMIN_PASSWORD_SALT'].filter(name => !env[name]?.trim());
+                if (missing.length) return reply(503, { error: `Netlify configuration missing: ${missing.join(', ')}. Add these exact keys with values for Functions / Production, then trigger a new production deploy.` });
                 const bucket = Math.floor(Date.now() / 900000);
                 const ip = createHash('sha256').update(context.ip || 'unknown').digest('hex');
                 const key = `attempts/${ip}`;

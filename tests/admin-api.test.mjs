@@ -80,6 +80,13 @@ test('logout and expiry invalidate server-side sessions', async () => {
     assert.equal((await request('session','GET',undefined,next)).status,401);
 });
 test('missing deployment credentials fail closed', async () => {
-    const { request, env } = fixture(); delete env.ADMIN_PASSWORD_HASH;
-    assert.equal((await request('login','POST',{username:'Test Admin',password:'test-password'})).status,503);
+    for (const name of ['ADMIN_USERNAME', 'ADMIN_PASSWORD_HASH', 'ADMIN_PASSWORD_SALT']) {
+        const { request, env } = fixture(); delete env[name];
+        const response = await request('login','POST',{username:'Test Admin',password:'test-password'});
+        assert.equal(response.status,503);
+        const { error } = await response.json();
+        assert.ok(error.includes(name));
+        assert.ok(!error.includes('test-password'));
+        assert.ok(!error.includes('test-salt'));
+    }
 });
