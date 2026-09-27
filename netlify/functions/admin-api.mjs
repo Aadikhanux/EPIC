@@ -1,9 +1,10 @@
 import { getStore } from '@netlify/blobs';
 import { randomBytes, randomUUID, scryptSync, timingSafeEqual, createHash } from 'node:crypto';
 import seed from '../lib/events.json' with { type: 'json' };
+import gallerySeed from '../lib/galleries.json' with { type: 'json' };
 import validation from '../lib/validate.cjs';
 
-export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', consistency: 'strong' }), env = process.env) {
+export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', consistency: 'strong' }), env = process.env, uploadFetch = fetch) {
     return async (req, context = {}) => {
         const headers = { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' };
         const reply = (status, body, extra = {}) => new Response(JSON.stringify(body), { status, headers: { ...headers, ...extra } });
@@ -25,6 +26,7 @@ export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', co
                 return JSON.parse(text);
             };
             if (route === '/content' && req.method === 'GET') return reply(200, await read());
+            if (route === '/galleries' && req.method === 'GET') return reply(200, await store.get('galleries', { type: 'json' }) || gallerySeed);
             if (/^\/media\/[a-f0-9-]+\.(png|jpg|webp)$/.test(route) && req.method === 'GET') {
                 const image = await store.get(route.slice(1), { type: 'arrayBuffer' });
                 return image ? new Response(image, { headers: { 'Content-Type': `image/${route.endsWith('.jpg') ? 'jpeg' : route.split('.').pop()}`, 'X-Content-Type-Options': 'nosniff', 'Cache-Control': 'public, max-age=31536000, immutable' } }) : reply(404, { error: 'Image not found.' });
@@ -57,6 +59,44 @@ export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', co
             if (req.method !== 'GET' && req.headers.get('x-csrf-token') !== session.csrf) return reply(403, { error: 'Invalid session token.' });
             if (route === '/session' && req.method === 'GET') return reply(200, { csrf: session.csrf });
             if (route === '/logout' && req.method === 'POST') { await store.delete(key); return reply(200, { ok: true }, { 'Set-Cookie': cookie('', 0) }); }
+            if (route === '/galleries' && req.method === 'PUT') {
+                const input = await json();
+                const data = validation.validateGalleries(input);
+                if (!Number.isSafeInteger(input.version) || input.version < 0) return reply(400, { error: 'Refresh the panel to load the gallery version.' });
+                const record = await store.getWithMetadata('galleries', { type: 'json' });
+                const current = record?.data || gallerySeed;
+                if (input.version !== current.version) return reply(409, { error: 'Galleries changed in another tab. Reload before publishing.' });
+                data.version = current.version + 1;
+                const write = await store.setJSON('galleries', data, record ? { onlyIfMatch: record.etag } : { onlyIfNew: true });
+                if (!write.modified) return reply(409, { error: 'Galleries changed in another tab. Reload before publishing.' });
+                return reply(200, data);
+            }
+            if (route === '/gallery-upload' && req.method === 'POST') {
+                const branch = req.headers.get('x-gallery-branch');
+                if (!validation.branches.includes(branch)) return reply(400, { error: 'Choose SPARK, KAIZEN, or PHOENIX.' });
+                const missing = ['CLOUDINARY_CLOUD_NAME', 'CLOUDINARY_API_KEY', 'CLOUDINARY_API_SECRET'].filter(name => !env[name]?.trim());
+                if (missing.length) return reply(503, { error: `Cloudinary configuration missing: ${missing.join(', ')}. Add these Netlify variables for Functions / Production and redeploy.` });
+                if (!/^[a-zA-Z0-9_-]+$/.test(env.CLOUDINARY_CLOUD_NAME)) return reply(503, { error: 'CLOUDINARY_CLOUD_NAME must contain the Cloudinary cloud name only.' });
+                const buffer = Buffer.from(await req.arrayBuffer());
+                if (buffer.length > 3 * 1024 * 1024) return reply(413, { error: 'Choose an image smaller than 3 MB.' });
+                const type = buffer.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10])) ? 'png' : buffer[0] === 255 && buffer[1] === 216 && buffer[2] === 255 ? 'jpeg' : buffer.toString('ascii',0,4) === 'RIFF' && buffer.toString('ascii',8,12) === 'WEBP' ? 'webp' : null;
+                if (!type) return reply(400, { error: 'Use PNG, JPEG, or WebP images.' });
+                const form = new FormData();
+                form.set('file', new Blob([buffer], { type: `image/${type}` }), `gallery.${type}`);
+                form.set('public_id', `epic_portal/galleries/${branch}/${randomUUID()}`);
+                form.set('overwrite', 'false');
+                let response;
+                try {
+                    response = await uploadFetch(`https://api.cloudinary.com/v1_1/${env.CLOUDINARY_CLOUD_NAME}/image/upload`, {
+                        method: 'POST', headers: { Authorization: `Basic ${Buffer.from(`${env.CLOUDINARY_API_KEY}:${env.CLOUDINARY_API_SECRET}`).toString('base64')}` },
+                        body: form, signal: AbortSignal.timeout(20000)
+                    });
+                } catch { return reply(502, { error: 'Cloudinary upload could not complete. Please try again.' }); }
+                if (!response.ok) return reply(502, { error: 'Cloudinary rejected the upload. Check your Cloudinary credentials and account limits.' });
+                const result = await response.json();
+                if (!validation.cloudinaryImage(result.secure_url)) return reply(502, { error: 'Cloudinary did not return a valid image URL.' });
+                return reply(201, { url: result.secure_url });
+            }
             if (route === '/content' && req.method === 'PUT') {
                 const input = await json();
                 const data = validation.validate(input);

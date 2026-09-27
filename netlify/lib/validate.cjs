@@ -14,4 +14,19 @@ function validate(data) {
     return { events: data.events.map(event => Object.fromEntries(['title', 'week', 'type', 'date', 'time', 'venue', 'description', 'icon', 'image'].map(key => [key, event[key]]))) };
 }
 
-module.exports = { validate, safeImage };
+const branches = ['spark', 'kaizen', 'phoenix'];
+const cloudinaryImage = value => typeof value === 'string' && value.length <= 2000 && /^https:\/\/res\.cloudinary\.com\/[a-zA-Z0-9_-]+\/image\/upload\/[^\s<>"']+$/.test(value);
+function validateGalleries(input) {
+    if (!input?.galleries || Object.keys(input.galleries).some(key => !branches.includes(key))) throw fail(400, 'Only SPARK, KAIZEN, and PHOENIX galleries can be edited.');
+    const galleries = {};
+    for (const key of branches) {
+        const images = input.galleries[key];
+        if (!Array.isArray(images) || images.length > 200) throw fail(400, 'Each gallery supports up to 200 images.');
+        galleries[key] = images.map(image => {
+            if (!image || !cloudinaryImage(image.url) || typeof image.caption !== 'string' || image.caption.length > 500) throw fail(400, 'Use a Cloudinary image URL and a caption of up to 500 characters.');
+            return { url: image.url, caption: image.caption };
+        });
+    }
+    return { galleries };
+}
+module.exports = { validate, safeImage, validateGalleries, cloudinaryImage, branches };

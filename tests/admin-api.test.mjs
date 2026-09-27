@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { scryptSync } from 'node:crypto';
 import { makeHandler } from '../netlify/functions/admin-api.mjs';
 
-function fixture() {
+function fixture(uploadFetch) {
     const entries = new Map(); let revision = 0;
     const store = {
         async get(key) { return structuredClone(entries.get(key)?.data ?? null); },
@@ -17,7 +17,7 @@ function fixture() {
         async delete(key) { entries.delete(key); }
     };
     const env = { PUBLIC_ORIGIN: 'https://epic.test', ADMIN_USERNAME: 'Test Admin', ADMIN_PASSWORD_SALT: 'test-salt', ADMIN_PASSWORD_HASH: scryptSync('test-password', 'test-salt', 64).toString('hex') };
-    const handler = makeHandler(() => store, env);
+    const handler = makeHandler(() => store, env, uploadFetch);
     const request = (route, method = 'GET', body, headers = {}) => handler(new Request(`https://epic.test/api/${route}`, { method, headers: { origin: env.PUBLIC_ORIGIN, ...headers }, ...(body !== undefined ? { body: typeof body === 'string' || Buffer.isBuffer(body) ? body : JSON.stringify(body) } : {}) }), { ip: '127.0.0.1' });
     async function login() {
         const res = await request('login', 'POST', { username: 'Test Admin', password: 'test-password' });
@@ -123,4 +123,52 @@ test('legacy page overrides are excluded while saved events remain editable', as
     assert.equal(response.status, 200);
     assert.equal('content' in entries.get('content').data, false);
     assert.equal((await (await request('content')).json()).events[0].time, '19:00');
+});
+
+test('gallery publishing is protected, isolated from events, and versioned', async () => {
+    const { request, login } = fixture();
+    const initial = await (await request('galleries')).json();
+    assert.deepEqual(Object.keys(initial.galleries), ['spark','kaizen','phoenix']);
+    assert.ok(initial.galleries.spark.length > 0);
+    assert.equal((await request('galleries','PUT',initial)).status,401);
+    assert.equal((await request('gallery-upload','POST',Buffer.from('image'))).status,401);
+    const auth = await login();
+    assert.equal((await request('galleries','PUT',initial,{cookie:auth.cookie})).status,403);
+    initial.galleries.phoenix.push({url:'https://res.cloudinary.com/demo/image/upload/new.png',caption:'New Phoenix image'});
+    assert.equal((await request('galleries','PUT',initial,auth)).status,200);
+    assert.equal((await (await request('galleries')).json()).galleries.phoenix[0].caption,'New Phoenix image');
+    assert.equal((await (await request('content')).json()).version,0);
+    assert.equal((await request('galleries','PUT',initial,auth)).status,409);
+});
+test('gallery validation rejects unsupported branches and non-Cloudinary URLs', async () => {
+    const { request, login } = fixture(); const auth = await login();
+    for (const url of ['javascript:alert(1)','https://example.com/image.png','https://res.cloudinary.com.evil.test/demo/image/upload/x.png']) {
+        const draft = await (await request('galleries')).json();
+        draft.galleries.phoenix.push({url,caption:'Image'});
+        assert.equal((await request('galleries','PUT',draft,auth)).status,400);
+    }
+    const draft = await (await request('galleries')).json(); draft.galleries.other = [];
+    assert.equal((await request('galleries','PUT',draft,auth)).status,400);
+});
+test('Cloudinary gallery upload uses server credentials and returns only the image URL', async () => {
+    let sent;
+    const { request, login, env } = fixture(async (url, options) => {
+        sent = { url, options };
+        return Response.json({secure_url:'https://res.cloudinary.com/test-cloud/image/upload/new.png',api_key:'private-key'});
+    });
+    const auth = await login();
+    const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+jRZkAAAAASUVORK5CYII=','base64');
+    const headers = {...auth,'x-gallery-branch':'phoenix'};
+    assert.equal((await request('gallery-upload','POST',png,headers)).status,503);
+    Object.assign(env,{CLOUDINARY_CLOUD_NAME:'test-cloud',CLOUDINARY_API_KEY:'private-key',CLOUDINARY_API_SECRET:'private-secret'});
+    assert.equal((await request('gallery-upload','POST',png,{...headers,'x-gallery-branch':'other'})).status,400);
+    assert.equal((await request('gallery-upload','POST','<svg/>',headers)).status,400);
+    assert.equal((await request('gallery-upload','POST',Buffer.alloc(3*1024*1024+1),headers)).status,413);
+    const response = await request('gallery-upload','POST',png,headers);
+    assert.equal(response.status,201);
+    assert.deepEqual(await response.json(),{url:'https://res.cloudinary.com/test-cloud/image/upload/new.png'});
+    assert.equal(sent.url,'https://api.cloudinary.com/v1_1/test-cloud/image/upload');
+    assert.equal(sent.options.headers.Authorization,'Basic '+Buffer.from('private-key:private-secret').toString('base64'));
+    assert.match(sent.options.body.get('public_id'),/^epic_portal\/galleries\/phoenix\//);
+    assert.equal(sent.options.body.get('overwrite'),'false');
 });

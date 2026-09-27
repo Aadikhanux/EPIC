@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow"><title>EPIC · Admin Studio</title>
-    <link rel="stylesheet" href="admin.css"><script src="admin.js" defer></script>
+    <link rel="stylesheet" href="admin.css"><script src="admin.js" defer></script><script src="galleries.js" defer></script>
 </head>
 <body>
     <div class="ambient" aria-hidden="true"></div>
@@ -21,12 +21,24 @@
         </section>
         <section id="dashboard" hidden>
             <div class="dashboard-heading"><div><span class="eyebrow">EPIC CONTROL ROOM</span><h1>Make what's next.</h1><p>Manage your events, sessions, dates, and event images.</p></div><button id="logout" class="secondary">Sign out</button></div>
+            <nav class="studio-tabs" aria-label="Admin sections"><button id="events-tab" aria-pressed="true">Events &amp; sessions</button><button id="gallery-tab" class="secondary" aria-pressed="false">Website content</button></nav>
+            <div id="event-area">
             <div class="toolbar"><h2>Events &amp; sessions</h2><button id="save">Publish changes ↗</button></div>
             <div class="workspace">
                 <aside><label>Search<input id="search" type="search" placeholder="Find an event or session…"></label><button id="add" class="secondary">+ New event or session</button><div id="items"></div></aside>
                 <section id="editor" aria-label="Event editor"><p>Select an item to edit.</p></section>
             </div>
             <p class="muted">Changes go live after publishing. Images: PNG, JPEG, or WebP, up to 3 MB.</p>
+            </div>
+            <section id="gallery-area" hidden aria-label="Branch galleries">
+                <div class="toolbar"><div><h2>Branch galleries</h2><p>Upload to Cloudinary, then publish to your branch page.</p></div><button id="publish-galleries">Publish galleries ↗</button></div>
+                <fieldset id="gallery-controls">
+                    <label>Choose a gallery<select id="gallery-branch"><option value="spark">SPARK</option><option value="kaizen">KAIZEN</option><option value="phoenix">PHOENIX</option></select></label>
+                    <label>Add images to this gallery<input id="gallery-files" type="file" accept="image/png,image/jpeg,image/webp" multiple></label>
+                    <p class="muted">PNG, JPEG, or WebP · Up to 3 MB per image. Removing an image here removes it from the gallery after publishing; the original stays in Cloudinary.</p>
+                    <div id="gallery-images" class="gallery-grid"></div>
+                </fieldset>
+            </section>
         </section>
         <p id="status" role="status" aria-live="polite"></p>
     </main>

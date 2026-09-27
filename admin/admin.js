@@ -76,8 +76,8 @@ $('save').onclick = async () => {
     catch (error) { status(error.message, true); } finally { $('save').disabled = false; }
 };
 $('logout').onclick = async () => {
-    if (dirty && !confirm('Sign out and discard unpublished changes?')) return;
-    try { await api('logout', { method: 'POST' }); dirty = false; csrf = ''; data = null; $('editor').replaceChildren(); $('items').replaceChildren(); $('dashboard').hidden = true; $('login-panel').hidden = false; status('Signed out.'); }
+    if ((dirty || window.hasGalleryDraft?.()) && !confirm('Sign out and discard unpublished changes?')) return;
+    try { await api('logout', { method: 'POST' }); dirty = false; window.resetGalleryEditor?.(); csrf = ''; data = null; $('editor').replaceChildren(); $('items').replaceChildren(); $('dashboard').hidden = true; $('login-panel').hidden = false; status('Signed out.'); }
     catch (error) { status(error.message, true); }
 };
 window.addEventListener('beforeunload', event => { if (dirty) { event.preventDefault(); event.returnValue = ''; } });

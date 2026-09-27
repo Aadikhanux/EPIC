@@ -1,0 +1,122 @@
+{
+  "version": 0,
+  "galleries": {
+    "spark": [
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787213201/spark_02.jpg",
+        "caption": "SPARK members learning and building together"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787213202/spark_03.jpg",
+        "caption": "SPARK collaborative learning session"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787213201/spark_04.jpg",
+        "caption": "SPARK students working on technical activities"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787213201/spark_05.jpg",
+        "caption": "A hands-on SPARK workshop"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_08.jpg",
+        "caption": "SPARK members sharing ideas"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_07.jpg",
+        "caption": "Students participating in a SPARK session"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_01.jpg",
+        "caption": "A memorable moment from SPARK"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787213199/spark_06.jpg",
+        "caption": "The SPARK community in action"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787262443/sih_1.jpg",
+        "caption": "Students presenting ideas during Internal SIH"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787262442/sih_2.jpg",
+        "caption": "Internal SIH participants developing their solutions"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787262442/sih_3.jpg",
+        "caption": "Teams collaborating during Internal SIH"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787262442/sih_4.jpg",
+        "caption": "A project presentation at Internal SIH"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160171/cov_02.jpg",
+        "caption": "Students collaborating during Converge"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160173/con_04.jpg",
+        "caption": "A team working together during Converge"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160194/cov_01.jpg",
+        "caption": "Converge participants presenting their work"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/f_auto,q_auto/v1787160197/con_0.3.jpg",
+        "caption": "A memorable moment from Converge"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787260030/hack_01_4.jpg",
+        "caption": "Students coding together during Hack-a-Day"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787260031/hack_01_1.jpg",
+        "caption": "A focused Hack-a-Day competition moment"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787260032/hack_01_3.jpg",
+        "caption": "Hack-a-Day participants and organizers"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787260032/hack_01_2.jpg",
+        "caption": "Teams building solutions during Hack-a-Day"
+      }
+    ],
+    "kaizen": [
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787214204/kaizen_05.jpg",
+        "caption": "KAIZEN members developing their engineering skills"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787214204/kaizen_04.jpg",
+        "caption": "A collaborative KAIZEN learning session"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787214204/kaizen_02.jpg",
+        "caption": "KAIZEN students working together"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787214205/kaizen_01.jpg",
+        "caption": "Hands-on learning at KAIZEN"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787214203/kaizen_03.jpg",
+        "caption": "The KAIZEN community in action"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787303204/kaizen_1.jpg",
+        "caption": "KAIZEN members learning and building together"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787303203/kaizen_2.jpg",
+        "caption": "A new moment from the KAIZEN community"
+      },
+      {
+        "url": "https://res.cloudinary.com/sitqyj0b/image/upload/v1787303203/kaizen_3.jpg",
+        "caption": "KAIZEN engineering in action"
+      }
+    ],
+    "phoenix": []
+  }
+}

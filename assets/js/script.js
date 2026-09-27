@@ -741,6 +741,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let activeBranchCard = null;
     let modalCloseTimer = null;
+    const renderBranchGallery = images => {
+        const host = document.getElementById('branchModalGallery');
+        if (!host) return;
+        host.replaceChildren();
+        images.forEach(([src, alt]) => {
+            const figure = document.createElement('figure'); figure.className = 'branch-gallery-item';
+            const image = document.createElement('img'); image.src = src; image.alt = alt; image.loading = 'lazy';
+            figure.append(image); host.append(figure);
+        });
+    };
+    fetch('/api/galleries', { cache: 'no-store', signal: AbortSignal.timeout(5000) }).then(response => {
+        if (!response.ok) throw new Error('Gallery service unavailable');
+        return response.json();
+    }).then(saved => {
+        for (const key of ['spark', 'kaizen', 'phoenix']) {
+            if (Array.isArray(saved.galleries?.[key])) branchDetails[key].images = saved.galleries[key].map(image => [image.url, image.caption]);
+        }
+        if (activeBranchCard && branchModal?.classList.contains('is-open')) renderBranchGallery(branchDetails[activeBranchCard.dataset.branch].images);
+    }).catch(() => { /* Keep the existing galleries available offline. */ });
 
     const setBranchOrigin = (card) => {
         if (!branchPanel || !card) return;
@@ -765,9 +784,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('branchModalFocus').innerHTML = details.focus.map(item => `<span>${item}</span>`).join('');
         document.getElementById('branchModalActivities').innerHTML = details.activities.map(item => `<li>${item}</li>`).join('');
         document.getElementById('branchModalSkills').innerHTML = details.skills.map(item => `<li>${item}</li>`).join('');
-        document.getElementById('branchModalGallery').innerHTML = details.images.map(([src, alt]) =>
-            `<figure class="branch-gallery-item"><img src="${src}" alt="${alt}" loading="lazy"></figure>`
-        ).join('');
+        renderBranchGallery(details.images);
     };
 
     const openBranchModal = (card) => {

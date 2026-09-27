@@ -1,3 +1,5 @@
+(async () => {
+const galleryEndpoint = new URL("../../api/galleries", document.currentScript.src);
 /* ================================================================
    Branch Page — Enhanced JS (Redesigned)
    ================================================================ */
@@ -139,14 +141,23 @@ if (branch) {
             </div>
         `).join('');
 
+    // Load published branch galleries; retain static images if unavailable.
+    try {
+        const response = await fetch(galleryEndpoint, { cache: 'no-store', signal: AbortSignal.timeout(5000) });
+        if (response.ok) {
+            const saved = await response.json();
+            if (Array.isArray(saved.galleries?.[key])) branch.images = saved.galleries[key].map(image => [image.url, image.caption]);
+        }
+    } catch (_) { /* Keep the original gallery available offline. */ }
+    const escapeGallery = value => String(value).replace(/[&<>"']/g, char => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[char]));
     // --- Gallery ---
     const gallery = document.getElementById('bpGallery');
     gallery.closest('section').hidden = branch.images.length === 0;
     gallery.innerHTML = branch.images
         .map(([src, alt]) => `
             <figure class="bp-gallery-item bp-reveal">
-                <img src="${src}" alt="${alt}" loading="lazy" decoding="async">
-                <figcaption class="bp-gallery-caption">${alt}</figcaption>
+                <img src="${escapeGallery(src)}" alt="${escapeGallery(alt)}" loading="lazy" decoding="async">
+                <figcaption class="bp-gallery-caption">${escapeGallery(alt)}</figcaption>
             </figure>
         `).join('');
 
@@ -305,3 +316,5 @@ if (branch) {
         revealElements.forEach(el => el.classList.add('bp-visible'));
     }
 }
+
+})();
