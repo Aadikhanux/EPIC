@@ -1,0 +1,38 @@
+{
+  "version": 0,
+  "events": [
+    {
+      "title": "EPIC Orientation",
+      "week": "Week 04",
+      "type": "Orientation",
+      "date": "2026-09-30",
+      "time": "14:00",
+      "venue": "CSE-01",
+      "description": "Orientation session for new members.",
+      "icon": "fa-pen-ruler",
+      "image": ""
+    },
+    {
+      "title": "Phoenix First Step Session",
+      "week": "Week 01",
+      "type": "Session",
+      "date": "",
+      "time": "",
+      "venue": "",
+      "description": "Take your first step with Phoenix and discover what's ahead.",
+      "icon": "fa-fire",
+      "image": ""
+    },
+    {
+      "title": "System Design",
+      "week": "Week 02",
+      "type": "Session",
+      "date": "",
+      "time": "",
+      "venue": "",
+      "description": "Discover how the pieces fit together to build scalable systems.",
+      "icon": "fa-layer-group",
+      "image": ""
+    }
+  ]
+}

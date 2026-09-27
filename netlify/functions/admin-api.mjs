@@ -1,6 +1,6 @@
 import { getStore } from '@netlify/blobs';
 import { randomBytes, randomUUID, scryptSync, timingSafeEqual, createHash } from 'node:crypto';
-import seed from '../../cms/seed.json' with { type: 'json' };
+import seed from '../lib/events.json' with { type: 'json' };
 import validation from '../lib/validate.cjs';
 
 export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', consistency: 'strong' }), env = process.env) {
@@ -15,7 +15,10 @@ export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', co
             const cookie = (token, age) => `epic_admin=${token}; HttpOnly; SameSite=Strict; Path=/; Max-Age=${age}${secure ? '; Secure' : ''}`;
             if (!['GET', 'POST', 'PUT'].includes(req.method)) return reply(405, { error: 'Method not allowed.' });
             if (req.method !== 'GET' && (!origin || req.headers.get('origin') !== origin)) return reply(403, { error: 'Untrusted request origin.' });
-            const read = async () => await store.get('content', { type: 'json' }) || seed;
+            const read = async () => {
+                const saved = await store.get('content', { type: 'json' }) || seed;
+                return { version: saved.version || 0, events: saved.events };
+            };
             const json = async (limit = 1024 * 1024) => {
                 const text = await req.text();
                 if (Buffer.byteLength(text) > limit) throw Object.assign(new Error('Request too large.'), { status: 413 });

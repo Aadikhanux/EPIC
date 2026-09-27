@@ -20,15 +20,14 @@ The panel fails closed until credentials are configured. This change does not de
 - Create, edit, reorder, and delete calendar events and sessions.
 - Edit dates, IST times, venue, descriptions, labels, icons, and event images. Blank dates and times display as TBA.
 - Upload PNG, JPEG, or WebP files up to 3 MB, or use HTTPS image URLs.
-- Edit the catalog of plain-text headings/paragraphs and Cloudinary images on the main, branch, highlight, induction, calendar, and game pages. Search by page name or image filename.
 - Publish explicitly. Unpublished edits stay in the current tab. Closing the tab warns about unsaved changes.
 - Published content and images persist across deploys in a site-wide Netlify Blobs store. Static content remains the fallback if the content service is unavailable.
 
-This is a content editor, not a source-code editor. Complex text containing nested markup, JavaScript-generated branch descriptions, quiz questions, navigation links, theme settings, and Firebase registrations/messages are not editable here. New page structures still need code changes. Image substitutions apply to rendered images, including dynamically opened image galleries.
+The admin panel manages events and sessions only. Website text, general page images, navigation, theme settings, and page layouts are maintained in the website source code.
 
 ## Security and maintenance
 
-Password verification uses salted scrypt hashes. Sessions use random tokens, are stored server-side, expire after eight hours, and are sent through HttpOnly, SameSite=Strict, Secure cookies on HTTPS. Writes require both the configured origin and a session CSRF token. Login attempts are limited using atomic persistent counters; the function also has a platform rate-limit configuration. Content writes use conditional storage updates to prevent concurrent overwrites. Uploaded images are checked by signature; SVG uploads are not accepted. All editable text is rendered as text, not executable HTML.
+Password verification uses salted scrypt hashes. Sessions use random tokens, are stored server-side, expire after eight hours, and are sent through HttpOnly, SameSite=Strict, Secure cookies on HTTPS. Writes require both the configured origin and a session CSRF token. Login attempts are limited using atomic persistent counters; the function also has a platform rate-limit configuration. Content writes use conditional storage updates to prevent concurrent overwrites. Uploaded images are checked by signature; SVG uploads are not accepted. Event text is escaped before rendering.
 
 Use the production origin for login; preview domains cannot make authenticated writes unless explicitly configured as the origin. Preview deploys share site-wide storage, so do not change the origin to a public preview casually. Back up the `content` blob and media periodically. Uploaded files are retained even after an event is deleted so reused images do not break. Expired session records are rejected but retained in storage; periodic cleanup can be added as usage grows.
 

@@ -69,9 +69,9 @@ test('publishing uses the JSON revision without relying on HTTP If-Match', async
     delete saved.version;
     assert.equal((await request('content','PUT',saved,auth)).status,400);
 });
-test('invalid dates, unsafe image URLs, and changed catalog IDs are rejected', async () => {
+test('invalid dates, unsafe image URLs, and invalid icons are rejected', async () => {
     const { request, login } = fixture(); const auth = await login();
-    for(const change of [d=>d.events[0].date='2026-02-30',d=>d.events[0].image='javascript:alert(1)',d=>d.content[0].id='injected',d=>d.events[0].icon='fa-fire" onclick="alert(1)']) {
+    for(const change of [d=>d.events[0].date='2026-02-30',d=>d.events[0].image='javascript:alert(1)',d=>d.events[0].icon='fa-fire" onclick="alert(1)']) {
         const data = await (await request('content')).json(); change(data);
         assert.equal((await request('content','PUT',data,{...auth,'if-match':'0'})).status,400);
     }
@@ -104,4 +104,23 @@ test('missing deployment credentials fail closed', async () => {
         assert.ok(!error.includes('test-password'));
         assert.ok(!error.includes('test-salt'));
     }
+});
+
+test('legacy page overrides are excluded while saved events remain editable', async () => {
+    const { request, login, entries } = fixture();
+    const initial = await (await request('content')).json();
+    initial.version = 7;
+    initial.events[0].time = '18:15';
+    entries.set('content', { data: { ...initial, content: [{ id: 'old-page', value: 'Old override' }] }, etag: 'legacy' });
+    const current = await (await request('content')).json();
+    assert.equal(current.events[0].time, '18:15');
+    assert.equal(current.version, 7);
+    assert.equal('content' in current, false);
+    const auth = await login();
+    current.events[0].time = '19:00';
+    current.content = [{ id: 'old-page', value: 'Unwanted override' }];
+    const response = await request('content', 'PUT', current, auth);
+    assert.equal(response.status, 200);
+    assert.equal('content' in entries.get('content').data, false);
+    assert.equal((await (await request('content')).json()).events[0].time, '19:00');
 });

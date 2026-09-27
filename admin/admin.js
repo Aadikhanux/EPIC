@@ -1,5 +1,5 @@
 const $ = id => document.getElementById(id);
-let csrf = '', data, mode = 'events', selected = -1, dirty = false;
+let csrf = '', data, selected = -1, dirty = false;
 function status(message, error = false) { $('status').textContent = message; $('status').classList.toggle('error', error); }
 async function api(path, options = {}) {
     const response = await fetch(`/api/${path}`, { ...options, headers: { 'X-CSRF-Token': csrf, ...options.headers } });
@@ -20,15 +20,15 @@ $('login-form').addEventListener('submit', async event => {
     catch (error) { status(error.message, true); } finally { button.disabled = false; }
 });
 function changed() { dirty = true; status('Unpublished changes — publish when you are ready.'); }
-function entries() { return mode === 'events' ? data.events : data.content; }
+function entries() { return data.events; }
 function renderList() {
     $('items').replaceChildren();
     const query = $('search').value.toLowerCase();
     entries().forEach((entry, index) => {
-        if (!`${entry.title || entry.label} ${entry.page || entry.type}`.toLowerCase().includes(query)) return;
+        if (!`${entry.title} ${entry.type}`.toLowerCase().includes(query)) return;
         const button = document.createElement('button'); button.className = `item${selected === index ? ' active' : ''}`;
-        button.textContent = entry.title || entry.label;
-        const sub = document.createElement('small'); sub.textContent = entry.page || `${entry.type} · ${entry.date || 'Date TBA'}`; button.append(sub);
+        button.textContent = entry.title;
+        const sub = document.createElement('small'); sub.textContent = `${entry.type} · ${entry.date || 'Date TBA'}`; button.append(sub);
         button.onclick = () => { selected = index; renderList(); renderEditor(); }; $('items').append(button);
     });
 }
@@ -60,22 +60,14 @@ function imageField(container, entry, key) {
 function action(container, title, callback, className = 'secondary') { const button = document.createElement('button'); button.textContent = title; button.className = className; button.onclick = callback; container.append(button); }
 function renderEditor() {
     const editor = $('editor'); editor.replaceChildren(); const entry = entries()[selected]; if (!entry) return;
-    const heading = document.createElement('h2'); heading.textContent = mode === 'events' ? 'Event details' : entry.label; editor.append(heading);
+    const heading = document.createElement('h2'); heading.textContent = 'Event details'; editor.append(heading);
     const fields = document.createElement('div'); fields.className = 'fields'; editor.append(fields);
-    if (mode === 'events') {
-        for (const [key, label, type] of [['title','Title','text'],['type','Type (session, workshop, event…)','text'],['week','Week or label','text'],['venue','Venue','text'],['date','Date (leave blank if unconfirmed)','date'],['time','Time (IST)','time'],['icon','Icon (e.g. fa-fire, fa-code, fa-layer-group)','text']]) field(fields, entry, key, label, type);
-        field(fields, entry, 'description', 'Description', 'textarea', true); imageField(fields, entry, 'image');
-        const actions = document.createElement('div'); actions.className = 'actions'; editor.append(actions);
-        for (const [title, direction] of [['Move up',-1],['Move down',1]]) action(actions, title, () => { const next = selected + direction; if (next < 0 || next >= data.events.length) return; [data.events[selected],data.events[next]] = [data.events[next],data.events[selected]]; selected = next; changed(); renderList(); });
-        action(actions, 'Delete event', () => { if (!confirm('Delete this event? The change takes effect when you publish.')) return; data.events.splice(selected, 1); selected = -1; changed(); renderList(); renderEditor(); }, 'danger');
-    } else if (entry.kind === 'image') imageField(fields, entry, 'value');
-    else field(fields, entry, 'value', 'Text', 'textarea', true);
+    for (const [key, label, type] of [['title','Title','text'],['type','Type (session, workshop, event…)','text'],['week','Week or label','text'],['venue','Venue','text'],['date','Date (leave blank if unconfirmed)','date'],['time','Time (IST)','time'],['icon','Icon (e.g. fa-fire, fa-code, fa-layer-group)','text']]) field(fields, entry, key, label, type);
+    field(fields, entry, 'description', 'Description', 'textarea', true); imageField(fields, entry, 'image');
+    const actions = document.createElement('div'); actions.className = 'actions'; editor.append(actions);
+    for (const [title, direction] of [['Move up',-1],['Move down',1]]) action(actions, title, () => { const next = selected + direction; if (next < 0 || next >= data.events.length) return; [data.events[selected],data.events[next]] = [data.events[next],data.events[selected]]; selected = next; changed(); renderList(); });
+    action(actions, 'Delete event', () => { if (!confirm('Delete this event? The change takes effect when you publish.')) return; data.events.splice(selected, 1); selected = -1; changed(); renderList(); renderEditor(); }, 'danger');
 }
-for (const type of ['events','content']) $(`${type}-tab`).onclick = () => {
-    mode = type; selected = -1; $('search').value = ''; $('add').hidden = mode !== 'events';
-    for (const tab of ['events','content']) { $(`${tab}-tab`).classList.toggle('active', tab === mode); $(`${tab}-tab`).setAttribute('aria-pressed', String(tab === mode)); }
-    renderList(); renderEditor();
-};
 $('search').oninput = renderList;
 $('add').onclick = () => { data.events.push({ title: 'New event', type: 'Session', week: '', date: '', time: '', venue: '', description: '', icon: 'fa-calendar-days', image: '' }); selected = data.events.length - 1; changed(); renderList(); renderEditor(); };
 $('save').onclick = async () => {
