@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             keywords: ['mentor', 'abhishek', 'gour', 'faculty', 'advisor', 'patron', 'teacher'],
-            response: "Our club is mentored by <strong>Dr. Abhishek Gour Sir</strong>, Faculty Advisor at MBM University, who guides student teams in software development and competitive problem-solving."
+            response: "Our club is mentored by <strong>Dr. Abhishek Gour Sir</strong>, Faculty Advisor, who guides student teams in software development and competitive problem-solving."
         },
         {
             keywords: ['studypods', 'studypod', 'cohort', 'project drive'],
@@ -1087,7 +1087,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     /* ================= 16. CONSOLE BRANDING ================= */
     console.log(
-        "%c EPIC | MBM University ",
+        "%c EPIC ",
         "background:#0f172a;color:#10b981;font-size:16px;font-weight:bold;padding:8px 14px;border-radius:6px;"
     );
 });

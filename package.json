@@ -1,7 +1,7 @@
 {
   "name": "epic-portal",
   "version": "1.1.0",
-  "description": "EPIC Technical Club Portal - MBM University",
+  "description": "EPIC Technical Club Portal",
   "scripts": {
     "build:site": "node scripts/build-site.js",
     "test:admin": "node --test tests/admin-api.test.mjs",

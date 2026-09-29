@@ -1,6 +1,6 @@
 # EPIC — Empowering People Through Innovative Computing
 #test
-Official web portal for **EPIC**, a technical club at **MBM University, Jodhpur**, supported by Google Developer Groups.
+Official web portal for **EPIC**, a technical club in **Jodhpur**, supported by Google Developer Groups.
 
 ![EPIC Logo](https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_800/v1/epic_portal/logos/epic-logo.png)
 
@@ -221,10 +221,10 @@ For production, restrict the API key in **Google Cloud Console → Credentials**
 | WhatsApp | [+91 78509 40248](https://wa.me/917850940248) |
 | Instagram | [@gdg_mbmu](https://www.instagram.com/gdg_mbmu) |
 | LinkedIn | [EPIC MBM](https://linkedin.com/company/epic-mbmu) |
-| Campus | MBM University, Jodhpur, Rajasthan |
+| Campus | Jodhpur, Rajasthan |
 
 ---
 
 ## License
 
-© 2026 EPIC Technical Club. Built by EPIC members at MBM University.
+© 2026 EPIC Technical Club. Built by EPIC members.

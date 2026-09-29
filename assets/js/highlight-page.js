@@ -46,7 +46,7 @@ const highlightPages = {
         type: 'Problem-Solving Showcase', title: 'Converge', tagline: 'Different disciplines. Shared ideas. One powerful solution.',
         cover: 'https://res.cloudinary.com/sitqyj0b/image/upload/v1787158172/converge.jpg',
         heading: 'Where ideas and disciplines converge',
-        description: 'Converge 2026 is a three-week internal project competition organized at MBM University, structured to take teams from idea to working product. The competition unfolds in three stages — Pitch, Prototype, and Deployment — with teams evaluated through a demo video, README and the Final Pitch.',
+        description: 'Converge 2026 is a three-week internal project competition organized by EPIC, structured to take teams from idea to working product. The competition unfolds in three stages — Pitch, Prototype, and Deployment — with teams evaluated through a demo video, README and the Final Pitch.',
         purpose: 'Challenge student teams to move beyond ideation, building and pitching a real, demonstrable product across a structured three-week timeline.',
         activities: ['Week 1: Idea pitching and problem validation', 'Week 2: Prototype development and mentor feedback', 'Week 3: Final deployment and product demo', 'Final Evaluation via live demonstration', 'Winners announced across top project tracks'],
         outcomes: ['Stronger end-to-end product execution', 'Better documentation and presentation habits', 'Real experience shipping under a deadline', 'Cross-domain teamwork (AI/ML, frontend, backend, etc.)', 'Recognition for top-performing teams'],
