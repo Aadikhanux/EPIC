@@ -165,7 +165,7 @@ if (branch) {
     const otherBranches = allBranches.filter(b => b.key !== key);
     document.getElementById('bpCrossNav').innerHTML = otherBranches
         .map(b => `
-            <a href="../${b.key}/" class="bp-cross-card bp-cross-${b.key}">
+            <a href="${b.key === 'phoenix' ? 'https://phoenix-final-web.vercel.app' : `../${b.key}/`}" class="bp-cross-card bp-cross-${b.key}">
                 <div class="bp-cross-card-logo">
                     <img src="${b.logo}" alt="${b.name} logo" loading="lazy">
                 </div>
