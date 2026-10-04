@@ -2114,6 +2114,18 @@ body.image-card-open {
     margin-top: 6px;
 }
 
+.team-pills.team-lead-pills {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    gap: 6px;
+}
+
+.team-lead-pills .lead-tag {
+    grid-column: 1 / -1;
+    justify-self: center;
+}
+
 .team-pill {
     font-size: 11px;
     font-family: 'DM Mono', monospace;

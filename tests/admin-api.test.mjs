@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { scryptSync } from 'node:crypto';
 import { makeHandler } from '../netlify/functions/admin-api.mjs';
 
-function fixture(uploadFetch) {
+function fixture(uploadFetch, pushSender = { setVapidDetails() {}, async sendNotification() {} }) {
     const entries = new Map(); let revision = 0;
     const store = {
         async get(key) { return structuredClone(entries.get(key)?.data ?? null); },
@@ -17,7 +17,7 @@ function fixture(uploadFetch) {
         async delete(key) { entries.delete(key); }
     };
     const env = { PUBLIC_ORIGIN: 'https://epic.test', ADMIN_USERNAME: 'Test Admin', ADMIN_PASSWORD_SALT: 'test-salt', ADMIN_PASSWORD_HASH: scryptSync('test-password', 'test-salt', 64).toString('hex') };
-    const handler = makeHandler(() => store, env, uploadFetch);
+    const handler = makeHandler(() => store, env, uploadFetch, pushSender);
     const request = (route, method = 'GET', body, headers = {}) => handler(new Request(`https://epic.test/api/${route}`, { method, headers: { origin: env.PUBLIC_ORIGIN, ...headers }, ...(body !== undefined ? { body: typeof body === 'string' || Buffer.isBuffer(body) ? body : JSON.stringify(body) } : {}) }), { ip: '127.0.0.1' });
     async function login() {
         const res = await request('login', 'POST', { username: 'Test Admin', password: 'test-password' });
@@ -32,6 +32,22 @@ test('public reads work but writes, uploads, and sessions require authentication
     assert.equal((await request('content')).status, 200);
     for (const [route, method] of [['content','PUT'],['upload','POST'],['session','GET'],['logout','POST']]) assert.equal((await request(route, method)).status, 401);
     assert.equal((await request('session','GET',undefined,{cookie:'epic_admin=forged'})).status,401);
+});
+test('push subscriptions are public to register and admin broadcasts are authenticated', async () => {
+    const delivered = [];
+    const pushSender = {
+        setVapidDetails(subject, publicKey, privateKey) { assert.equal(subject, 'mailto:admin@epic.test'); assert.equal(publicKey, 'public'); assert.equal(privateKey, 'private'); },
+        async sendNotification(subscription, payload) { delivered.push({ subscription, payload }); if (subscription.endpoint.includes('expired')) throw Object.assign(new Error('Gone'), { statusCode: 410 }); }
+    };
+    const { request, login, env } = fixture(undefined, pushSender);
+    assert.equal((await request('notifications/subscribe', 'POST', { endpoint: 'not-secure', keys: {} })).status, 400);
+    assert.equal((await request('notifications/subscribe', 'POST', { endpoint: 'https://push.test/active', keys: { p256dh: 'key', auth: 'auth' } })).status, 201);
+    assert.equal((await request('notifications/subscribe', 'POST', { endpoint: 'https://push.test/expired', keys: { p256dh: 'key', auth: 'auth' } })).status, 201);
+    assert.equal((await request('notifications/send', 'POST', { title: 'Update', body: 'Hello' })).status, 401);
+    const auth = await login(); Object.assign(env, { VAPID_SUBJECT: 'mailto:admin@epic.test', VAPID_PUBLIC_KEY: 'public', VAPID_PRIVATE_KEY: 'private' });
+    const response = await request('notifications/send', 'POST', { title: 'Update', body: 'Hello', url: '/calendar/' }, auth);
+    assert.equal(response.status, 200); assert.deepEqual(await response.json(), { sent: 1, failed: 0, removed: 1 });
+    assert.equal(delivered.length, 2); assert.equal(JSON.parse(delivered[0].payload).url, '/calendar/');
 });
 test('login rejects wrong credentials and cross-origin requests; limits repeated attempts', async () => {
     const { request } = fixture();

@@ -69,6 +69,18 @@ function renderEditor() {
     action(actions, 'Delete event', () => { if (!confirm('Delete this event? The change takes effect when you publish.')) return; data.events.splice(selected, 1); selected = -1; changed(); renderList(); renderEditor(); }, 'danger');
 }
 $('search').oninput = renderList;
+$('notify-users').onclick = () => { $('notification-panel').hidden = !$('notification-panel').hidden; if (!$('notification-panel').hidden) $('notification-form').elements.title.focus(); };
+$('notification-cancel').onclick = () => { $('notification-panel').hidden = true; };
+$('notification-form').onsubmit = async event => {
+    event.preventDefault();
+    const button = event.target.querySelector('button[type="submit"]'); button.disabled = true;
+    try {
+        const input = Object.fromEntries(new FormData(event.target));
+        const result = await api('notifications/send', { method: 'POST', body: JSON.stringify(input) });
+        event.target.reset(); event.target.elements.url.value = '/'; $('notification-panel').hidden = true;
+        status(`Notification sent to ${result.sent} subscriber${result.sent === 1 ? '' : 's'}${result.removed ? `; removed ${result.removed} expired subscription${result.removed === 1 ? '' : 's'}` : ''}.`);
+    } catch (error) { status(error.message, true); } finally { button.disabled = false; }
+};
 $('add').onclick = () => { data.events.push({ title: 'New event', type: 'Session', week: '', date: '', time: '', venue: '', description: '', icon: 'fa-calendar-days', image: '' }); selected = data.events.length - 1; changed(); renderList(); renderEditor(); };
 $('save').onclick = async () => {
     $('save').disabled = true;

@@ -23,7 +23,16 @@
             <div class="dashboard-heading"><div><span class="eyebrow">EPIC CONTROL ROOM</span><h1>Make what's next.</h1><p>Manage your events, sessions, dates, and event images.</p></div><button id="logout" class="secondary">Sign out</button></div>
             <nav class="studio-tabs" aria-label="Admin sections"><button id="events-tab" aria-pressed="true">Events &amp; sessions</button><button id="gallery-tab" class="secondary" aria-pressed="false">Website content</button></nav>
             <div id="event-area">
-            <div class="toolbar"><h2>Events &amp; sessions</h2><button id="save">Publish changes ↗</button></div>
+            <div class="toolbar"><h2>Events &amp; sessions</h2><div class="toolbar-actions"><button id="notify-users" class="secondary">Notify users</button><button id="save">Publish changes ↗</button></div></div>
+            <section id="notification-panel" class="notification-panel" hidden aria-labelledby="notification-title">
+                <div><span class="eyebrow">DIRECT BROADCAST</span><h2 id="notification-title">Send a notification</h2><p>Reach everyone who has enabled EPIC browser notifications.</p></div>
+                <form id="notification-form">
+                    <label>Title<input name="title" maxlength="120" placeholder="EPIC update" required></label>
+                    <label>Message<textarea name="body" maxlength="500" rows="3" placeholder="Share an important update…" required></textarea></label>
+                    <label>Link<input name="url" type="text" value="/" pattern="/.*" placeholder="/calendar/"></label>
+                    <div class="actions"><button type="submit">Send to subscribers ↗</button><button type="button" id="notification-cancel" class="secondary">Cancel</button></div>
+                </form>
+            </section>
             <div class="workspace">
                 <aside><label>Search<input id="search" type="search" placeholder="Find an event or session…"></label><button id="add" class="secondary">+ New event or session</button><div id="items"></div></aside>
                 <section id="editor" aria-label="Event editor"><p>Select an item to edit.</p></section>

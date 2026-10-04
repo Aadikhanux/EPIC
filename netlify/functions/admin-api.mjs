@@ -1,10 +1,11 @@
 import { getStore } from '@netlify/blobs';
 import { randomBytes, randomUUID, scryptSync, timingSafeEqual, createHash } from 'node:crypto';
+import webpush from 'web-push';
 import seed from '../lib/events.json' with { type: 'json' };
 import gallerySeed from '../lib/galleries.json' with { type: 'json' };
 import validation from '../lib/validate.cjs';
 
-export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', consistency: 'strong' }), env = process.env, uploadFetch = fetch) {
+export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', consistency: 'strong' }), env = process.env, uploadFetch = fetch, pushSender = webpush) {
     return async (req, context = {}) => {
         const headers = { 'Content-Type': 'application/json', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' };
         const reply = (status, body, extra = {}) => new Response(JSON.stringify(body), { status, headers: { ...headers, ...extra } });
@@ -27,6 +28,16 @@ export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', co
             };
             if (route === '/content' && req.method === 'GET') return reply(200, await read());
             if (route === '/galleries' && req.method === 'GET') return reply(200, await store.get('galleries', { type: 'json' }) || gallerySeed);
+            if (route === '/notifications/config' && req.method === 'GET') return reply(200, { publicKey: env.VAPID_PUBLIC_KEY || null });
+            if (route === '/notifications/subscribe' && req.method === 'POST') {
+                const subscription = await json(16384);
+                if (!/^https:\/\//.test(subscription.endpoint || '') || typeof subscription.keys?.p256dh !== 'string' || typeof subscription.keys?.auth !== 'string') return reply(400, { error: 'Invalid notification subscription.' });
+                const saved = await store.get('push-subscriptions', { type: 'json' }) || { subscriptions: [] };
+                const subscriptions = saved.subscriptions.filter(item => item.endpoint !== subscription.endpoint);
+                subscriptions.push({ endpoint: subscription.endpoint, keys: subscription.keys });
+                await store.setJSON('push-subscriptions', { subscriptions });
+                return reply(201, { ok: true });
+            }
             if (/^\/media\/[a-f0-9-]+\.(png|jpg|webp)$/.test(route) && req.method === 'GET') {
                 const image = await store.get(route.slice(1), { type: 'arrayBuffer' });
                 return image ? new Response(image, { headers: { 'Content-Type': `image/${route.endsWith('.jpg') ? 'jpeg' : route.split('.').pop()}`, 'X-Content-Type-Options': 'nosniff', 'Cache-Control': 'public, max-age=31536000, immutable' } }) : reply(404, { error: 'Image not found.' });
@@ -59,6 +70,23 @@ export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', co
             if (req.method !== 'GET' && req.headers.get('x-csrf-token') !== session.csrf) return reply(403, { error: 'Invalid session token.' });
             if (route === '/session' && req.method === 'GET') return reply(200, { csrf: session.csrf });
             if (route === '/logout' && req.method === 'POST') { await store.delete(key); return reply(200, { ok: true }, { 'Set-Cookie': cookie('', 0) }); }
+            if (route === '/notifications/send' && req.method === 'POST') {
+                const input = await json(8192);
+                if (typeof input.title !== 'string' || !input.title.trim() || input.title.length > 120 || typeof input.body !== 'string' || !input.body.trim() || input.body.length > 500) return reply(400, { error: 'Enter a title and message within the allowed length.' });
+                const missing = ['VAPID_SUBJECT', 'VAPID_PUBLIC_KEY', 'VAPID_PRIVATE_KEY'].filter(name => !env[name]?.trim());
+                if (missing.length) return reply(503, { error: `Push notification configuration missing: ${missing.join(', ')}.` });
+                pushSender.setVapidDetails(env.VAPID_SUBJECT, env.VAPID_PUBLIC_KEY, env.VAPID_PRIVATE_KEY);
+                const saved = await store.getWithMetadata('push-subscriptions', { type: 'json' });
+                const subscriptions = saved?.data?.subscriptions || [];
+                const payload = JSON.stringify({ title: input.title.trim(), body: input.body.trim(), url: typeof input.url === 'string' && /^\//.test(input.url) ? input.url : '/' });
+                const results = await Promise.all(subscriptions.map(async subscription => {
+                    try { await pushSender.sendNotification(subscription, payload, { TTL: 3600 }); return { subscription, sent: true }; }
+                    catch (error) { return { subscription, sent: false, expired: error.statusCode === 404 || error.statusCode === 410 }; }
+                }));
+                const active = results.filter(result => !result.expired).map(result => result.subscription);
+                await store.setJSON('push-subscriptions', { subscriptions: active }, saved ? { onlyIfMatch: saved.etag } : { onlyIfNew: true });
+                return reply(200, { sent: results.filter(result => result.sent).length, failed: results.filter(result => !result.sent && !result.expired).length, removed: subscriptions.length - active.length });
+            }
             if (route === '/galleries' && req.method === 'PUT') {
                 const input = await json();
                 const data = validation.validateGalleries(input);
