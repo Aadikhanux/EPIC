@@ -1,8 +1,8 @@
 // EDIT YOUR EVENTS HERE. Both the homepage and calendar page use this file.
 // date: "YYYY-MM-DD", for example "2026-10-03". Leave "" if unconfirmed.
 // time: "HH:MM" in 24-hour Indian Standard Time, for example "17:30".
-// Optional endTime: "HH:MM" IST. Events hide 5 hours after endTime (or time if omitted).
-// Without a confirmed time, events hide 5 hours after the end of their date in IST.
+// Optional endTime: "HH:MM" IST.
+// Completed events stay visible until manually removed from the schedule.
 // Entries appear in the order below. Add/remove an object to add/remove an event.
 // Confirmed dates automatically get a dot on the month calendar.
 window.EPIC_EVENTS = [
