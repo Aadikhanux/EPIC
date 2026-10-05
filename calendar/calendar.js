@@ -46,28 +46,30 @@
         const [hours, minutes] = value.split(':').map(Number);
         return `${hours % 12 || 12}:${String(minutes).padStart(2, '0')} ${hours < 12 ? 'AM' : 'PM'} IST`;
     };
-    const now = new Date();
+    const eventRetentionMs = 5 * 60 * 60 * 1000;
+    const validTime = value => /^([01]\d|2[0-3]):[0-5]\d$/.test(value || '');
     const parseEventStart = event => {
-        const date = parseDate(event.date);
-        if (!date) return null;
-        if (/^([01]\d|2[0-3]):[0-5]\d$/.test(event.time || '')) {
-            const [hours, minutes] = event.time.split(':').map(Number);
-            date.setHours(hours, minutes, 0, 0);
-            return date;
-        }
-        date.setHours(23, 59, 59, 999);
-        return date;
+        if (!parseDate(event.date)) return null;
+        const time = validTime(event.time) ? `${event.time}:00.000` : '23:59:59.999';
+        return new Date(`${event.date}T${time}+05:30`);
     };
-    const upcomingEvents = events.filter(event => {
+    const eventExpiresAt = event => {
         const start = parseEventStart(event);
-        return !start || start >= now;
-    });
-    events = upcomingEvents;
+        if (!start) return Infinity;
+        let end = start.getTime();
+        if (validTime(event.endTime)) {
+            end = new Date(`${event.date}T${event.endTime}:00+05:30`).getTime();
+            if (end < start.getTime() && validTime(event.time)) end += 24 * 60 * 60 * 1000;
+        }
+        return end + eventRetentionMs;
+    };
+    events = events.filter(event => Date.now() < eventExpiresAt(event));
     host.querySelector('.event-agenda-count').textContent = `${events.length} upcoming`;
     for (const event of events) {
         const date = parseDate(event.date);
         const dateText = date ? new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }).format(date) : 'Date TBA';
         const item = document.createElement('li');
+        event.agendaItem = item;
         item.innerHTML = `<details class="event-agenda-item"><summary>
             <span class="event-session-icon" aria-hidden="true"><i class="fa-solid ${escape(/^fa-[a-z0-9-]+$/.test(event.icon || '') ? event.icon : 'fa-calendar-days')}"></i></span>
             <span class="event-agenda-details"><span class="event-kind">${escape(event.week)} / ${escape(event.type)}</span>
@@ -185,4 +187,18 @@
         render();
     });
     render();
+    // Expire sessions even when the visitor leaves the calendar open.
+    window.setInterval(() => {
+        const currentTime = Date.now();
+        const retained = events.filter(event => {
+            if (currentTime < eventExpiresAt(event)) return true;
+            event.agendaItem.remove();
+            return false;
+        });
+        if (retained.length === events.length) return;
+        events = retained;
+        host.querySelector('.event-agenda-count').textContent = `${events.length} upcoming`;
+        if (!events.length) list.textContent = 'New events will be announced soon.';
+        render();
+    }, 60 * 1000);
 })();
