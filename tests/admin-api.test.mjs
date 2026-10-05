@@ -70,6 +70,21 @@ test('simultaneous publishing allows only one write', async () => {
     const results = await Promise.all([request('content','PUT',data,{...auth,'if-match':'0'}),request('content','PUT',data,{...auth,'if-match':'0'})]);
     assert.deepEqual(results.map(r=>r.status).sort(),[200,409]);
 });
+
+test('publishing preserves session end times and rejects invalid end times', async () => {
+    const { request, login } = fixture();
+    const auth = await login();
+    const data = await (await request('content')).json();
+    data.events[1].endTime = '18:30';
+    const response = await request('content', 'PUT', data, auth);
+    assert.equal(response.status, 200);
+    const saved = await response.json();
+    assert.equal((await (await request('content')).json()).events[1].endTime, '18:30');
+    for (const endTime of ['25:00', 1830, null]) {
+        saved.events[1].endTime = endTime;
+        assert.equal((await request('content', 'PUT', saved, auth)).status, 400);
+    }
+});
 test('publishing uses the JSON revision without relying on HTTP If-Match', async () => {
     const { request, login } = fixture(); const auth = await login();
     const data = await (await request('content')).json();

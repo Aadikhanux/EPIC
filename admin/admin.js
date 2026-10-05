@@ -62,7 +62,7 @@ function renderEditor() {
     const editor = $('editor'); editor.replaceChildren(); const entry = entries()[selected]; if (!entry) return;
     const heading = document.createElement('h2'); heading.textContent = 'Event details'; editor.append(heading);
     const fields = document.createElement('div'); fields.className = 'fields'; editor.append(fields);
-    for (const [key, label, type] of [['title','Title','text'],['type','Type (session, workshop, event…)','text'],['week','Week or label','text'],['venue','Venue','text'],['date','Date (leave blank if unconfirmed)','date'],['time','Time (IST)','time'],['icon','Icon (e.g. fa-fire, fa-code, fa-layer-group)','text']]) field(fields, entry, key, label, type);
+    for (const [key, label, type] of [['title','Title','text'],['type','Type (session, workshop, event…)','text'],['week','Week or label','text'],['venue','Venue','text'],['date','Date (leave blank if unconfirmed)','date'],['time','Start time (IST)','time'],['endTime','End time (IST, optional)','time'],['icon','Icon (e.g. fa-fire, fa-code, fa-layer-group)','text']]) field(fields, entry, key, label, type);
     field(fields, entry, 'description', 'Description', 'textarea', true); imageField(fields, entry, 'image');
     const actions = document.createElement('div'); actions.className = 'actions'; editor.append(actions);
     for (const [title, direction] of [['Move up',-1],['Move down',1]]) action(actions, title, () => { const next = selected + direction; if (next < 0 || next >= data.events.length) return; [data.events[selected],data.events[next]] = [data.events[next],data.events[selected]]; selected = next; changed(); renderList(); });
@@ -81,7 +81,7 @@ $('notification-form').onsubmit = async event => {
         status(`Notification sent to ${result.sent} subscriber${result.sent === 1 ? '' : 's'}${result.removed ? `; removed ${result.removed} expired subscription${result.removed === 1 ? '' : 's'}` : ''}.`);
     } catch (error) { status(error.message, true); } finally { button.disabled = false; }
 };
-$('add').onclick = () => { data.events.push({ title: 'New event', type: 'Session', week: '', date: '', time: '', venue: '', description: '', icon: 'fa-calendar-days', image: '' }); selected = data.events.length - 1; changed(); renderList(); renderEditor(); };
+$('add').onclick = () => { data.events.push({ title: 'New event', type: 'Session', week: '', date: '', time: '', endTime: '', venue: '', description: '', icon: 'fa-calendar-days', image: '' }); selected = data.events.length - 1; changed(); renderList(); renderEditor(); };
 $('save').onclick = async () => {
     $('save').disabled = true;
     try { data = await api('content', { method: 'PUT', body: JSON.stringify(data) }); dirty = false; status('Published. Refresh the website to see your changes.'); renderList(); renderEditor(); }

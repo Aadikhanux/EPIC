@@ -10,8 +10,9 @@ function validate(data) {
         if (!event.title.trim() || !safeImage(event.image) || !/^fa-[a-z0-9-]+$/.test(event.icon)) throw fail(400, 'Check the event title, image URL, and icon.');
         if (event.date && (!/^\d{4}-\d{2}-\d{2}$/.test(event.date) || !Number.isFinite(Date.parse(event.date)) || new Date(event.date).toISOString().slice(0, 10) !== event.date)) throw fail(400, 'Invalid date.');
         if (event.time && !/^([01]\d|2[0-3]):[0-5]\d$/.test(event.time)) throw fail(400, 'Invalid time.');
+        if (event.endTime !== undefined && (typeof event.endTime !== 'string' || (event.endTime && !/^([01]\d|2[0-3]):[0-5]\d$/.test(event.endTime)))) throw fail(400, 'Invalid end time.');
     }
-    return { events: data.events.map(event => Object.fromEntries(['title', 'week', 'type', 'date', 'time', 'venue', 'description', 'icon', 'image'].map(key => [key, event[key]]))) };
+    return { events: data.events.map(event => ({ ...Object.fromEntries(['title', 'week', 'type', 'date', 'time', 'venue', 'description', 'icon', 'image'].map(key => [key, event[key]])), endTime: event.endTime || '' })) };
 }
 
 const branches = ['spark', 'kaizen', 'phoenix'];
