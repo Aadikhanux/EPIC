@@ -1,10 +1,13 @@
+self.addEventListener('install', event => event.waitUntil(self.skipWaiting()));
+self.addEventListener('activate', event => event.waitUntil(self.clients.claim()));
+
 self.addEventListener('push', event => {
     let payload = {};
     try { payload = event.data ? event.data.json() : {}; } catch (_) { payload = { body: event.data?.text() || '' }; }
     event.waitUntil(self.registration.showNotification(payload.title || 'EPIC update', {
         body: payload.body || 'There is a new update from EPIC.',
-        icon: 'https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_600/v1/epic_portal/logos/epic-logo.png',
-        badge: 'https://res.cloudinary.com/sjl1rfvu/image/upload/f_auto,q_auto,w_600/v1/epic_portal/logos/epic-logo.png',
+        icon: 'https://res.cloudinary.com/sjl1rfvu/image/upload/v1/epic_portal/logos/epic-logo.png',
+        badge: 'https://res.cloudinary.com/sjl1rfvu/image/upload/v1/epic_portal/logos/epic-logo.png',
         data: { url: payload.url || '/' }
     }));
 });
