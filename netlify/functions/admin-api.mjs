@@ -26,16 +26,27 @@ export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', co
                 if (Buffer.byteLength(text) > limit) throw Object.assign(new Error('Request too large.'), { status: 413 });
                 return JSON.parse(text);
             };
+        const updatePushSubscriptions = async update => {
+            for (let attempt = 0; attempt < 8; attempt++) {
+                const saved = await store.getWithMetadata('push-subscriptions', { type: 'json' });
+                const current = saved?.data?.subscriptions || [];
+                const subscriptions = update(current);
+                const result = await store.setJSON('push-subscriptions', { subscriptions }, saved ? { onlyIfMatch: saved.etag } : { onlyIfNew: true });
+                if (result.modified) return subscriptions;
+                await new Promise(resolve => setTimeout(resolve, 15 + Math.random() * 40));
+            }
+            throw Object.assign(new Error('Subscriber list is busy. Please try again.'), { status: 409 });
+        };
             if (route === '/content' && req.method === 'GET') return reply(200, await read());
             if (route === '/galleries' && req.method === 'GET') return reply(200, await store.get('galleries', { type: 'json' }) || gallerySeed);
             if (route === '/notifications/config' && req.method === 'GET') return reply(200, { publicKey: env.VAPID_PUBLIC_KEY || null });
             if (route === '/notifications/subscribe' && req.method === 'POST') {
                 const subscription = await json(16384);
                 if (!/^https:\/\//.test(subscription.endpoint || '') || typeof subscription.keys?.p256dh !== 'string' || typeof subscription.keys?.auth !== 'string') return reply(400, { error: 'Invalid notification subscription.' });
-                const saved = await store.get('push-subscriptions', { type: 'json' }) || { subscriptions: [] };
-                const subscriptions = saved.subscriptions.filter(item => item.endpoint !== subscription.endpoint);
-                subscriptions.push({ endpoint: subscription.endpoint, keys: subscription.keys });
-                await store.setJSON('push-subscriptions', { subscriptions });
+                await updatePushSubscriptions(current => [
+                    ...current.filter(item => item.endpoint !== subscription.endpoint),
+                    { endpoint: subscription.endpoint, keys: subscription.keys }
+                ]);
                 return reply(201, { ok: true });
             }
             if (/^\/media\/[a-f0-9-]+\.(png|jpg|webp)$/.test(route) && req.method === 'GET') {
@@ -87,8 +98,8 @@ export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', co
                     try { await pushSender.sendNotification(subscription, payload, { TTL: 3600 }); return { subscription, sent: true }; }
                     catch (error) { return { subscription, sent: false, expired: error.statusCode === 404 || error.statusCode === 410 }; }
                 }));
-                const active = results.filter(result => !result.expired).map(result => result.subscription);
-                await store.setJSON('push-subscriptions', { subscriptions: active }, saved ? { onlyIfMatch: saved.etag } : { onlyIfNew: true });
+                const expiredEndpoints = new Set(results.filter(result => result.expired).map(result => result.subscription.endpoint));
+                if (expiredEndpoints.size) await updatePushSubscriptions(current => current.filter(item => !expiredEndpoints.has(item.endpoint)));
                 return reply(200, { sent: results.filter(result => result.sent).length, failed: results.filter(result => !result.sent && !result.expired).length, removed: subscriptions.length - active.length });
             }
             if (route === '/galleries' && req.method === 'PUT') {

@@ -77,13 +77,16 @@
         try { localStorage.setItem(notificationKey, JSON.stringify(state)); } catch (_) { /* Storage may be unavailable. */ }
     };
     const notificationSupported = 'Notification' in window;
-    const updateNotificationButton = () => {
+    const updateNotificationButton = (subscribed = false) => {
         if (!notificationSupported) {
             notificationButton.disabled = true;
             notificationButton.title = 'Browser notifications are not supported here.';
-        } else if (Notification.permission === 'granted') {
+        } else if (subscribed) {
             notificationButton.innerHTML = '<i class="fa-solid fa-bell" aria-hidden="true"></i> Reminders on';
             notificationButton.classList.add('is-enabled');
+        } else {
+            notificationButton.innerHTML = '<i class="fa-regular fa-bell" aria-hidden="true"></i> Enable reminders';
+            notificationButton.classList.remove('is-enabled');
         }
     };
     const notifyForUpcomingEvents = () => {
@@ -106,12 +109,17 @@
         writeNotificationState(state);
     };
     updateNotificationButton();
+    if (notificationSupported && Notification.permission === 'granted' && window.EPIC_PUSH?.supported) {
+        window.EPIC_PUSH.enable().then(() => updateNotificationButton(true)).catch(error => {
+            notificationButton.title = error.message;
+        });
+    }
     notificationButton.addEventListener('click', async () => {
         if (!notificationSupported || !window.EPIC_PUSH?.supported) return;
         notificationButton.disabled = true;
         try {
             await window.EPIC_PUSH.enable();
-            updateNotificationButton();
+            updateNotificationButton(true);
             notifyForUpcomingEvents();
         } catch (error) { notificationButton.disabled = false; notificationButton.title = error.message; }
     });
