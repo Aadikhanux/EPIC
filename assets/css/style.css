@@ -3651,13 +3651,44 @@ footer {
     .resource-card {
         padding: 22px 18px;
     }
+
+    .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 12px !important;
+        width: 100%;
+    }
+
+    .team-card {
+        min-width: 0;
+        padding: 16px 10px;
+    }
+
+    .team-photo-wrap {
+        width: 76px;
+        height: 76px;
+        margin-bottom: 10px;
+    }
+
+    .team-card h4 {
+        font-size: 14px;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+    }
+
+    .team-pills {
+        flex-wrap: wrap;
+        row-gap: 5px;
+    }
+
+    .team-pill {
+        font-size: 10px;
+        padding: 2px 6px;
+    }
 }
 
 @media (max-width: 420px) {
     .team-grid {
-        grid-template-columns: 1fr !important;
-        max-width: 290px;
-        margin: 0 auto;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
 
     .navbar {

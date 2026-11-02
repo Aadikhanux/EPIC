@@ -69,6 +69,10 @@ export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', co
             if (!session || session.expires < Date.now()) return reply(401, { error: 'Please sign in.' });
             if (req.method !== 'GET' && req.headers.get('x-csrf-token') !== session.csrf) return reply(403, { error: 'Invalid session token.' });
             if (route === '/session' && req.method === 'GET') return reply(200, { csrf: session.csrf });
+            if (route === '/notifications/subscribers' && req.method === 'GET') {
+                const saved = await store.get('push-subscriptions', { type: 'json' }) || { subscriptions: [] };
+                return reply(200, { count: saved.subscriptions.length });
+            }
             if (route === '/logout' && req.method === 'POST') { await store.delete(key); return reply(200, { ok: true }, { 'Set-Cookie': cookie('', 0) }); }
             if (route === '/notifications/send' && req.method === 'POST') {
                 const input = await json(8192);
@@ -78,7 +82,7 @@ export function makeHandler(storeFactory = () => getStore({ name: 'epic-cms', co
                 pushSender.setVapidDetails(env.VAPID_SUBJECT, env.VAPID_PUBLIC_KEY, env.VAPID_PRIVATE_KEY);
                 const saved = await store.getWithMetadata('push-subscriptions', { type: 'json' });
                 const subscriptions = saved?.data?.subscriptions || [];
-                const payload = JSON.stringify({ title: input.title.trim(), body: input.body.trim(), url: typeof input.url === 'string' && /^\//.test(input.url) ? input.url : '/' });
+                const payload = JSON.stringify({ title: input.title.trim(), body: input.body.trim(), url: typeof input.url === 'string' && /^\/(?!\/)/.test(input.url) ? input.url : '/' });
                 const results = await Promise.all(subscriptions.map(async subscription => {
                     try { await pushSender.sendNotification(subscription, payload, { TTL: 3600 }); return { subscription, sent: true }; }
                     catch (error) { return { subscription, sent: false, expired: error.statusCode === 404 || error.statusCode === 410 }; }

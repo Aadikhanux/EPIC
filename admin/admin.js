@@ -69,7 +69,17 @@ function renderEditor() {
     action(actions, 'Delete event', () => { if (!confirm('Delete this event? The change takes effect when you publish.')) return; data.events.splice(selected, 1); selected = -1; changed(); renderList(); renderEditor(); }, 'danger');
 }
 $('search').oninput = renderList;
-$('notify-users').onclick = () => { $('notification-panel').hidden = !$('notification-panel').hidden; if (!$('notification-panel').hidden) $('notification-form').elements.title.focus(); };
+$('notify-users').onclick = async () => {
+    $('notification-panel').hidden = !$('notification-panel').hidden;
+    if (!$('notification-panel').hidden) {
+        $('notification-form').elements.title.focus();
+        $('notification-audience').textContent = 'Checking subscriber count…';
+        try {
+            const { count } = await api('notifications/subscribers');
+            $('notification-audience').textContent = `${count} active subscriber${count === 1 ? '' : 's'}`;
+        } catch (error) { $('notification-audience').textContent = error.message; }
+    }
+};
 $('notification-cancel').onclick = () => { $('notification-panel').hidden = true; };
 $('notification-form').onsubmit = async event => {
     event.preventDefault();
@@ -78,7 +88,7 @@ $('notification-form').onsubmit = async event => {
         const input = Object.fromEntries(new FormData(event.target));
         const result = await api('notifications/send', { method: 'POST', body: JSON.stringify(input) });
         event.target.reset(); event.target.elements.url.value = '/'; $('notification-panel').hidden = true;
-        status(`Notification sent to ${result.sent} subscriber${result.sent === 1 ? '' : 's'}${result.removed ? `; removed ${result.removed} expired subscription${result.removed === 1 ? '' : 's'}` : ''}.`);
+        status(`Notification sent to ${result.sent} subscriber${result.sent === 1 ? '' : 's'}${result.failed ? `; ${result.failed} ${result.failed === 1 ? 'delivery' : 'deliveries'} failed` : ''}${result.removed ? `; removed ${result.removed} expired subscription${result.removed === 1 ? '' : 's'}` : ''}.`, result.failed > 0);
     } catch (error) { status(error.message, true); } finally { button.disabled = false; }
 };
 $('add').onclick = () => { data.events.push({ title: 'New event', type: 'Session', week: '', date: '', time: '', endTime: '', venue: '', description: '', icon: 'fa-calendar-days', image: '' }); selected = data.events.length - 1; changed(); renderList(); renderEditor(); };
